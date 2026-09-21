@@ -1,0 +1,34 @@
+{
+  "schema": "qdis.site/v1",
+  "name": "청도대원학교 QDIS 한국어 입학안내",
+  "short_name": "청도대원학교",
+  "domain": "https://qdis-korea.netlify.app",
+  "preview": true,
+  "data_reviewed_on": "2026-09-21",
+  "fx": {
+    "cny_krw": 195,
+    "as_of": "2026-09-21",
+    "note": "원화 환산은 1 CNY ≈ 195원 기준의 참고값입니다. 실제 납부 시점 환율에 따라 달라집니다."
+  },
+  "tns": {
+    "name": "TNS Worldwide",
+    "legal": "㈜티앤에스월드와이드",
+    "role": "청도대원학교 한국 입학상담 지원",
+    "phone": "02-3288-1733",
+    "phone_href": "tel:0232881733",
+    "kakao_channel": "http://pf.kakao.com/_xfXsxjE",
+    "kakao_openchat": "https://open.kakao.com/o/slehLvKi",
+    "website": "https://www.tnsuhak.com",
+    "cafe": "https://cafe.naver.com/tnsuhak.cafe",
+    "address": "서울 마포구"
+  },
+  "school": {
+    "name_ko": "청도대원학교 국제부",
+    "name_en": "Qingdao Daewon International School (QDIS)",
+    "name_cn": "青岛大元学校",
+    "address_en": "No.300, Cifu Rd. Chengyang District, Qingdao, China",
+    "address_cn": "中国山东省青岛市城阳区赐福路300号",
+    "official_site": "https://qdis.org/main/index.html",
+    "ceeb": "694045"
+  }
+}

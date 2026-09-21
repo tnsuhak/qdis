@@ -1,0 +1,60 @@
+name: QDIS official board monitor
+
+# 공식 QDIS 게시판(공지·가정통신문·진학정보·입학안내·갤러리)을 매일 확인해
+# 새 글이 있으면 초안을 만들어 검토용 PR을 엽니다. main 자동 반영·Production 자동 배포는 하지 않습니다.
+on:
+  schedule:
+    - cron: '30 0 * * *'   # 매일 09:30 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: qdis-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ vars.QDIS_MONITOR_BASE || 'main' }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 감시 기준선(마지막 글 번호)은 저장소 커밋 대신 Actions 캐시에 보관 → 새 글이 없을 때 배포가 생기지 않음
+      - name: Restore monitor state
+        uses: actions/cache/restore@v4
+        with:
+          path: data/monitor/state.json
+          key: qdis-monitor-state-${{ github.run_id }}
+          restore-keys: qdis-monitor-state-
+      - name: Check official boards
+        run: node scripts/sync/boards.mjs
+      - name: Save monitor state
+        uses: actions/cache/save@v4
+        with:
+          path: data/monitor/state.json
+          key: qdis-monitor-state-${{ github.run_id }}
+      - name: Open review PR when new drafts exist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE: ${{ vars.QDIS_MONITOR_BASE || 'main' }}
+        run: |
+          if [ -z "$(git status --porcelain -- data/news/drafts data/university-results/candidates.json)" ]; then
+            # 새 초안이 없으면 기준선(state)만 기록하고 PR은 만들지 않습니다 (불필요한 배포 방지)
+            echo "No new drafts."; exit 0
+          fi
+          BR="monitor/qdis-$(date -u +%Y%m%d-%H%M)"
+          git config user.name "qdis-monitor[bot]"
+          git config user.email "qdis-monitor@users.noreply.github.com"
+          git checkout -b "$BR"
+          git add data/news/drafts data/monitor/last-report.md data/university-results/candidates.json 2>/dev/null || true
+          git commit -m "QDIS 공식 게시판 새 글 초안 ($(date -u +%Y-%m-%d))"
+          git push origin "$BR"
+          gh pr create --base "$BASE" --head "$BR" --draft \
+            --title "[검토] QDIS 공식 게시판 새 글 $(date -u +%Y-%m-%d)" \
+            --body-file data/monitor/last-report.md

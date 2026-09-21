@@ -1,0 +1,52 @@
+{
+ "schema": "qdis.university-results.alumni/v1",
+ "description": "졸업생 대학원 합격 게시물. 고등학생 학부 합격 결과와 합산하지 않습니다.",
+ "verified_on": "2026-09-21",
+ "entries": [
+  {
+   "academic_year": "2025-2026",
+   "country": "US",
+   "country_ko": "미국",
+   "university": "Columbia University",
+   "program": "석사과정",
+   "level": "graduate",
+   "result_type": "alumni_graduate_offer",
+   "offer_count": 1,
+   "source_url": "https://qdis.org/board/index.html?id=board3",
+   "source_post_id": null,
+   "source_date": "2026-03-15",
+   "verified": true,
+   "note": null
+  },
+  {
+   "academic_year": "2025-2026",
+   "country": "US",
+   "country_ko": "미국",
+   "university": "University of Pennsylvania (UPenn)",
+   "program": "석사과정",
+   "level": "graduate",
+   "result_type": "alumni_graduate_offer",
+   "offer_count": 1,
+   "source_url": "https://qdis.org/board/index.html?id=board3",
+   "source_post_id": null,
+   "source_date": "2026-03-10",
+   "verified": true,
+   "note": "성적우수장학생"
+  },
+  {
+   "academic_year": "2025-2026",
+   "country": "US",
+   "country_ko": "미국",
+   "university": "Johns Hopkins University (JHU)",
+   "program": "석사과정",
+   "level": "graduate",
+   "result_type": "alumni_graduate_offer",
+   "offer_count": 1,
+   "source_url": "https://qdis.org/board/index.html?id=board3",
+   "source_post_id": null,
+   "source_date": "2026-03-10",
+   "verified": true,
+   "note": "성적우수장학생"
+  }
+ ]
+}

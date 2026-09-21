@@ -2,14 +2,36 @@
   command = "npm run build"
   publish = "dist-netlify"
 
+[functions]
+  directory = "netlify/functions"
+
+# 기존 SPA 주소 호환
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  from = "/results"
+  to = "/university-results"
+  status = 301
+[[redirects]]
+  from = "/fees"
+  to = "/tuition"
+  status = 301
+[[redirects]]
+  from = "/contact"
+  to = "/consultation"
+  status = 301
+[[redirects]]
+  from = "/resources"
+  to = "/news"
+  status = 301
 
 [[headers]]
   for = "/*"
   [headers.values]
+    # 검토 단계: 모든 배포에 검색 노출 차단. Production 공개 시 data/site.json preview=false 와 함께 제거합니다.
     X-Robots-Tag = "noindex, nofollow"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

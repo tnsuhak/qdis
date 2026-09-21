@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import {resolve} from 'node:path';
 
 export default defineConfig({
-  root: resolve(__dirname, 'netlify'),
+  root: resolve(__dirname, 'src'),
   publicDir: resolve(__dirname, 'public'),
   plugins: [react()],
   resolve: {alias: {'@': resolve(__dirname)}},
