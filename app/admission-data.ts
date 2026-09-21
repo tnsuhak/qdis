@@ -1,13 +1,15 @@
 export type AdmissionRow = { c: string; n: string; count: number };
-export type AdmissionYear = { label: string; sourceNote: string; rows: AdmissionRow[] };
+export type AdmissionYear = { label: string; sourceNote: string; sourceUrl: string; imageUrl: string; rows: AdmissionRow[] };
 export type RecentAdmissionPost = { c: string; n: string; date: string; degree: '학부·기타' | '대학원' };
 
-export const annualOrder = ['2025-2026','2023-2024','2022-2023','2021-2022','2020-2021'] as const;
+export const annualOrder = ['2025-2026','2023-2024','2022-2023','2021-2022','2020-2021','2019-2020','2018-2019','2017-2018'] as const;
 
 export const annualResults: Record<string, AdmissionYear> = {
   '2025-2026': {
     label: '2025–2026 · 제8기',
-    sourceNote: '학교 공식 게시물 「2025-2026 대학진학 현황」의 제8기 합격 현황(2025.09.18 현재).',
+    sourceNote: '학교 공식 게시판 「2025-2026 대학진학 현황」(2025.10.10 게시)의 제8기 합격 현황, 2025.09.18 현재.',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=217',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/17600701416098.png',
     rows: [
       {c:'한국',n:'서울대학교',count:2},
       {c:'한국',n:'고려대학교',count:5},
@@ -43,7 +45,9 @@ export const annualResults: Record<string, AdmissionYear> = {
   },
   '2023-2024': {
     label: '2023–2024',
-    sourceNote: '학교 공식 연도별 대학진학 현황 표.',
+    sourceNote: '학교 공식 게시판 「2023-2024 대학진학 현황」(2025.04.17 게시).',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=205',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/17448598210323.jpg',
     rows: [
       {c:'한국',n:'Yonsei University (연세대학교)',count:2},
       {c:'한국',n:'Sungkyunkwan University (성균관대학교)',count:2},
@@ -72,7 +76,9 @@ export const annualResults: Record<string, AdmissionYear> = {
   },
   '2022-2023': {
     label: '2022–2023',
-    sourceNote: '학교 공식 연도별 대학진학 현황 표.',
+    sourceNote: '학교 공식 게시판 「2022-2023 대학진학 현황」(2023.11.04 게시).',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=189',
+    imageUrl: 'https://qdis.org/wysiwyg/PEG/W_1703561812.jpg',
     rows: [
       {c:'한국',n:'Seoul National University (서울대학교)',count:2},
       {c:'한국',n:'KAIST (카이스트)',count:1},
@@ -140,7 +146,9 @@ export const annualResults: Record<string, AdmissionYear> = {
   },
   '2021-2022': {
     label: '2021–2022',
-    sourceNote: '학교 공식 연도별 대학진학 현황 표.',
+    sourceNote: '학교 공식 게시판 「2021-2022 대학진학 현황」(2022.06.24 게시).',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=89',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/16680733442682.png',
     rows: [
       {c:'한국',n:'Yonsei University (연세대학교)',count:2},
       {c:'한국',n:'Korea University (고려대학교)',count:1},
@@ -175,7 +183,9 @@ export const annualResults: Record<string, AdmissionYear> = {
   },
   '2020-2021': {
     label: '2020–2021',
-    sourceNote: '학교 공식 연도별 대학진학 현황 표.',
+    sourceNote: '학교 공식 게시판 「2020-2021 대학진학 현황」(2021.09.27 게시).',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=68',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/16494109951100.jpg',
     rows: [
       {c:'한국',n:'Yonsei University (연세대학교)',count:2},
       {c:'한국',n:'Korea University (고려대학교)',count:4},
@@ -223,7 +233,28 @@ export const annualResults: Record<string, AdmissionYear> = {
       {c:'홍콩',n:'The Chinese University of Hong Kong',count:1},
       {c:'홍콩',n:'The Hong Kong University of Science and Technology',count:5},
     ],
+  },,
+  '2019-2020': {
+    label: '2019–2020',
+    sourceNote: '학교 공식 게시판 「2019-2020 대학진학 현황」(2021.02.24 게시). 원본이 이미지로 게시되어 학교 원본 이미지를 그대로 표시합니다.',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=21',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/16317601220370.jpg',
+    rows: [],
   },
+  '2018-2019': {
+    label: '2018–2019',
+    sourceNote: '학교 공식 게시판 「2018-2019 대학진학 현황」(2021.02.24 게시). 원본이 이미지로 게시되어 학교 원본 이미지를 그대로 표시합니다.',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=20',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/16317592411491.jpg',
+    rows: [],
+  },
+  '2017-2018': {
+    label: '2017–2018',
+    sourceNote: '학교 공식 게시판 「2017-2018 대학진학 현황」(2021.02.24 게시). 청도대원 첫 졸업생 대학진학 현황으로, 학교 원본 이미지를 그대로 표시합니다.',
+    sourceUrl: 'https://qdis.org/board/index.html?id=board3&no=19',
+    imageUrl: 'https://qdis.org/rankup_module/rankup_board/attach/board3/16317587272653.jpg',
+    rows: [],
+  }
 };
 
 export const recentAdmissionPosts: RecentAdmissionPost[] = [
