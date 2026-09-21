@@ -35,7 +35,7 @@ export function BoardingPage() {
 
       <section className="section" id="care">
         <div className="wrap">
-          <SecHead eyebrow="Daily Management" title="관리가 실제로 어떻게 이뤄지는지" lede="“체계적으로 관리합니다” 대신, 학교생활안내와 공식 FAQ에 적힌 규정을 그대로 옮겼습니다." />
+          <SecHead eyebrow="Daily Management" title="관리가 실제로 어떻게 이뤄지는지" lede="수업부터 응급상황까지, 학교생활안내와 공식 FAQ에 정해진 규정을 항목별로 정리했습니다." />
           <CareGrid />
           <Source href="https://qdis.org/faq/list.html?pid=26&cate1=">2025–26 학교생활안내 ‘기숙사 생활 안내’·‘생활 지도’, 청도대원학교 공식 FAQ</Source>
         </div>
