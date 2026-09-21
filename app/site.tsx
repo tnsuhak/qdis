@@ -36,7 +36,8 @@ function Results(){
     ? recentAdmissionPosts.filter(r=>(country==='all'||r.c===country)&&(level==='all'||(level==='grad'?r.degree==='대학원':r.degree!=='대학원'))&&r.n.toLowerCase().includes(q.toLowerCase()))
     : (annual?.rows||[]).filter(r=>(country==='all'||r.c===country)&&r.n.toLowerCase().includes(q.toLowerCase()));
   const offers=isRecent?0:rows.reduce((s,r)=>s+('count' in r?r.count:0),0);
-  const yearItems=[...annualOrder.map(y=>[y,annualResults[y].label]),['recent','2025–26 개별 합격 게시물']];
+  const imageOnly=!isRecent&&!!annual&&annual.rows.length===0;
+  const yearItems:string[][]=[...annualOrder.map(y=>[y,annualResults[y].label]),['recent','2025–26 개별 합격 게시물']];
   return <>
     <div className="notice">합격 건수는 학생 수와 다릅니다. 동일 학생의 복수 대학 합격이 포함될 수 있으며, 최종 진학을 뜻하지 않습니다. 개별 합격 게시물은 중복 여부를 확인할 수 없어 연간 합격 건수에 합산하지 않습니다.</div>
     <div className="filterbar">
@@ -49,8 +50,9 @@ function Results(){
       <b>{isRecent?rows.length+'개 게시물':rows.length+'개 대학 항목 · '+offers+'건 합격'}</b>
       <span>{isRecent?'2025.09.05~2026.07.06 학교 진학정보 게시판 확인분':annual?.sourceNote}</span>
     </div>
-    <div className="table-wrap"><table><thead><tr><th>국가·지역</th><th>대학교 / 과정</th>{isRecent?<><th>과정 구분</th><th>게시일</th></>:<th>합격 건수</th>}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}><td><span className="country">{r.c}</span></td><td><b>{r.n}</b></td>{isRecent?<><td>{'degree' in r?r.degree:''}</td><td>{'date' in r?r.date:''}</td></>:<td>{'count' in r?r.count+'건':''}</td>}</tr>)}</tbody></table>{rows.length===0&&<div className="empty"><Search/><h3>조건에 맞는 결과가 없습니다.</h3><p>대학명이나 국가·과정 필터를 변경해 주세요.</p><Button onClick={()=>{setQ('');setCountry('all');setLevel('all')}}>필터 초기화</Button></div>}</div>
-    <p className="source">출처: 청도대원학교 공식 진학정보 게시판 및 제공된 연도별 대학 합격 정리자료. 2025–2026 공식 연도표는 제8기 2025.09.18 현재 자료이며, 공식 게시판에는 이후 개별 합격 게시물이 추가로 올라와 있습니다. <a href="https://qdis.org/board/index.html?id=board3" target="_blank" rel="noreferrer">학교 진학정보 원문 ↗</a></p>
+    {!imageOnly&&<div className="table-wrap"><table><thead><tr><th>국가·지역</th><th>대학교 / 과정</th>{isRecent?<><th>과정 구분</th><th>게시일</th></>:<th>합격 건수</th>}</tr></thead><tbody>{rows.map((r,i)=><tr key={i}><td><span className="country">{r.c}</span></td><td><b>{r.n}</b></td>{isRecent?<><td>{'degree' in r?r.degree:''}</td><td>{'date' in r?r.date:''}</td></>:<td>{'count' in r?r.count+'건':''}</td>}</tr>)}</tbody></table>{rows.length===0&&<div className="empty"><Search/><h3>조건에 맞는 결과가 없습니다.</h3><p>대학명이나 국가·과정 필터를 변경해 주세요.</p><Button onClick={()=>{setQ('');setCountry('all');setLevel('all')}}>필터 초기화</Button></div>}</div>}
+    {!isRecent&&annual&&<details className="official-result-source" open={imageOnly}><summary>학교 공식 게시판 원본 이미지 {imageOnly?'보기':'확인하기'}</summary><div><img src={annual.imageUrl} alt={annual.label+' 청도대원학교 대학진학 현황 원본'} loading="lazy"/><p>{annual.sourceNote}</p><a className="text-link" href={annual.sourceUrl} target="_blank" rel="noreferrer">학교 게시판 원문 열기 <ArrowUpRight size={16}/></a></div></details>}
+    <p className="source">출처 기준: 청도대원학교 공식 진학정보 게시판. {isRecent?'개별 합격 게시물은 게시판에 공개된 글을 기준으로 정리했으며, 동일 학생의 복수합격 여부 때문에 연도별 공식 합계와 단순 합산하지 않습니다.':annual?.sourceNote} <a href={isRecent?'https://qdis.org/board/index.html?id=board3':annual?.sourceUrl} target="_blank" rel="noreferrer">학교 진학정보 원문 ↗</a></p>
     <section className="section"><Heading eyebrow="COLLEGE COUNSELING" title="결과만큼 중요한, 준비의 과정"/><div className="three-grid"><article><span className="step-number">01</span><h3>목표와 이수 계획</h3><p>희망 국가와 전공을 정하고 교과 선택, 영어·중국어 학습, 공인시험 준비 방향을 살펴봅니다.</p></article><article><span className="step-number">02</span><h3>학업과 활동 기록</h3><p>교과 성취도와 학생 활동을 함께 관리하며, 지원 대학이 요구하는 자료를 준비합니다.</p></article><article><span className="step-number">03</span><h3>지원 경로 확인</h3><p>해외대와 한국대의 일정·서류를 각각 확인합니다. 한국대는 특례 자격과 대학별 전형을 별도로 검토합니다.</p></article></div><Source>진학 준비 설명은 학교 안내서와 미팅자료를 요약했습니다. 담당자와 지원 범위는 상담 시 확인해 주세요</Source></section>
   </>;
 }
