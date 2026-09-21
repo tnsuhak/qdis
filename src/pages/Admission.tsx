@@ -4,7 +4,7 @@ import {FeeCalculator, TuitionTable} from '@/components/tuition/Tuition';
 import {NewsList} from '@/components/news/News';
 import {ConsultForm, Channels} from '@/components/common/Consult';
 import {FEES} from '@/lib/qdis/fees';
-import {FX} from '@/lib/qdis/format';
+import {fxLabel} from '@/lib/qdis/format';
 import faq from '@/data/faq/faq.json';
 
 export function TuitionPage() {
@@ -44,12 +44,12 @@ export function TuitionPage() {
                   <tr><th scope="row">항공권 · 용돈 · 교복(한국 지정업체)</th><td className="n">개인별</td><td>–</td></tr>
                 </tbody>
               </table>
-              <p className="source">{FX.note}</p>
+              <p className="source">원화 환산은 참고용입니다 · 적용 환율 {fxLabel().rate} · 기준일 {fxLabel().date}</p>
             </div>
           </div>
         </div>
       </section>
-      <CtaBand title="장학금 해당 여부가 헷갈린다면" text="형제 재학, 진급, TOEFL 점수와 특례 구분을 알려 주시면 적용 가능한 장학금을 확인해 드립니다." secondary={{href: '/scholarships', label: '장학금 기준'}} />
+      <CtaBand title="장학금 해당 여부가 헷갈린다면" text="형제 재학, 진급, TOEFL 점수와 특례 구분을 알려 주시면 적용 가능한 장학금을 확인해 드립니다." />
     </>
   );
 }
@@ -202,7 +202,7 @@ export function AdmissionsPage() {
           </div>
         </div>
       </section>
-      <CtaBand title="지원 가능한 학년부터 확인하세요" text="현재 학교·학년과 이수 학기를 알려 주시면 지원 학년과 일정을 정리해 드립니다." secondary={{href: '/faq', label: '자주 묻는 질문'}} />
+      <CtaBand title="지원 가능한 학년부터 확인하세요" text="현재 학교·학년과 이수 학기를 알려 주시면 지원 학년과 일정을 정리해 드립니다." />
     </>
   );
 }

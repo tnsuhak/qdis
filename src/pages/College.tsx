@@ -9,31 +9,30 @@ export function ResultsPage() {
   const overseas = cum.total - kr;
   return (
     <>
-      <PageHead crumb="대학 합격 결과" eyebrow="University Outcomes" photoId="resultsHead"
+      <PageHead crumb="대학 합격 결과" eyebrow="University Outcomes"
         title={<>서울대·의대에서 HKU·NUS·UC까지,<br />학교가 공개한 합격 기록</>}
-        lede="청도대원학교 공식 진학정보 게시판의 연도별 종합 공지 8개와 최신 개별 합격 게시물을 구조화했습니다. 숫자는 학생 수가 아니라 합격 건수(University Offers)입니다." />
+        lede="학교 공식 진학정보 게시판 기준. 숫자는 학생 수가 아니라 합격 건수(Offers)입니다." />
       <Toc items={[['summary', '한눈에 보기'], ['by-year', '연도별 결과'], ['latest', '최신 합격 소식'], ['search', '대학 검색'], ['alumni', '졸업생 대학원'], ['method', '집계 기준']]} />
 
       <section className="section white" id="summary">
         <div className="wrap">
-          <div className="stat-row">
-            <div><b className="num">{cum.total}건</b><span>상세표 공개 5개 학년도 합격<br />(2020–21 ~ 2025–26)</span></div>
-            <div><b className="num">{kr}건</b><span>한국 대학 합격<br />서울대·연세대·고려대·KAIST·의대</span></div>
-            <div><b className="num">{overseas}건</b><span>해외 대학 합격<br />미국·홍콩·싱가포르·일본·캐나다 등</span></div>
-            <div><b className="num">{cum.byCountry.length}개</b><span>국가·지역<br />연도별 종합표 기준</span></div>
+          <div className="big-trio light">
+            <div><b className="num">{cum.total}</b><span>2020–2026 대입결과</span></div>
+            <div><b className="num">{kr}</b><span>한국 대학</span></div>
+            <div><b className="num">{overseas}</b><span>해외 대학 · {cum.byCountry.length - 1}개 국가·지역</span></div>
           </div>
+          <p className="source trio-note">공식 연도별 종합자료 공개 학년도 합계 · 중복 합격 포함 · <a href="#method">자료 기준</a></p>
           <div className="cols-3" style={{marginTop: 'clamp(48px,6vw,80px)'}}>
             <div><h3 className="kicker" style={{color: 'var(--brass)', marginBottom: 10}}>한국 대학 누적</h3><TopUniversityList country="KR" limit={8} /></div>
             <div><h3 className="kicker" style={{color: 'var(--brass)', marginBottom: 10}}>미국 대학 누적</h3><TopUniversityList country="US" limit={8} /></div>
             <div><h3 className="kicker" style={{color: 'var(--brass)', marginBottom: 10}}>홍콩 대학 누적</h3><TopUniversityList country="HK" limit={8} /></div>
           </div>
-          <p className="source">2020–21 · 2021–22 · 2022–23 · 2023–24 · 2025–26(제8기) 학교 공식 연도별 공지의 합격 건수 합계. 2024–25 연도별 종합 공지는 게시판에 없어 포함하지 않았습니다.</p>
         </div>
       </section>
 
       <section className="section" id="by-year">
         <div className="wrap">
-          <SecHead eyebrow="Results by Year" title="연도별 대학 합격 현황" lede="2017–18 첫 졸업생부터 2025–26 제8기까지, 학교가 게시한 연도별 종합 공지입니다. 2017–20 결과는 학교가 이미지로 게시해 원본을 그대로 보여 드립니다." />
+          <SecHead eyebrow="Results by Year" title="연도별 대학 합격 현황" lede="2017–18 첫 졸업생부터 2025–26 제8기까지. 2017–20은 학교 게시 원본 이미지로 보여 드립니다." />
           <OfferDefinition />
           <YearExplorer />
           <div className="table-wrap" style={{marginTop: 64}}>
@@ -58,7 +57,7 @@ export function ResultsPage() {
 
       <section className="section dark" id="latest">
         <div className="wrap">
-          <SecHead eyebrow="Latest Individual Offers" title="최신 개별 합격 소식" lede={`${koDate(LATEST[LATEST.length - 1].source_date)}부터 ${koDate(LATEST[0].source_date)}까지 게시판에 올라온 학부 합격 게시물 ${LATEST.length}건입니다. 2025–26 연도별 표(2025.9.18 현재)와 겹칠 수 있어 합산하지 않습니다.`} />
+          <SecHead eyebrow="Latest Offers" title="최신 합격 소식" lede="진학정보 게시판의 개별 합격 게시물 · 연도별 합계와 별도" />
           <LatestOffers limit={LATEST.length} />
         </div>
       </section>
@@ -74,7 +73,7 @@ export function ResultsPage() {
         <div className="wrap">
           <div className="split">
             <div>
-              <span className="eyebrow">Alumni · Graduate School</span>
+              <span className="eyebrow">Alumni Outcomes</span>
               <h2 className="h2">졸업 후,<br />대학원까지</h2>
               <p className="lede" style={{marginTop: 18}}>청도대원 졸업생의 미국 대학원 합격 소식입니다. 고등학생 학부 합격 결과와 섞지 않고 따로 보여 드립니다.</p>
             </div>
@@ -92,6 +91,7 @@ export function ResultsPage() {
           <span className="eyebrow">Methodology</span>
           <h2 className="h2" style={{marginBottom: 24}}>이 페이지의 집계 기준</h2>
           <ul>
+            <li><b>2020–2026 대입결과 {cum.total}건</b>: 대학별 합격 건수가 공개된 2020–21 · 2021–22 · 2022–23 · 2023–24 · 2025–26(제8기, 2025.09.18 기준) 공식 종합자료의 합계입니다. 2024–25 연도별 종합자료는 학교 게시판에서 확인되지 않아 포함하지 않았고, 추정치로 채우지 않았습니다.</li>
             <li><b>연도별 종합(annual)</b>: 학교가 학년도마다 게시한 ‘대학진학 현황’ 공지의 대학별 합격 건수입니다. 표에 없는 정보는 추가하지 않았습니다.</li>
             <li><b>개별 합격(individual_offer)</b>: 진학정보 게시판의 개별 합격 게시물 1건을 1건으로 기록합니다. 같은 학생이 연도별 표에 이미 포함되었을 수 있어 합산하지 않습니다.</li>
             <li><b>졸업생 대학원(alumni)</b>: 대학원 진학 결과는 학부 결과와 분리합니다.</li>
@@ -101,7 +101,7 @@ export function ResultsPage() {
           <Source href="https://qdis.org/board/index.html?id=board3">청도대원학교 학교소식 &gt; 진학정보, 확인일 2026.09.21</Source>
         </div>
       </section>
-      <CtaBand title="우리 아이 성적으로 어느 대학까지 가능할까요?" text="현재 학년·성적·특례 자격을 기준으로 목표 대학과 준비 순서를 상담해 드립니다." secondary={{href: '/college-counseling', label: '진학지도 보기'}} />
+      <CtaBand title="우리 아이 성적으로 어느 대학까지 가능할까요?" text="현재 학년·성적·특례 자격을 기준으로 목표 대학과 준비 순서를 상담해 드립니다." />
     </>
   );
 }

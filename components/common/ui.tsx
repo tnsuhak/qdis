@@ -1,6 +1,5 @@
 import type {ReactNode} from 'react';
 import {photo as getPhoto, type Photo} from '@/lib/qdis/photos';
-import site from '@/data/site.json';
 
 export function Img({id, className, ratio, priority, caption, sizes}: {id: string; className?: string; ratio?: '4x3' | '3x2' | '16x9' | '4x5' | '21x9'; priority?: boolean; caption?: boolean; sizes?: string}) {
   const p: Photo = getPhoto(id);
@@ -91,4 +90,3 @@ export function CtaBand({title, text, primary = {href: '/consultation', label: '
   );
 }
 
-export const FX_NOTE = site.fx.note;

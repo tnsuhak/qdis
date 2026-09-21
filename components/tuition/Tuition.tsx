@@ -1,6 +1,6 @@
 import {useMemo, useState} from 'react';
 import {calcFees, eligibleScholarships, livingOptions, FEES, bandLabel, CLP_NEW_GRADES, type Program} from '@/lib/qdis/fees';
-import {fmt, krw, FX} from '@/lib/qdis/format';
+import {fmt, krw, fxLabel} from '@/lib/qdis/format';
 
 const GRADES = Array.from({length: 12}, (_, i) => i + 1);
 
@@ -76,18 +76,16 @@ export function FeeCalculator() {
         </div>
         <div className="calc-step">
           <div className="lab">5. 장학금 <small>해당하는 항목만 직접 선택 · 합계 최대 50%</small></div>
-          {FEES.scholarships.items.map((s: any) => {
-            const ok = eligible.has(s.id);
-            return (
-              <label key={s.id} className={`check${ok ? '' : ' disabled'}`}>
-                <input type="checkbox" disabled={!ok} checked={ok && sch.includes(s.id)} onChange={() => toggle(s.id)} />
-                <span><b>{s.name} · 수업료 {s.percent}%</b><small>{s.criteria}{!ok && (s.continuing_only && newStudent ? ' (재학생 진급 시 해당)' : ' (선택 학년 해당 없음)')}</small></span>
-              </label>
-            );
-          })}
+          {FEES.scholarships.items.filter((s: any) => eligible.has(s.id)).map((s: any) => (
+            <label key={s.id} className="check">
+              <input type="checkbox" checked={sch.includes(s.id)} onChange={() => toggle(s.id)} />
+              <span><b>{s.name} · 수업료 {s.percent}%</b><small>{s.criteria}</small></span>
+            </label>
+          ))}
+          {newStudent && <p className="small" style={{marginTop: 4}}>진급 장학금은 ‘재학생 진급’을 선택하면 해당 학년에서 고를 수 있습니다.</p>}
           <p className="small" style={{marginTop: 8}}>영어우수 기준표는 <a href="/scholarships#english">장학금 페이지</a>에서 확인하세요. 장학금은 학교 심사로 최종 결정됩니다.</p>
         </div>
-        {res.ok && <a className="calc-sticky" href="#receipt"><span>예상 연간 기본 비용<br />{program} · G{grade} · {effLiving === 'board' ? '기숙' : '통학'}</span><b>{fmt(res.total)}위안</b></a>}
+        {res.ok && <a className="calc-sticky" href="#receipt"><span>{bandLabel[res.band]} {program} {effLiving === 'board' ? '기숙' : '통학'} {newStudent ? '신입생' : '재학생'}<br />예상 연간 기본 비용</span><b>{fmt(res.total)} CNY</b></a>}
       </div>
 
       <aside className="receipt" id="receipt" aria-live="polite" aria-label="예상 비용">
@@ -98,11 +96,12 @@ export function FeeCalculator() {
           </>
         ) : (
           <>
-            <span className="kicker">예상 기본 연간 비용 · 2026–27</span>
-            <h3>{program} · G{grade} · {effLiving === 'board' ? '기숙' : '통학'}{newStudent ? ' · 신입생 첫해' : ' · 재학생'}</h3>
-            <div className="total">{fmt(res.total)}<small>위안</small></div>
-            <div className="krw">{krw(res.total)}</div>
-            <div className="fx">1 CNY ≈ {FX.cny_krw}원 기준 ({FX.as_of.replaceAll('-', '.')}) · 참고 환산</div>
+            <span className="kicker">2026–27 예상 기본 연간 비용</span>
+            <h3 className="scenario">{bandLabel[res.band]} {program} {effLiving === 'board' ? '기숙' : '통학'} {newStudent ? '신입생' : '재학생'}</h3>
+            <p className="small" style={{color: '#8d97a6', marginTop: 4}}>G{grade} 기준{newStudent ? ' · 입학 첫해' : ''}</p>
+            <div className="total">{fmt(res.total)}<small>CNY</small></div>
+            <div className="krw2">{krw(res.total)}</div>
+            <p className="fxbox">원화 환산은 참고용입니다 · 적용 환율 {fxLabel().rate} · 기준일 {fxLabel().date}</p>
             <dl>
               {res.lines.map(l => (
                 <div key={l.key}>
@@ -147,7 +146,7 @@ export function FeeExamples() {
             <span className="kicker">{ex.kicker}</span>
             <h3>{ex.label}</h3>
             <div className="amt num">{fmt(r.total)}<small>위안</small></div>
-            <div className="krw">{krw(r.total)} · 신입생 첫해</div>
+            <div className="krw">신입생 첫해 · {krw(r.total)}</div>
             <dl>
               {r.lines.map(l => <div key={l.key}><dt>{l.label.replace(/\s*\(.*\)/, '')}</dt><dd>{fmt(l.amount)}</dd></div>)}
             </dl>

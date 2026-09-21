@@ -55,6 +55,8 @@ function head(r) {
 }
 
 const pages = [...ssr.ROUTES, ssr.NOT_FOUND];
+const tempPhotos = Object.values(ssr.PHOTOS).filter(p => p.temporary);
+const tempUse = new Map();
 for (const r of pages) {
   const html = template
     .replace('<!--head-->', head(r))
@@ -66,10 +68,12 @@ for (const r of pages) {
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
   console.log(`prerendered ${r.path.padEnd(22)} h1=${h1} ${Math.round(html.length / 1024)}KB`);
   if (h1 !== 1) throw new Error(`${r.path}: expected exactly one <h1>, found ${h1}`);
+  for (const p of tempPhotos) if (html.includes(`src="${p.src}"`)) tempUse.set(p.id, [...(tempUse.get(p.id) ?? []), r.path]);
 }
 
 const today = new Date().toISOString().slice(0, 10);
 writeFileSync(resolve(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ssr.ROUTES.map(r => `  <url><loc>${base}${r.path === '/' ? '/' : r.path}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 writeFileSync(resolve(dist, 'robots.txt'), indexable ? `User-agent: *\nAllow: /\n\nSitemap: ${base}/sitemap.xml\n` : `# Preview build (${context}) — not for indexing\nUser-agent: *\nDisallow: /\n`);
 rmSync(resolve(root, 'dist-ssr'), {recursive: true, force: true});
+if (tempUse.size) console.log('\n[temporary low-res photos in use — see PHOTO_ASSETS_NEEDED.md]\n' + [...tempUse].map(([id, ps]) => `  ${id}: ${ps.join(', ')}`).join('\n'));
 console.log(`context=${context} base=${base} indexable=${indexable}`);

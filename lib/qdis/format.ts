@@ -5,15 +5,14 @@ const nf = new Intl.NumberFormat('ko-KR');
 export const fmt = (n: number) => nf.format(Math.round(n));
 export const cny = (n: number) => `${fmt(n)} 위안`;
 
-/** 원화 환산: 만원 단위 반올림 */
+/** 원화 환산 (참고용): 약 ₩37,596,000 — 천 원 단위 반올림 */
 export function krw(n: number, rate: number = FX.cny_krw) {
-  const won = n * rate;
-  if (won >= 100_000_000) {
-    const eok = Math.floor(won / 100_000_000);
-    const man = Math.round((won % 100_000_000) / 10_000);
-    return `약 ${eok}억${man ? ` ${fmt(man)}만` : ''}원`;
-  }
-  return `약 ${fmt(Math.round(won / 10_000))}만원`;
+  return `약 ₩${fmt(Math.round((n * rate) / 1000) * 1000)}`;
+}
+
+/** 환율 안내 문구 — 값은 data/site.json 한 곳에서 관리 */
+export function fxLabel() {
+  return {rate: `1 CNY = ${FX.cny_krw} KRW`, date: FX.as_of.replaceAll('-', '.')};
 }
 
 export function koDate(iso: string) {

@@ -1,33 +1,29 @@
 import {PageHead, SecHead, Source, TLink, Toc, CtaBand, Img} from '@/components/common/ui';
-import {CareGrid, DayTimeline, MealsWeek, Weekend} from '@/components/life/Life';
+import {DayTimeline, MealsWeek, Weekend, KeyBoarding, OTHER_CARE} from '@/components/life/Life';
 import schedule from '@/data/life/schedule.json';
 import {photo} from '@/lib/qdis/photos';
 
 export function BoardingPage() {
   return (
     <>
-      <PageHead crumb="기숙사" eyebrow="Boarding" photoId="boardingHead"
+      <PageHead crumb="기숙사" eyebrow="Boarding"
         title={<>혼자 보내는 부모의 질문에,<br />규정으로 답합니다</>}
         lede="청도대원 기숙사(대원학사)는 G6–G8 선택기숙, G9–G12 의무기숙입니다. 4인 1실, 남·여 층 분리, 남녀 사감이 생활을 관리하고 공부는 기숙사와 분리된 자습실에서 합니다." />
-      <Toc items={[['who', '누가, 어떤 방에'], ['care', '매일의 관리'], ['phone', '휴대전화'], ['weekend', '주말·외출외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
+      <Toc items={[['who', '핵심 5가지'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '주말·외출외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
 
       <section className="section white" id="who">
         <div className="wrap">
-          <div className="stat-row">
-            <div><b>G6–G8</b><span>선택기숙<br />기숙·통학 중 선택</span></div>
-            <div><b>G9–G12</b><span>의무기숙<br />고등 전원 기숙사 생활</span></div>
-            <div><b>4인 1실</b><span>남·여 층 분리<br />침구 1인 1세트 지급</span></div>
-            <div><b>남녀 사감</b><span>교사들이 사감 업무 지원<br />층장(학생 자치) 운영</span></div>
-          </div>
+          <SecHead eyebrow="Key Facts" title="먼저 확인할 다섯 가지" />
+          <KeyBoarding />
           <div className="split" style={{marginTop: 'clamp(56px,6vw,96px)'}}>
             <div>
               <span className="eyebrow">Why Boarding</span>
               <h2 className="h2">생활관 옆에,<br />공부하는 자습실</h2>
             </div>
             <div className="prose">
-              <p className="lede" style={{marginTop: 0}}>학교는 기숙제를 원거리 학생의 편의뿐 아니라, 방과후 학습·토론·동아리처럼 학교 안에서 배우는 시간을 늘리기 위한 제도로 운영합니다.</p>
-              <p>야간 자율학습은 기숙사가 아닌 기숙생 전용 자습실에서 진행하고, 감독 교사가 학생별 학습 상황을 확인합니다. 기숙사에서는 학업 목적의 허가를 받지 않으면 노트북을 쓸 수 없고, 일과 중에는 기숙사에 들어갈 수 없습니다.</p>
-              <p>남녀 사감은 각각 남학생과 여학생을 지도합니다. 급작스러운 발병·화재처럼 즉시 조치가 필요할 때는 성별과 관계없이 들어가 학생을 보호합니다. 신입생에게는 사감이 생활 규칙을 하나하나 설명하고, 학생의 건강과 심리 상태를 살피며 필요하면 면담합니다.</p>
+              <p className="lede" style={{marginTop: 0}}>기숙제는 원거리 학생의 편의뿐 아니라, 방과후 학습·토론·동아리처럼 학교 안에서 배우는 시간을 늘리기 위한 제도입니다.</p>
+              <p>야간 자율학습은 기숙사가 아닌 기숙생 전용 자습실에서 하고, 감독 교사가 학생별 학습 상황을 확인합니다. 일과 중에는 기숙사에 들어갈 수 없고, 기숙사 안에서는 학업 목적 허가 없이 노트북을 쓸 수 없습니다.</p>
+              <p>남녀 사감이 각각 남학생·여학생을 지도하고, 교사들이 사감 업무를 돕습니다. 신입생에게는 사감이 생활 규칙을 설명하고 건강과 심리 상태를 살피며 필요하면 면담합니다.</p>
             </div>
           </div>
         </div>
@@ -35,8 +31,10 @@ export function BoardingPage() {
 
       <section className="section" id="care">
         <div className="wrap">
-          <SecHead eyebrow="Daily Management" title="관리가 실제로 어떻게 이뤄지는지" lede="수업부터 응급상황까지, 학교생활안내와 공식 FAQ에 정해진 규정을 항목별로 정리했습니다." />
-          <CareGrid />
+          <SecHead eyebrow="Daily Rules" title="그 밖의 생활 규정" lede="학교생활안내와 공식 FAQ 기준입니다." />
+          <div className="other-care">
+            {OTHER_CARE.map(([k, d]) => <div key={k}><b>{k}</b><p>{d}</p></div>)}
+          </div>
           <Source href="https://qdis.org/faq/list.html?pid=26&cate1=">2025–26 학교생활안내 ‘기숙사 생활 안내’·‘생활 지도’, 청도대원학교 공식 FAQ</Source>
         </div>
       </section>
@@ -118,9 +116,9 @@ export function BoardingPage() {
 export function DailyLifePage() {
   const acts: Array<[string, string, string]> = [
     ['lifeMain', '체육대회', '제9회 청도대원 체육대회 (2026년 6월)'],
-    ['lifeA', 'English Play', '학생들이 직접 올리는 영어 연극 무대 (제3회, 2026)'],
-    ['lifeB', '대학 입학설명회', '국내외 대학 관계자가 학교를 찾아와 여는 설명회'],
-    ['lifeC', '수업 시간', '수준별로 나뉜 교실에서 함께 문제를 푸는 학생들'],
+    ['lifeA', '대학 입학설명회', '국내외 대학 관계자가 학교를 찾아와 여는 설명회'],
+    ['lifeB', 'Spoarts · 스포츠', '수요일 오후 교외 시설에서 전문 강사와 함께'],
+    ['lifeC', '졸업', '2018년 첫 졸업생 이후 매년 이어지는 졸업식'],
   ];
   return (
     <>
@@ -134,7 +132,7 @@ export function DailyLifePage() {
               <span className="eyebrow">Weekdays</span>
               <h2 className="h2">과정별 평일 일과</h2>
               <p className="lede" style={{marginTop: 18}}>고등은 저녁 방과후 뒤 Study Hall을 두 번, 중등 기숙생은 한 번 하고 21:40에 기숙사로 돌아갑니다. 초등은 16:05에 하교합니다.</p>
-              <p className="source">{schedule.source.title}. {schedule.note}</p>
+              <p className="source">2025–26 학교생활안내 기준 · 학기별로 일부 시간이 조정될 수 있습니다.</p>
             </div>
             <DayTimeline />
           </div>
@@ -183,7 +181,7 @@ export function DailyLifePage() {
           <p className="source">사진: {photo('lifeMain').credit} 외. 학생 활동 사진은 청도대원학교 공식 갤러리 게시물을 기준으로 교체·보강합니다.</p>
         </div>
       </section>
-      <CtaBand title="이번 주 아이들이 먹는 식단도 확인해 보세요" primary={{href: '/meals', label: '이번 주 급식'}} secondary={{href: '/boarding', label: '기숙사 규정'}} />
+      <CtaBand title="이번 주 아이들이 먹는 식단도 확인해 보세요" primary={{href: '/meals', label: '이번 주 급식'}} />
     </>
   );
 }
@@ -220,7 +218,7 @@ export function MealsPage() {
           <p className="source">이 페이지의 식단은 학교 공식 급식 메뉴를 주 단위로 가져와 보여 줍니다. 가져오기에 실패하면 가장 최근 저장된 주간 식단을 표시합니다.</p>
         </div>
       </section>
-      <CtaBand title="하루 일과와 기숙사 생활도 함께 보세요" primary={{href: '/daily-life', label: '하루 일과'}} secondary={{href: '/boarding', label: '기숙사'}} />
+      <CtaBand title="하루 일과와 기숙사 생활도 함께 보세요" primary={{href: '/daily-life', label: '하루 일과'}} />
     </>
   );
 }

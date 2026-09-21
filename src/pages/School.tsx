@@ -239,7 +239,7 @@ export function Academics() {
           <ul className="note-list"><li>체육·미술·음악·컴퓨터·Individual Research는 Pass/No Pass로 평가합니다.</li><li>학부모는 Thinkwave에서 과제·출결·성적을 수시로 확인할 수 있습니다.</li></ul>
         </div>
       </section>
-      <CtaBand title="우리 아이는 몇 학년으로, 어떤 과정에?" text="이수 학기와 영어 수준을 보고 지원 학년과 과정을 함께 정해 드립니다." secondary={{href: '/tuition', label: '학비 계산'}} />
+      <CtaBand title="우리 아이는 몇 학년으로, 어떤 과정에?" text="이수 학기와 영어 수준을 보고 지원 학년과 과정을 함께 정해 드립니다." />
     </>
   );
 }
@@ -292,8 +292,7 @@ export function SatAp() {
             <div>
               <span className="eyebrow">Dates &amp; Fees</span>
               <h2 className="h2">응시 일정과 비용</h2>
-              <p className="lede" style={{marginTop: 18}}>2027년 5월 AP 시험 접수 안내는 2026년 8월 31일 학교 가정통신문으로 공지되었습니다.</p>
-              <div style={{marginTop: 22}}><TLink href="/news">관련 소식</TLink></div>
+              <p className="lede" style={{marginTop: 18}}>2025–26 학교생활안내 기준입니다. 매년 일정과 응시료는 학교 공지로 새로 안내됩니다.</p>
             </div>
             <div>
               <div className="table-wrap"><table className="data-table">
@@ -305,7 +304,7 @@ export function SatAp() {
                   <tr><th scope="row">AP 시험</th><td>5월 첫째·둘째 주 Regular, 셋째 주 Late</td></tr>
                 </tbody>
               </table></div>
-              <Source href="https://qdis.org/board/index.html?id=board2&no=261">2025–26 학교생활안내 · 2027 AP 시험센터 운영 안내(가정통신문)</Source>
+              <Source>2025–26 학교생활안내 ‘Test Center 운영 안내’</Source>
             </div>
           </div>
         </div>

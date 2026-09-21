@@ -1,7 +1,12 @@
 {
   "schema": "qdis.news/v1",
-  "description": "공식 게시판 원문을 한국 학부모가 이해하기 쉽게 정리한 소식. 모니터링 스크립트가 만든 초안(data/news/drafts)은 검토 후에만 이 파일로 옮깁니다.",
-  "categories": {"university": "University", "admissions": "Admissions", "academic": "Academic", "life": "Student Life"},
+  "description": "공식 게시판 원문을 한국 학부모가 이해하기 쉽게 정리한 소식. status가 published인 항목만 화면에 표시합니다. verification: attachment(제공 첨부자료로 확인) | live(qdis.org 원문 직접 확인) | pending(원문 미확인 — 비공개). 모니터링 초안(data/news/drafts)은 검토 후에만 옮깁니다.",
+  "categories": {
+    "university": "University",
+    "admissions": "Admissions",
+    "academic": "Academic",
+    "life": "Student Life"
+  },
   "items": [
     {
       "id": "board2-261",
@@ -12,7 +17,9 @@
       "source_board": "가정통신문",
       "source_url": "https://qdis.org/board/index.html?id=board2&no=261",
       "source_post_id": 261,
-      "status": "published"
+      "status": "pending_verification",
+      "verification": "pending",
+      "note": "이전 Preview 코드의 참조 링크에서 가져온 항목. qdis.org 원문을 직접 확인하지 못해 비공개. 원문 확인 후 제목·요약을 원문 기준으로 다시 작성할 것."
     },
     {
       "id": "board2-260",
@@ -23,7 +30,9 @@
       "source_board": "가정통신문",
       "source_url": "https://qdis.org/board/index.html?id=board2&no=260",
       "source_post_id": 260,
-      "status": "published"
+      "status": "pending_verification",
+      "verification": "pending",
+      "note": "이전 Preview 코드의 참조 링크에서 가져온 항목. qdis.org 원문을 직접 확인하지 못해 비공개. 원문 확인 후 제목·요약을 원문 기준으로 다시 작성할 것."
     },
     {
       "id": "board3-offer-2026-07-06",
@@ -34,7 +43,9 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board3-offer-2026-06-17",
@@ -45,7 +56,9 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board3-offer-2026-05-21",
@@ -56,7 +69,9 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board3-offer-2026-04-17",
@@ -67,7 +82,9 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board3-alumni-2026-03",
@@ -78,7 +95,9 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board3-offer-2025-09",
@@ -89,18 +108,22 @@
       "source_board": "진학정보",
       "source_url": "https://qdis.org/board/index.html?id=board3",
       "source_post_id": null,
-      "status": "published"
+      "status": "published",
+      "verification": "attachment",
+      "note": "QDIS_대학진학결과_학교게시판기준_2026-09-21.pdf(개별 합격 게시물 목록)로 확인."
     },
     {
       "id": "board1-78",
       "category": "admissions",
-      "date": "2026-03-16",
-      "title": "2026–27학년도 모집요강 발표 — 학비·장학금·모집학급",
+      "date": "2026-03-15",
+      "title": "2026–27학년도 모집요강 — 학비·장학금·모집학급",
       "summary": "G1~G12 GLP와 G6~G10 CLP 모집학급, 학기당 수업료, 기숙·통학 비용, 동문·형제·진급·영어우수 장학금 기준이 공개되었습니다. 원서는 학년별 선착순 수시 접수입니다.",
       "source_board": "입학안내",
-      "source_url": "https://qdis.org/board/index.html?id=board1&no=78",
-      "source_post_id": 78,
-      "status": "published"
+      "source_url": "https://qdis.org/board/index.html?id=board1",
+      "source_post_id": null,
+      "status": "published",
+      "verification": "attachment",
+      "note": "모집요강 PDF(Ver1.0, 2026.03.15)로 내용 확인. 게시판 글 번호(no=78)·게시일은 원문 미확인."
     }
   ]
 }

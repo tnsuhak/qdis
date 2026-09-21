@@ -26,8 +26,8 @@ export function LatestOffers({limit = 12, dark = true}: {limit?: number; dark?: 
 export function OfferDefinition() {
   return (
     <div className="notice">
-      <b>합격 건수는 학생 수가 아닙니다.</b>
-      연도별 숫자는 대학 합격(University Offers) 건수로, 한 학생이 여러 대학에 합격하면 각각 1건으로 셉니다. 최종 진학 인원과도 다릅니다. 개별 합격 게시물은 연도별 종합표와 겹칠 수 있어 합산하지 않습니다.
+      <b>숫자는 합격 건수(Offers)입니다.</b>
+      한 학생의 복수 합격이 포함되며, 학생 수·최종 진학 인원과 다릅니다.
     </div>
   );
 }
@@ -52,10 +52,9 @@ export function YearExplorer({compact = false}: {compact?: boolean}) {
       {y.detail === 'table' ? (
         <div className="year-panel" role="tabpanel">
           <div>
+            <p className="kicker" style={{marginBottom: 10}}>{academicYearLabel(y.academic_year)} 대입결과</p>
             <div className="big-count">{y.total_offers}<small>건</small></div>
-            <p className="count-note">
-              {academicYearLabel(y.academic_year)} 대학 합격(University Offers){y.as_of ? `, ${koDate(y.as_of)} 현재` : ''}. 학교 진학정보 게시판 {koDate(y.source_date)} 공지 기준.
-            </p>
+            <p className="count-note">{y.cohort ? `${y.cohort} 공식 종합표 · ${koDate(y.as_of!)} 기준` : `공식 종합표 · ${koDate(y.source_date)} 게시`}</p>
             <a className="source" href={y.source_url} target="_blank" rel="noopener noreferrer" style={{display: 'inline-block'}}>학교 공지 원문 ↗</a>
           </div>
           <div>

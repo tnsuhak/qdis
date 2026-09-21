@@ -122,8 +122,8 @@ export function Footer() {
 export function Dock() {
   return (
     <nav className="dock" aria-label="빠른 메뉴">
+      <a href="/admissions">입학안내</a>
       <a href="/tuition">학비</a>
-      <a href="/documents/qdis-admissions-2026-27.pdf" target="_blank" rel="noopener">모집요강</a>
       <a className="primary" href="/consultation">상담</a>
     </nav>
   );

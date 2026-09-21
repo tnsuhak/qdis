@@ -16,6 +16,7 @@
 
 모든 항목 필드: `academic_year, country, university, program, level, result_type, offer_count, source_url, source_post_id, source_date, verified`.
 - `latest-offers.json`의 `source_post_id`는 게시판 번호 확인 후 채울 것(현재 null).
+- 화면 표기: 메인·결과 페이지 대표 숫자는 `2020–2026 대입결과 352건`(보조문구: 공식 연도별 종합자료 공개 학년도 합계 · 중복 합격 포함). 2024–25 종합자료는 게시판에서 확인되지 않아 제외하며 0이나 추정치로 채우지 않는다.
 
 ## 3. 급식 `/api/meals` — 구현됨
 ```
@@ -36,7 +37,11 @@ data/meals/latest.json (빌드 시점 스냅샷) ──────────�
 - 첫 실행은 기준선만 저장.
 - 기본 base 브랜치는 `main`(저장소 변수 `QDIS_MONITOR_BASE`로 변경 가능).
 
-## 5. 기타 살아있는 데이터
+## 5. 소식(news.json) 검증 상태
+- `verification`: `attachment`(첨부자료로 확인) · `live`(qdis.org 원문 확인) · `pending`(미확인)
+- `status: published`만 화면에 표시. 현재 `board2-260`(2026–27 1학기 학교생활안내), `board2-261`(2027 AP 시험센터 안내)은 `pending_verification`으로 숨김.
+
+## 6. 기타 살아있는 데이터
 - 학사달력·일과표: `data/life/schedule.json` (현재 2025–26 학교생활안내 기준) — 2026–27 1학기 변경 공지(가정통신문 no.260) 반영 필요
 - 학비·장학금: `data/admissions/fees-2026-27.json`
 - FAQ: `data/faq/faq.json`
