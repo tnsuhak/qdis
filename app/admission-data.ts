@@ -233,7 +233,7 @@ export const annualResults: Record<string, AdmissionYear> = {
       {c:'홍콩',n:'The Chinese University of Hong Kong',count:1},
       {c:'홍콩',n:'The Hong Kong University of Science and Technology',count:5},
     ],
-  },,
+  },
   '2019-2020': {
     label: '2019–2020',
     sourceNote: '학교 공식 게시판 「2019-2020 대학진학 현황」(2021.02.24 게시). 원본이 이미지로 게시되어 학교 원본 이미지를 그대로 표시합니다.',
