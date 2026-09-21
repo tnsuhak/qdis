@@ -8,9 +8,13 @@ const dist = resolve(root, 'dist-netlify');
 const site = JSON.parse(readFileSync(resolve(root, 'data/site.json'), 'utf8'));
 const ssr = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href);
 
-// Netlify: CONTEXT=production|deploy-preview|branch-deploy, URL=주 사이트 주소
+// Netlify: CONTEXT=production|deploy-preview|branch-deploy.
+// Preview 공유 시 og:image/og:url이 Preview 자체를 가리키도록 DEPLOY_PRIME_URL을 우선합니다.
 const context = process.env.CONTEXT ?? 'local';
-const base = (process.env.SITE_URL ?? process.env.URL ?? site.domain).replace(/\/$/, '');
+const deployBase = context === 'production'
+  ? (process.env.URL ?? process.env.SITE_URL ?? site.domain)
+  : (process.env.DEPLOY_PRIME_URL ?? process.env.URL ?? process.env.SITE_URL ?? site.domain);
+const base = deployBase.replace(/\/$/, '');
 const indexable = context === 'production' && site.preview === false;
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8');
 
@@ -19,6 +23,12 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replac
 function head(r) {
   const url = base + (r.path === '/' ? '/' : r.path);
   const og = base + (r.ogImage ?? '/og/qdis-og.jpg');
+  const shareTitle = r.path === '/'
+    ? '청도대원학교 QDIS | 칭다오에서 준비하는 한국·세계 대학 진학'
+    : r.title;
+  const shareDescription = r.path === '/'
+    ? '대입결과부터 SAT·AP, 기숙생활, 2026–27 학비·장학금, 입학안내까지 한눈에.'
+    : r.description;
   const ld = [
     {'@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: base + '/', inLanguage: 'ko-KR', publisher: {'@id': base + '/#tns'}},
     {'@context': 'https://schema.org', '@type': 'WebPage', name: r.title, description: r.description, url, inLanguage: 'ko-KR', isPartOf: {'@type': 'WebSite', url: base + '/'}, about: {'@id': base + '/#qdis'}, publisher: {'@id': base + '/#tns'}},
@@ -37,19 +47,22 @@ function head(r) {
     `<meta name="robots" content="${indexable ? 'index, follow, max-image-preview:large' : 'noindex, nofollow'}" />`,
     `<link rel="canonical" href="${esc(url)}" />`,
     `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="청도대원학교 QDIS 한국어 안내" />`,
+    `<meta property="og:site_name" content="청도대원학교 QDIS" />`,
     `<meta property="og:locale" content="ko_KR" />`,
-    `<meta property="og:title" content="${esc(r.title)}" />`,
-    `<meta property="og:description" content="${esc(r.description)}" />`,
+    `<meta property="og:title" content="${esc(shareTitle)}" />`,
+    `<meta property="og:description" content="${esc(shareDescription)}" />`,
     `<meta property="og:url" content="${esc(url)}" />`,
     `<meta property="og:image" content="${esc(og)}" />`,
+    `<meta property="og:image:secure_url" content="${esc(og)}" />`,
+    `<meta property="og:image:type" content="image/jpeg" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="청도대원학교 QDIS — 대학 합격 결과·교육과정·기숙생활·학비 안내" />`,
+    `<meta property="og:image:alt" content="청도대원학교 QDIS — 칭다오에서 준비하는 한국·세계 대학 진학" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
-    `<meta name="twitter:title" content="${esc(r.title)}" />`,
-    `<meta name="twitter:description" content="${esc(r.description)}" />`,
+    `<meta name="twitter:title" content="${esc(shareTitle)}" />`,
+    `<meta name="twitter:description" content="${esc(shareDescription)}" />`,
     `<meta name="twitter:image" content="${esc(og)}" />`,
+    `<meta name="twitter:image:alt" content="청도대원학교 QDIS — 칭다오에서 준비하는 한국·세계 대학 진학" />`,
     `<script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`,
   ].join('\n    ');
 }
