@@ -208,6 +208,10 @@ em.mark { font-style: normal; color: var(--brass); }
 }
 @media (max-width: 620px) { .cols-2, .cols-3, .cols-4 { grid-template-columns: minmax(0, 1fr); } }
 
+.campus-gallery { display: flex; flex-direction: column; gap: clamp(20px, 2.4vw, 32px); }
+.campus-gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+@media (max-width: 620px) { .campus-gallery-grid { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- Ruled list (editorial) ---------- */
 .ruled { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
 .ruled > li { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--line); }

@@ -95,11 +95,13 @@ export function About() {
                 <dt>학교 방문</dt><dd>입학 전 학부모·학생 학교 투어를 할 수 있습니다. 상담 시 일정을 조율해 드립니다.</dd>
               </dl>
             </div>
-            <div className="cols-2" style={{alignSelf: 'start'}}>
-              <div><Img id="studyHall" ratio="4x3" /><p className="cap">기숙생 자습실</p></div>
-              <div><Img id="cafeteria" ratio="4x3" /><p className="cap">학교 직영 식당</p></div>
-              <div><Img id="studentsStudy" ratio="4x3" /><p className="cap">수업 중인 학생들</p></div>
-              <div><Img id="seminar" ratio="4x3" /><p className="cap">대학 입학설명회</p></div>
+            <div className="campus-gallery" style={{alignSelf: 'start'}}>
+              <div className="campus-gallery-feature"><Img id="seminar" ratio="16x9" priority /><p className="cap">성균관대학교 입학 설명회</p></div>
+              <div className="campus-gallery-grid">
+                <div><Img id="studyHall" ratio="4x3" /><p className="cap">기숙생 자습실</p></div>
+                <div><Img id="cafeteria" ratio="4x3" /><p className="cap">학교 직영 식당</p></div>
+                <div><Img id="studentsStudy" ratio="4x3" /><p className="cap">수업 중인 학생들</p></div>
+              </div>
             </div>
           </div>
         </div>
