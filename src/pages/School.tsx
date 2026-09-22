@@ -39,24 +39,44 @@ export function About() {
       </section>
 
       <section className="section dark" id="heritage">
-        <div className="wrap heritage">
-          <div>
-            <span className="eyebrow">Daewon Heritage</span>
-            <blockquote>“스승을 부모처럼, 제자를 자식처럼, 동문을 형제처럼.”</blockquote>
-            <p className="small" style={{marginTop: 18}}>교육지표 · 교훈 “세계로 뻗는 품격 높은 큰 사람이 된다”</p>
-          </div>
-          <div>
-            <p className="lede" style={{marginTop: 0}}>청도대원학교 국제부는 한국 대원의 국제교육 경험을 바탕으로 2015년 문을 열었습니다. 칭다오 현지 학교와 협력해 국제학교 교육과정을 운영하며 10년 동안 SAT·AP 중심의 교육과정, 시험센터, 기숙형 진학 시스템을 자체적으로 갖춰 왔습니다.</p>
-            <ol className="history" style={{marginTop: 32}}>
-              <li><b>2000</b><p>칭다오 이창구에서 모(母)학교 설립</p></li>
-              <li><b>2012</b><p>청양구 신축 교사로 이전</p></li>
-              <li><b>2014–15</b><p>중학부·고등부와 국제부(중·고) 신설</p></li>
-              <li><b>2017</b><p>‘청도대원학교’로 교명 변경</p></li>
-              <li><b>2018</b><p>국제부 첫 졸업생 배출, SAT 시험센터 승인</p></li>
-              <li><b>2018–21</b><p>국제부 초등과정 신설, 12년 일관 교육체계 완성</p></li>
-              <li><b>2025</b><p>개교 25주년, 국제부 중국유학반(CLP) 신설</p></li>
-            </ol>
-            <Source>2026 청도대원학교 브로셔 연혁, 2025–26 학교생활안내</Source>
+        <div className="wrap">
+          <div className="heritage">
+            <div>
+              <span className="eyebrow">Daewon Heritage</span>
+              <h2 className="h2">대원에서 출발한 학교,<br />독립 이후에도 이어지는 교육의 뿌리</h2>
+              <blockquote style={{marginTop: 30}}>“스승을 부모처럼, 제자를 자식처럼, 동문을 형제처럼.”</blockquote>
+              <p className="small" style={{marginTop: 18}}>QDIS 교육지표 · “세계로 뻗는 품격 높은 큰 사람이 된다”</p>
+            </div>
+            <div>
+              <p className="lede" style={{marginTop: 0}}>청도대원학교 국제부는 <strong>대원외고와 대원국제중을 설립한 한국 대원에서 출발</strong>했습니다. 현재는 한국 대원학원과 별도로 독립 운영되지만, 학생을 학업만이 아니라 생활과 진학까지 함께 보는 교육 철학을 QDIS의 현재 시스템에 맞게 발전시켜 왔습니다.</p>
+
+              <div className="daewon-schoolline dark-line" aria-label="한국 대원학원 학교" style={{marginTop: 28}}>
+                <span>한국 대원학원</span>
+                <b>대원외고</b><i aria-hidden="true">·</i>
+                <b>대원고</b><i aria-hidden="true">·</i>
+                <b>대원여고</b><i aria-hidden="true">·</i>
+                <b>대원국제중</b>
+              </div>
+
+              <div className="heritage-proof" style={{marginTop: 34}}>
+                <div><b>학생관리</b><p>기숙사 사감, 야간 Study Hall, 휴대전화·외출 관리로 생활과 학습을 함께 봅니다.</p></div>
+                <div><b>학업관리</b><p>영어·중국어·수학 수준별 수업과 방과후 심화학습, Thinkwave 학업관리로 학생별 진도를 관리합니다.</p></div>
+                <div><b>진학관리</b><p>한국대·해외대 진학지도와 SAT·AP 준비, 교내 Test Center를 한 학교 안에서 연결합니다.</p></div>
+              </div>
+
+              <p className="heritage-note dark-note">현재 QDIS는 한국 대원학원과 별도로 독립 운영됩니다. 대원학원 학교명은 QDIS의 설립 배경과 교육적 뿌리를 설명하기 위해 표시합니다.</p>
+
+              <ol className="history" style={{marginTop: 36}}>
+                <li><b>2000</b><p>칭다오 이창구에서 모(母)학교 설립</p></li>
+                <li><b>2012</b><p>청양구 신축 교사로 이전</p></li>
+                <li><b>2014–15</b><p>중학부·고등부와 국제부(중·고) 신설</p></li>
+                <li><b>2017</b><p>‘청도대원학교’로 교명 변경</p></li>
+                <li><b>2018</b><p>국제부 첫 졸업생 배출, SAT 시험센터 승인</p></li>
+                <li><b>2018–21</b><p>국제부 초등과정 신설, 12년 일관 교육체계 완성</p></li>
+                <li><b>2025</b><p>개교 25주년, 국제부 중국유학반(CLP) 신설</p></li>
+              </ol>
+              <Source>2026 청도대원학교 브로셔 · 2025–26 학교생활안내</Source>
+            </div>
           </div>
         </div>
       </section>
