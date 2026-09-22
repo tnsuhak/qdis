@@ -4,6 +4,15 @@ import {koDate, academicYearLabel} from '@/lib/qdis/format';
 
 const BOARD = 'https://qdis.org/board/index.html?id=board3';
 
+const LATEST_OFFER_LABELS: Record<string, string> = {
+  '서강대학교': '서강대학교 합격',
+  '중앙대학교': '중앙대학교 합격',
+  'Liverpool John Moores University': '영국 LJMU 약대 합격',
+  'National University of Singapore (NUS)': '싱가포르 국립대학교(NUS) 합격',
+  '성균관대학교': '성균관대학교 합격',
+  '한양대학교': '한양대학교 합격',
+};
+
 /** 홈·결과 페이지 공용: 최근 개별 합격 소식 */
 export function LatestOffers({limit = 12, dark = true}: {limit?: number; dark?: boolean}) {
   const rows = LATEST.slice(0, limit);
@@ -13,7 +22,7 @@ export function LatestOffers({limit = 12, dark = true}: {limit?: number; dark?: 
         <div className="offer-row" key={i} style={dark ? undefined : {borderColor: 'var(--line)'}}>
           <time dateTime={e.source_date}>{koDate(e.source_date)}</time>
           <div>
-            <b>{e.university}</b>
+            <b>{LATEST_OFFER_LABELS[e.university] ?? e.university}</b>
             {e.program && <small>{e.program}</small>}
           </div>
           <span className="ctry">{e.country_ko}</span>
