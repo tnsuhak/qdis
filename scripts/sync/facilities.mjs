@@ -5,6 +5,7 @@ const ROOT = resolve(import.meta.dirname, '../..');
 const SOURCE = 'https://qdis.org/gallery/index.html?no=7';
 const OUT_DIR = resolve(ROOT, 'public/images/qdis/facilities');
 const MANIFEST = resolve(ROOT, 'data/facilities.json');
+const PREVIOUS_FACILITY_SNAPSHOT = 'https://6ab1e95783f5fb0008bb00de--qdis-korea.netlify.app/about';
 
 const UA = 'Mozilla/5.0 (compatible; TNS-QDIS-FacilitySync/1.0; +https://qdis-korea.netlify.app)';
 
@@ -54,7 +55,8 @@ async function main() {
     const pageSources = [
       SOURCE,
       'https://r.jina.ai/http://qdis.org/gallery/index.html?no=7',
-      'https://r.jina.ai/https://qdis.org/gallery/index.html?no=7'
+      'https://r.jina.ai/https://qdis.org/gallery/index.html?no=7',
+      PREVIOUS_FACILITY_SNAPSHOT
     ];
     let html = '';
     let pageSourceUsed = '';
@@ -74,11 +76,14 @@ async function main() {
     for (const m of html.matchAll(/url\(\s*["']?([^"'\)]+?\.(?:jpe?g|png|webp)(?:\?[^"'\)]*)?)["']?\s*\)/ig)) raw.add(m[1]);
     for (const m of html.matchAll(/["']([^"']+?\.(?:jpe?g|png|webp)(?:\?[^"']*)?)["']/ig)) raw.add(m[1]);
 
+    const resolutionBase = pageSourceUsed.includes('netlify.app') ? pageSourceUsed : SOURCE;
     const urls = [...raw].map(v => {
-      try { return new URL(v.replace(/&amp;/g,'&'), SOURCE).href; } catch { return null; }
+      try { return new URL(v.replace(/&amp;/g,'&'), resolutionBase).href; } catch { return null; }
     }).filter(Boolean).filter(u => {
-      const host = new URL(u).hostname.replace(/^www\./,'');
-      return host === 'qdis.org';
+      const parsed = new URL(u);
+      const host = parsed.hostname.replace(/^www\./,'');
+      if (host === 'qdis.org') return true;
+      return host.endsWith('netlify.app') && parsed.pathname.includes('/images/qdis/facilities/');
     });
 
     const candidates = [];
