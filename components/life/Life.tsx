@@ -64,21 +64,9 @@ function kstToday() {
   return d.toISOString().slice(0, 10);
 }
 
-/** 빌드 시점 스냅샷을 먼저 보여주고, 동기화 API(/api/meals)에 더 최신 주가 있으면 교체 */
+/** 주 1회 자동 동기화된 공식 급식 스냅샷을 표시합니다. */
 export function useMeals(): MealWeek {
-  const [week, setWeek] = useState<MealWeek>(mealsSnapshot as MealWeek);
-  useEffect(() => {
-    let alive = true;
-    fetch('/api/meals', {headers: {accept: 'application/json'}})
-      .then(r => (r.ok ? r.json() : null))
-      .then((d: MealWeek | null) => {
-        if (!alive || !d?.days?.length || !d.week?.start) return;
-        if (d.week.start >= (mealsSnapshot as MealWeek).week.start) setWeek(d);
-      })
-      .catch(() => {});
-    return () => { alive = false; };
-  }, []);
-  return week;
+  return mealsSnapshot as MealWeek;
 }
 
 export function MealsWeek({showWeekTable = false}: {showWeekTable?: boolean}) {
