@@ -1,5 +1,9 @@
 import {PageHead, SecHead, Source, TLink, Toc, CtaBand, Img} from '@/components/common/ui';
 import site from '@/data/site.json';
+import facilityData from '@/data/facilities.json';
+
+type FacilityPhoto = {id: string; src: string; width: number; height: number; alt: string; source_url: string};
+const FACILITY_PHOTOS = (facilityData.photos ?? []) as FacilityPhoto[];
 
 /* ---------------- About ---------------- */
 export function About() {
@@ -7,7 +11,7 @@ export function About() {
     <>
       <PageHead crumb="학교소개" eyebrow="About QDIS" title={<>칭다오의 12년제 국제학교,<br />청도대원학교</>}
         lede="중국 산동성 교육국 인가 학교인 청도대원학교(靑島大元學校)의 국제부입니다. G1부터 G12까지 영어·중국어·한국어 3개 언어로 가르치고, 학생 대부분은 한국 학생입니다." />
-      <Toc items={[['overview', '학교 개요'], ['heritage', '대원 교육의 뿌리'], ['students', '학생 구성'], ['campus', '캠퍼스와 위치']]} />
+      <Toc items={[['overview', '학교 개요'], ['heritage', '대원 교육의 뿌리'], ['students', '학생 구성'], ['campus', '캠퍼스와 위치'], ...(FACILITY_PHOTOS.length ? [['facilities', '학교 시설'] as [string, string]] : [])]} />
 
       <section className="section" id="overview">
         <div className="wrap">
@@ -100,6 +104,22 @@ export function About() {
           </div>
         </div>
       </section>
+      {FACILITY_PHOTOS.length > 0 && (
+        <section className="section" id="facilities">
+          <div className="wrap">
+            <SecHead eyebrow="School Facilities" title={<>학교에서 생활하게 될 공간을<br />사진으로 확인하세요</>}
+              lede="청도대원학교 공식 ‘학교 시설’ 페이지의 실제 사진입니다. 교실·공용공간·생활시설 등 캠퍼스 모습을 한곳에서 볼 수 있게 정리했습니다." />
+            <div className="facility-gallery" aria-label="청도대원학교 학교 시설 사진">
+              {FACILITY_PHOTOS.map((p, i) => (
+                <figure className="facility-photo" key={p.id}>
+                  <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading={i < 3 ? 'eager' : 'lazy'} />
+                </figure>
+              ))}
+            </div>
+            <Source href={facilityData.source_page}>청도대원학교 공식 학교 시설 페이지</Source>
+          </div>
+        </section>
+      )}
       <CtaBand title="학교를 직접 보고 결정하고 싶다면" text="학교 방문 투어와 입학 상담을 함께 안내해 드립니다." />
     </>
   );
