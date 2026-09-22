@@ -51,11 +51,23 @@ async function currentManifest() {
 async function main() {
   const fallback = await currentManifest();
   try {
-    const res = await fetch(SOURCE, {headers:{'user-agent':UA, 'accept':'text/html,*/*'}});
-    if (!res.ok) throw new Error(`facility page HTTP ${res.status}`);
-    const bytes = Buffer.from(await res.arrayBuffer());
-    // URL tokens are ASCII even when the page body is EUC-KR, so latin1 safely preserves them.
-    const html = bytes.toString('latin1');
+    const pageSources = [
+      SOURCE,
+      'https://r.jina.ai/http://qdis.org/gallery/index.html?no=7',
+      'https://r.jina.ai/https://qdis.org/gallery/index.html?no=7'
+    ];
+    let html = '';
+    let pageSourceUsed = '';
+    for (const pageUrl of pageSources) {
+      try {
+        const res = await fetch(pageUrl, {headers:{'user-agent':UA, 'accept':'text/html,text/plain,*/*'}});
+        if (!res.ok) continue;
+        const bytes = Buffer.from(await res.arrayBuffer());
+        html = bytes.toString('latin1');
+        if (html.length > 500) { pageSourceUsed = pageUrl; break; }
+      } catch {}
+    }
+    if (!html) throw new Error('facility page fetch failed (direct + text proxy)');
 
     const raw = new Set();
     for (const m of html.matchAll(/(?:src|data-src|href)\s*=\s*["']([^"']+?\.(?:jpe?g|png|webp)(?:\?[^"']*)?)["']/ig)) raw.add(m[1]);
@@ -72,7 +84,11 @@ async function main() {
     const candidates = [];
     for (const url of [...new Set(urls)]) {
       try {
-        const r = await fetch(url, {headers:{'user-agent':UA, 'referer':SOURCE}});
+        let r = await fetch(url, {headers:{'user-agent':UA, 'referer':SOURCE}});
+        if (!r.ok || !(r.headers.get('content-type') || '').startsWith('image/')) {
+          const proxied = 'https://wsrv.nl/?url=' + encodeURIComponent(url) + '&output=jpg&q=90';
+          r = await fetch(proxied, {headers:{'user-agent':UA}});
+        }
         if (!r.ok) continue;
         const type = r.headers.get('content-type') || '';
         if (!type.startsWith('image/')) continue;
@@ -115,7 +131,7 @@ async function main() {
       photos
     };
     await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + '\n');
-    console.log(`[facilities] synced ${photos.length} photos from ${SOURCE}`);
+    console.log(`[facilities] synced ${photos.length} photos from ${SOURCE} via ${pageSourceUsed}`);
   } catch (err) {
     console.warn('[facilities] sync skipped:', err?.message || err);
     console.warn(`[facilities] using committed fallback manifest with ${fallback.photos?.length || 0} photos`);
