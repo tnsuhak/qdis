@@ -1,0 +1,56 @@
+name: QDIS weekly meal sync
+
+# QDIS 공식 급식표를 매일 확인합니다.
+# 실제 식단이 바뀐 경우에만 data/meals/latest.json을 갱신해 main에 커밋합니다.
+# 따라서 확인은 매일 하지만 Production 배포는 보통 새 주간 식단이 올라온 때에만 1회 발생합니다.
+on:
+  schedule:
+    - cron: '10 0 * * *'   # 매일 09:10 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qdis-meals-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production source
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch and validate official QDIS meals
+        run: node scripts/sync/meals.mjs
+
+      - name: Commit only when the official meal data changed
+        shell: bash
+        run: |
+          if git diff --quiet -- data/meals/latest.json; then
+            echo "Official meal data is unchanged. No commit, no deploy."
+            exit 0
+          fi
+
+          # Safety: this automation is allowed to change only the meal snapshot.
+          OTHER="$(git status --porcelain | grep -v 'data/meals/latest.json' || true)"
+          if [ -n "$OTHER" ]; then
+            echo "Unexpected changed files detected:"
+            echo "$OTHER"
+            exit 1
+          fi
+
+          git config user.name "qdis-meals[bot]"
+          git config user.email "qdis-meals@users.noreply.github.com"
+          git add data/meals/latest.json
+          git commit -m "chore(meals): refresh QDIS weekly menu"
+          git pull --rebase origin main
+          git push origin HEAD:main
