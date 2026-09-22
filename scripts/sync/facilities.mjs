@@ -119,6 +119,8 @@ async function main() {
   } catch (err) {
     console.warn('[facilities] sync skipped:', err?.message || err);
     console.warn(`[facilities] using committed fallback manifest with ${fallback.photos?.length || 0} photos`);
+    const strict = process.env.CONTEXT === 'deploy-preview' || process.env.CONTEXT === 'production';
+    if (strict && !(fallback.photos?.length)) throw err;
   }
 }
 
