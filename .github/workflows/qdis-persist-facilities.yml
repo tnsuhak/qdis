@@ -1,0 +1,44 @@
+name: Persist QDIS facility photos (temporary)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  persist:
+    if: github.event_name != 'pull_request' || github.head_ref == 'preview/qdis-initial-site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview/qdis-initial-site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch official QDIS facility photos
+        run: node scripts/sync/facilities.mjs
+      - name: Require a durable facility snapshot
+        run: |
+          test -d public/images/qdis/facilities
+          count=$(find public/images/qdis/facilities -type f | wc -l)
+          echo "facility files: $count"
+          test "$count" -ge 3
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const d=JSON.parse(fs.readFileSync('data/facilities.json','utf8'));
+          if (!Array.isArray(d.photos) || d.photos.length < 3) process.exit(1);
+          console.log('manifest photos:', d.photos.length);
+          NODE
+      - name: Commit durable snapshot and remove this workflow
+        run: |
+          rm -f .github/workflows/qdis-persist-facilities.yml
+          git config user.name "qdis-facilities[bot]"
+          git config user.email "qdis-facilities@users.noreply.github.com"
+          git add -A data/facilities.json public/images/qdis/facilities .github/workflows/qdis-persist-facilities.yml
+          git commit -m "Persist official QDIS facility photo snapshot"
+          git pull --rebase origin preview/qdis-initial-site
+          git push origin HEAD:preview/qdis-initial-site
