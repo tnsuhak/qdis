@@ -634,6 +634,9 @@ em.mark { font-style: normal; color: var(--brass); }
 }
 .contact-card.cafe small { color: rgba(255,255,255,.88); }
 
+/* 상담 상세페이지의 좌측 컬럼에서는 2×2로 유지해 카드가 과도하게 좁아지지 않게 합니다. */
+.consult .contact-cards { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
 @media (max-width: 720px) {
   .contact-cards {
     grid-template-columns: repeat(2, minmax(0,1fr));
