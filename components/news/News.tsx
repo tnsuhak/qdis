@@ -5,6 +5,13 @@ import {koDate} from '@/lib/qdis/format';
 type Item = (typeof news.items)[number];
 const CAT = news.categories as Record<string, string>;
 
+const INTERNAL: Record<string, {href: string; label: string}> = {
+  university: {href: '/university-results#latest', label: '합격 결과 보기'},
+  admissions: {href: '/admissions', label: '입학안내 보기'},
+  academic: {href: '/academics', label: '교육과정 보기'},
+  life: {href: '/daily-life#activities', label: '학교생활 보기'},
+};
+
 export function NewsList({limit, filterable = false}: {limit?: number; filterable?: boolean}) {
   const [cat, setCat] = useState('all');
   const items = [...news.items]
@@ -21,17 +28,23 @@ export function NewsList({limit, filterable = false}: {limit?: number; filterabl
         </div>
       )}
       <div className="news-list">
-        {items.map((i: Item) => (
-          <a className="news-item" key={i.id} href={i.source_url} target="_blank" rel="noopener noreferrer">
-            <time dateTime={i.date}>{koDate(i.date)}</time>
-            <span className="cat">{CAT[i.category]}</span>
-            <div className="body">
-              <h3>{i.title}</h3>
-              <p>{i.summary}</p>
-            </div>
-            <span className="src">{i.source_board} 원문 ↗</span>
-          </a>
-        ))}
+        {items.map((i: Item) => {
+          const internal = INTERNAL[i.category];
+          return (
+            <article className="news-item" key={i.id}>
+              <time dateTime={i.date}>{koDate(i.date)}</time>
+              <span className="cat">{CAT[i.category]}</span>
+              <div className="body">
+                <h3>{i.title}</h3>
+                <p>{i.summary}</p>
+                <div className="news-actions">
+                  {internal && <a className="tlink" href={internal.href}>{internal.label}</a>}
+                  <a className="source-link" href={i.source_url} target="_blank" rel="noopener noreferrer">{i.source_board} 원문 ↗</a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );
