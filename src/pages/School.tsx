@@ -109,22 +109,23 @@ export function About() {
 
       <section className="section" id="students">
         <div className="wrap">
-          <SecHead eyebrow="Students" title={<>누가 청도대원에<br />다니고 있을까요</>} />
+          <SecHead eyebrow="Who Can Apply" title={<>한국·중국·제3국 어디에서든<br />지원할 수 있습니다</>}
+            lede="학교 공식 FAQ는 특례 자격·국적·거주지역과 관계없이 지원할 수 있다고 안내합니다. 실제 지원 학년은 이전 학교의 이수 학기와 학력 자료를 함께 확인합니다." />
           <div className="cols-3">
             <div>
-              <h3 className="h3">한국에서 온 유학생</h3>
-              <p className="small" style={{marginTop: 10}}>G6부터 기숙사에 들어갈 수 있어 학생 혼자 유학 오는 경우가 많습니다. 영미권 국제학교보다 가깝고 비용 부담이 적으면서, 영어로 공부하고 중국어까지 배울 수 있다는 점을 보고 선택합니다.</p>
+              <h3 className="h3">한국 거주 학생</h3>
+              <p className="small" style={{marginTop: 10}}>한국에서 생활하고 있어도 지원할 수 있습니다. G6부터 선택기숙이 가능하고 G9–G12는 의무기숙이어서, 부모가 중국에 거주하지 않는 학생도 입학 절차를 진행할 수 있습니다.</p>
             </div>
             <div>
-              <h3 className="h3">중국 각지의 주재원 자녀</h3>
-              <p className="small" style={{marginTop: 10}}>칭다오뿐 아니라 쑤저우·옌타이·웨이하이, 최근에는 상하이·베이징 지역에서도 옵니다. 부모가 먼저 귀임하고 학생이 남아 과정을 마무리하는 경우도 있습니다.</p>
+              <h3 className="h3">중국 거주 학생</h3>
+              <p className="small" style={{marginTop: 10}}>칭다오를 포함한 중국 내 다른 지역에 거주하는 학생도 지원할 수 있습니다. 부모의 현지 직장 유무 자체를 입학 지원자격으로 제한하지 않습니다.</p>
             </div>
             <div>
-              <h3 className="h3">해외에서 귀국을 앞둔 학생</h3>
-              <p className="small" style={{marginTop: 10}}>미국·캐나다·동남아·중동 등에서 오래 공부하다 귀국을 앞둔 학생이 남은 해외 이수 기간을 한국과 가까운 칭다오에서 채우는 경우가 늘고 있습니다.</p>
+              <h3 className="h3">제3국 재학 학생</h3>
+              <p className="small" style={{marginTop: 10}}>다른 국가의 학교에서 재학 중인 학생도 지원할 수 있습니다. 전·편입 학년은 성적표·재학증명서와 이수 학기를 기준으로 확인합니다.</p>
             </div>
           </div>
-          <p className="source">2025년 1월 학교 관계자 미팅 내용 기준. 학생 구성은 학년·학기에 따라 달라집니다.</p>
+          <Source href="https://qdis.org/faq/list.html?pid=26&cate1=">청도대원학교 공식 FAQ ‘지원자격’·‘편입학’ 안내</Source>
         </div>
       </section>
 
