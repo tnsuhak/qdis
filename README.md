@@ -10,10 +10,11 @@
 ```bash
 npm install
 npm run dev          # 로컬 개발
-npm run build        # client + ssr 빌드 후 16개 경로 프리렌더, sitemap/robots 생성
+npm run build        # committed data/assets로 client + ssr 빌드, 16개 경로 프리렌더
 npm run typecheck
 npm run sync:meals   # 공식 급식 → data/meals/latest.json (주 1회 자동화와 동일 로직)
 npm run monitor:boards  # 공식 게시판 새 글 감지 → data/news/drafts
+npm run sync:facilities # 필요할 때만 공식 시설사진 스냅샷 갱신 (일반 배포 빌드에서는 실행하지 않음)
 ```
 
 ## 구조
@@ -38,3 +39,5 @@ data/           university-results/{annual,latest-offers,alumni}.json · admissi
 - 학비·장학금은 `data/admissions/fees-2026-27.json`(2026–27 모집요강) 기준. 새 모집요강이 나오면 이 파일만 교체.
 - 상담폼: Netlify Forms `qdis-consultation` 사용. 정적 감지 fallback은 `public/netlify-form.html`.
 - Production 공개 시: `data/site.json`의 `preview`를 `false`로, `netlify.toml`의 전역 `X-Robots-Tag` 헤더 제거, `domain` 확정.
+
+- 시설사진은 `data/facilities.json` + `public/images/qdis/facilities/`에 스냅샷으로 저장합니다. 일반 Netlify 빌드는 외부 QDIS 서버를 다시 호출하지 않아 배포 안정성을 높입니다.
