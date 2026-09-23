@@ -120,7 +120,7 @@ export function AdmissionsPage() {
     <>
       <PageHead crumb="입학 절차" eyebrow="Admissions 2026–27" title={<>수시 모집, 학년별 선착순.<br />지원부터 입학까지</>}
         lede="원서는 연중 수시로 받고, 학년별 정원이 차면 마감합니다. 학생비자가 필요하면 발급에 2–3개월이 걸리므로 입학 희망 학기보다 넉넉히 먼저 지원하세요." />
-      <Toc items={[['plan', '모집 학급'], ['steps', '입학 절차'], ['eligibility', '지원 자격'], ['documents', '제출 서류'], ['visa', '비자·거류증'], ['timing', '지원 시기']]} />
+      <Toc items={[['plan', '모집 학급'], ['steps', '입학 절차'], ['eligibility', '지원 자격'], ['transfer', '편입·학년배정'], ['documents', '제출 서류'], ['visa', '비자·거류증'], ['timing', '지원 시기']]} />
       <section className="section white" id="plan">
         <div className="wrap">
           <SecHead eyebrow="Openings" title="2026–27 모집 학급" lede="GLP는 G1–G12 모두, CLP는 G6–G10을 모집합니다. 초등은 주 5일, 중·고등은 주 6일제입니다." />
@@ -167,6 +167,38 @@ export function AdmissionsPage() {
           </div>
         </div>
       </section>
+      <section className="section sand" id="transfer">
+        <div className="wrap">
+          <SecHead eyebrow="Transfer & Grade Placement" title="편입과 학년배정은 ‘몇 학년을 다녔는지’부터 봅니다"
+            lede="한국 학제와 QDIS의 9월 학기제가 달라 한 학기 정도 차이가 생길 수 있습니다. 지원 학년은 이전 학교의 이수 학기와 학력 자료를 기준으로 판단합니다." />
+          <div className="cols-3">
+            <div>
+              <span className="kicker">Example</span>
+              <h3 className="h3" style={{marginTop: 12}}>초6 1학기 후 9월 G7</h3>
+              <p className="small" style={{marginTop: 10}}>학교 FAQ는 한국에서 초6 1학기까지 마친 학생이 9월에 G7로 입학하는 사례를 가능하다고 안내합니다. 다만 이후 한국 학교로 중도 귀국하면 국내 학교의 학년 배정이 달라질 수 있습니다.</p>
+            </div>
+            <div>
+              <span className="kicker">Academic Record</span>
+              <h3 className="h3" style={{marginTop: 12}}>정규 학력 자료가 필요</h3>
+              <p className="small" style={{marginTop: 10}}>학교생활기록부·성적표·재학증명서 등 정규 교육기관의 학력 자료가 필요합니다. 정규 학력으로 인정되지 않는 홈스쿨링 이력만으로는 편입이 어렵다고 안내합니다.</p>
+            </div>
+            <div>
+              <span className="kicker">One-semester Gap</span>
+              <h3 className="h3" style={{marginTop: 12}}>학제 차이는 1개 학기까지</h3>
+              <p className="small" style={{marginTop: 10}}>학제가 다른 학교에서 옮겨 이수 학기 수가 1개 학기 부족한 경우까지 인정할 수 있으며, 최종 학년배정은 제출 서류와 학력 심사를 거쳐 결정합니다.</p>
+            </div>
+          </div>
+          <div className="notice" style={{marginTop: 36}}>
+            <b>한국 대학 특례는 별도 판단</b>
+            QDIS에 편입한다고 자동으로 3년 특례·12년 특례 자격이 생기지는 않습니다. 해외 이수 기간과 부모 체류 요건 등은 대학 전형 기준에 맞춰 따로 확인해야 합니다.
+          </div>
+          <div style={{display: 'flex', gap: 20, flexWrap: 'wrap'}}>
+            <TLink href="/college-counseling">특례·진학지도 보기</TLink>
+            <TLink href="/faq#g7-entry">편입 FAQ 보기</TLink>
+          </div>
+        </div>
+      </section>
+
       <section className="section" id="documents">
         <div className="wrap">
           <SecHead eyebrow="Documents" title="제출 서류" />
