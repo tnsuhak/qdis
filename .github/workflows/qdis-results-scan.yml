@@ -1,0 +1,28 @@
+name: QDIS results scan (temporary)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Scan official QDIS university results board
+        run: |
+          node --input-type=module <<'NODE'
+          import {fetchText, parseBoardList, QDIS} from './lib/monitoring/qdis-parse.mjs';
+          const html = await fetchText(`${QDIS}/board/index.html?id=board3`, {timeoutMs: 30000});
+          const posts = parseBoardList(html, 'board3').slice(0, 100);
+          console.log('BOARD3_JSON_START');
+          console.log(JSON.stringify(posts, null, 2));
+          console.log('BOARD3_JSON_END');
+          NODE
