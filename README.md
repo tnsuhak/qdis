@@ -38,9 +38,10 @@ data/           university-results/{annual,latest-offers,alumni}.json · admissi
 
 - 대학 결과: `annual`(연도별 공식 합계)·`individual_offer`(개별 게시물)·`alumni`(대학원)를 **절대 합산하지 않음**. 숫자는 학생 수가 아니라 합격 건수.
 - 환율은 `data/site.json`의 `fx.cny_krw` 한 곳에서 관리.
+- 주간 급식 자동화는 예약 실행 시 main, 수동 실행 시 선택한 branch에만 커밋하여 Preview 작업이 main으로 승격되지 않도록 합니다.
 - 학비·장학금은 `data/admissions/fees-2026-27.json`(2026–27 모집요강) 기준. 새 모집요강이 나오면 이 파일만 교체.
 - 상담폼: Netlify Forms `qdis-consultation` 사용. 정적 감지 fallback은 `public/netlify-form.html`. 2026-09-23 Preview에서 실제 테스트 제출→Netlify 수신까지 확인 후 테스트 건은 삭제함.
 - 사진: AI 생성·스톡을 실제 학교 사진처럼 사용하지 않음. `lib/qdis/photos.ts`에 공식 시설·공식 갤러리 로컬 자산만 배정하며, 과거 저해상도 브로셔 크롭은 활성 자산에서 제거함.
-- Production 공개 시: `data/site.json`의 `preview`를 `false`로, `netlify.toml`의 전역 `X-Robots-Tag` 헤더 제거, `domain` 확정. 환율·최신 합격·급식 스냅샷을 마지막으로 재확인하고 사용자 승인 후 main에 머지.
+- Production 공개 시: `data/site.json`의 `preview`를 `false`로 전환하고 `domain`을 최종 확인합니다. Deploy Preview는 프리렌더의 `noindex`/차단 `robots.txt`와 Netlify의 Preview 보호를 사용하므로 Production용 전역 `X-Robots-Tag`를 두지 않습니다. 환율·최신 합격·급식 스냅샷을 마지막으로 재확인하고 사용자 승인 후 main에 머지.
 
 - 시설사진은 `data/facilities.json` + `public/images/qdis/facilities/`에 스냅샷으로 저장합니다. 일반 Netlify 빌드는 외부 QDIS 서버를 다시 호출하지 않아 배포 안정성을 높입니다.

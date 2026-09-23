@@ -26,8 +26,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # 검토 단계: 모든 배포에 검색 노출 차단. Production 공개 시 data/site.json preview=false 와 함께 제거합니다.
-    X-Robots-Tag = "noindex, nofollow"
+    # Deploy Preview는 Netlify 자체 noindex와 프리렌더 meta/robots.txt로 검색 노출을 차단합니다.
+    # Production 공개 여부는 data/site.json preview 값과 프리렌더 결과로 제어합니다.
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 

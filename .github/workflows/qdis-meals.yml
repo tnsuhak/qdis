@@ -2,7 +2,7 @@ name: QDIS weekly meal sync
 
 # QDIS 공식 급식표를 주 1회 확인합니다.
 # 매주 월요일 오전 09:10(KST)에 확인하고, 실제 식단이 바뀐 경우에만
-# data/meals/latest.json을 갱신해 main에 커밋합니다.
+# data/meals/latest.json을 갱신합니다. 예약 실행은 main, 수동 실행은 선택한 branch에만 커밋합니다.
 on:
   schedule:
     - cron: '10 0 * * 1'   # 매주 월요일 09:10 KST
@@ -19,10 +19,10 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout production source
+      - name: Checkout triggering branch
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref_name }}
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -52,5 +52,5 @@ jobs:
           git config user.email "qdis-meals@users.noreply.github.com"
           git add data/meals/latest.json
           git commit -m "chore(meals): refresh QDIS weekly menu"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"
