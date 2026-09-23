@@ -102,7 +102,8 @@ export function Channels() {
   return (
     <ul className="channels">
       <li><a href={t.kakao_channel} target="_blank" rel="noopener noreferrer"><span><b>카카오톡 채널 상담</b><small>성적표·서류 사진도 바로 보낼 수 있어요</small></span><span aria-hidden="true">→</span></a></li>
-      <li><a href={t.phone_href}><span><b>전화 {t.phone}</b><small>TNS Worldwide 서울 마포</small></span><span aria-hidden="true">→</span></a></li>
+      <li><a href={t.phone_href}><span><b>전화 {t.phone}</b><small>TNS Worldwide 서울 강남</small></span><span aria-hidden="true">→</span></a></li>
+      <li><a href={t.kakao_openchat} target="_blank" rel="noopener noreferrer"><span><b>청도대원 오픈채팅</b><small>설명회·입학 일정과 실시간 질문</small></span><span aria-hidden="true">→</span></a></li>
       <li><a href={t.cafe} target="_blank" rel="noopener noreferrer"><span><b>네이버 카페 TNS유학</b><small>조기유학·중국 국제학교 후기와 설명회 소식</small></span><span aria-hidden="true">→</span></a></li>
     </ul>
   );
