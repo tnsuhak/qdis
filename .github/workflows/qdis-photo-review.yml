@@ -32,6 +32,9 @@ jobs:
           curl -fsSL "$base/17748544144839.jpg" -o public/images/qdis/review/291-1.jpg
           curl -fsSL "$base/17748544275640.jpg" -o public/images/qdis/review/291-2.jpg
           curl -fsSL "$base/17805474659546.jpg" -o public/images/qdis/review/298-1.jpg
+          curl -fsSL "$base/16533067164148.jpg" -o public/images/qdis/review/173-1.jpg
+          curl -fsSL "$base/16529620396956.jpg" -o public/images/qdis/review/174-1.jpg
+          curl -fsSL "$base/16529622919181.jpg" -o public/images/qdis/review/175-1.jpg
           file public/images/qdis/review/*
       - name: Create smaller review copies
         run: |
