@@ -1,7 +1,7 @@
 {
   "schema": "qdis.facilities/v1",
   "source_page": "https://qdis.org/gallery/index.html?no=7",
-  "synced_at": "2026-09-23T03:52:08.080Z",
+  "synced_at": "2026-09-23T05:27:54.918Z",
   "photos": [
     {
       "id": "facility-01",
@@ -30,24 +30,24 @@
     {
       "id": "facility-04",
       "src": "/images/qdis/facilities/facility-04.jpg",
-      "width": 3150,
-      "height": 1653,
+      "width": 1800,
+      "height": 945,
       "alt": "청도대원학교 학교 시설 사진 4",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374298.jpg"
     },
     {
       "id": "facility-05",
       "src": "/images/qdis/facilities/facility-05.jpg",
-      "width": 2480,
-      "height": 1470,
+      "width": 1800,
+      "height": 1067,
       "alt": "청도대원학교 학교 시설 사진 5",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374299.jpg"
     },
     {
       "id": "facility-06",
       "src": "/images/qdis/facilities/facility-06.jpg",
-      "width": 2918,
-      "height": 1692,
+      "width": 1800,
+      "height": 1044,
       "alt": "청도대원학교 학교 시설 사진 6",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275926349040.jpg"
     },
