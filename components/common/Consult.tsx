@@ -101,50 +101,25 @@ export function Channels() {
   const t = site.tns;
   return (
     <div className="contact-cards" aria-label="TNS 상담 채널">
-      <a className="contact-card kakao featured" href={t.kakao_channel} target="_blank" rel="noopener noreferrer">
-        <span className="contact-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 4C6.9 4 3 7.1 3 10.9c0 2.5 1.7 4.7 4.3 5.9L6.5 20l3.8-2.2c.6.1 1.1.2 1.7.2 5.1 0 9-3.1 9-7.1S17.1 4 12 4Z"/></svg>
-        </span>
-        <span className="contact-copy">
-          <small>추천 · 빠른 상담</small>
-          <b>카카오톡 1:1 상담</b>
-          <span>성적표·서류 사진도 바로 보내주세요</span>
-        </span>
-        <span className="contact-arrow" aria-hidden="true">→</span>
+      <a className="contact-card kakao" href={t.kakao_channel} target="_blank" rel="noopener noreferrer">
+        <span className="contact-icon" aria-hidden="true">💬</span>
+        <b>카카오톡 1:1 상담</b>
+        <small>1:1 실시간 문의</small>
       </a>
-
       <a className="contact-card phone" href={t.phone_href}>
-        <span className="contact-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7.1 3.8 9.4 8 7.9 9.5c1 2 2.6 3.6 4.6 4.6l1.5-1.5 4.2 2.3-.6 3.1c-.2 1-1.1 1.7-2.1 1.7C9.2 19.7 4.3 14.8 4.3 8.5c0-1 .7-1.9 1.7-2.1l1.1-2.6Z"/></svg>
-        </span>
-        <span className="contact-copy">
-          <small>전화 상담</small>
-          <b>{t.phone}</b>
-          <span>TNS Worldwide 서울 강남</span>
-        </span>
-        <span className="contact-arrow" aria-hidden="true">→</span>
+        <span className="contact-icon" aria-hidden="true">📞</span>
+        <b>전화 상담</b>
+        <small>{t.phone}</small>
       </a>
-
       <a className="contact-card openchat" href={t.kakao_openchat} target="_blank" rel="noopener noreferrer">
-        <span className="contact-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M5 5h14v10H9l-4 4V5Zm4 4h6v2H9V9Z"/></svg>
-        </span>
-        <span className="contact-copy">
-          <small>간편 문의</small>
-          <b>TNS 오픈채팅</b>
-          <span>중국 국제학교·청도대원 입학 질문</span>
-        </span>
-        <span className="contact-arrow" aria-hidden="true">→</span>
+        <span className="contact-icon" aria-hidden="true">💬</span>
+        <b>중국 글로벌 오픈채팅</b>
+        <small>{t.kakao_openchat_members}</small>
       </a>
-
       <a className="contact-card cafe" href={t.cafe} target="_blank" rel="noopener noreferrer">
-        <span className="contact-icon text-icon" aria-hidden="true">N</span>
-        <span className="contact-copy">
-          <small>후기 · 정보</small>
-          <b>네이버 카페 TNS유학</b>
-          <span>조기유학 후기와 설명회 소식 확인</span>
-        </span>
-        <span className="contact-arrow" aria-hidden="true">→</span>
+        <span className="contact-icon naver" aria-hidden="true">N</span>
+        <b>네이버 유학카페</b>
+        <small>{t.cafe_members}</small>
       </a>
     </div>
   );
