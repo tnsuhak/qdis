@@ -3,6 +3,8 @@
 청도대원학교(QDIS) 공식 자료를 바탕으로 한국 학부모·학생에게 **대학 합격 결과 · 실제 일과 · 급식 · 교육과정 · 기숙 · 비용**을 쉽게 보여 주는 사이트입니다. 운영: TNS Worldwide.
 
 - 스택: React 19 + Vite, 빌드 후 모든 경로를 정적 HTML로 프리렌더(`scripts/prerender.mjs`) → Netlify
+- 중앙 운영 레코드: `tnsuhak/tns-site-manager/sites/qdis-korea.yaml`
+- 프리렌더 QA: 페이지당 H1 1개 · 중복 ID 금지 · 내부 경로/앵커 오류 시 빌드 실패
 - 배포 흐름: PR → Netlify Deploy Preview(검토) → main 머지 → Production. 현재는 **검토 단계(전 배포 noindex)**
 
 ## 명령
@@ -37,7 +39,8 @@ data/           university-results/{annual,latest-offers,alumni}.json · admissi
 - 대학 결과: `annual`(연도별 공식 합계)·`individual_offer`(개별 게시물)·`alumni`(대학원)를 **절대 합산하지 않음**. 숫자는 학생 수가 아니라 합격 건수.
 - 환율은 `data/site.json`의 `fx.cny_krw` 한 곳에서 관리.
 - 학비·장학금은 `data/admissions/fees-2026-27.json`(2026–27 모집요강) 기준. 새 모집요강이 나오면 이 파일만 교체.
-- 상담폼: Netlify Forms `qdis-consultation` 사용. 정적 감지 fallback은 `public/netlify-form.html`.
-- Production 공개 시: `data/site.json`의 `preview`를 `false`로, `netlify.toml`의 전역 `X-Robots-Tag` 헤더 제거, `domain` 확정.
+- 상담폼: Netlify Forms `qdis-consultation` 사용. 정적 감지 fallback은 `public/netlify-form.html`. 2026-09-23 Preview에서 실제 테스트 제출→Netlify 수신까지 확인 후 테스트 건은 삭제함.
+- 사진: AI 생성·스톡을 실제 학교 사진처럼 사용하지 않음. `lib/qdis/photos.ts`에 공식 시설·공식 갤러리 로컬 자산만 배정하며, 과거 저해상도 브로셔 크롭은 활성 자산에서 제거함.
+- Production 공개 시: `data/site.json`의 `preview`를 `false`로, `netlify.toml`의 전역 `X-Robots-Tag` 헤더 제거, `domain` 확정. 환율·최신 합격·급식 스냅샷을 마지막으로 재확인하고 사용자 승인 후 main에 머지.
 
 - 시설사진은 `data/facilities.json` + `public/images/qdis/facilities/`에 스냅샷으로 저장합니다. 일반 Netlify 빌드는 외부 QDIS 서버를 다시 호출하지 않아 배포 안정성을 높입니다.
