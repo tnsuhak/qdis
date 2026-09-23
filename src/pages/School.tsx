@@ -11,7 +11,7 @@ export function About() {
     <>
       <PageHead crumb="학교소개" eyebrow="About QDIS" title={<>칭다오의 12년제 국제학교,<br />청도대원학교</>}
         lede="중국 산동성 교육국 인가 학교인 청도대원학교(靑島大元學校)의 국제부입니다. G1부터 G12까지 영어·중국어·한국어 3개 언어로 가르치고, 학생 대부분은 한국 학생입니다." />
-      <Toc items={[['overview', '학교 개요'], ['heritage', '대원 교육의 뿌리'], ['students', '학생 구성'], ['campus', '캠퍼스와 위치'], ...(FACILITY_PHOTOS.length ? [['facilities', '학교 시설'] as [string, string]] : [])]} />
+      <Toc items={[['overview', '학교 개요'], ['recognition', '인가·학제'], ['heritage', '대원 교육의 뿌리'], ['students', '학생 구성'], ['campus', '캠퍼스와 위치'], ...(FACILITY_PHOTOS.length ? [['facilities', '학교 시설'] as [string, string]] : [])]} />
 
       <section className="section" id="overview">
         <div className="wrap">
@@ -35,6 +35,32 @@ export function About() {
               </dl>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section white" id="recognition">
+        <div className="wrap">
+          <SecHead eyebrow="Recognition & School System" title={<>정식 인가 학교인가요?<br />학제와 특례는 어떻게 보나요</>}
+            lede="처음 알아보는 학부모가 가장 먼저 확인하는 세 가지를 분리해서 정리했습니다." />
+          <div className="cols-3">
+            <div>
+              <span className="kicker">School Status</span>
+              <h3 className="h3" style={{marginTop: 12}}>산동성 교육국 정식 인가</h3>
+              <p className="small" style={{marginTop: 10}}>청도대원학교의 공식 명칭은 靑島大元學校이며, 학교 공식 FAQ는 중국 산동성 교육국의 정식 인가 학교라고 안내합니다. 국제부(QDIS)는 이 학교 안에서 국제교육과정을 운영합니다.</p>
+            </div>
+            <div>
+              <span className="kicker">G1–G12</span>
+              <h3 className="h3" style={{marginTop: 12}}>5·3·4의 12년제 학제</h3>
+              <p className="small" style={{marginTop: 10}}>G1–G5 초등, G6–G8 중등, G9–G12 고등의 12년제이며 9월에 새 학년이 시작됩니다. 학생비자(X1)가 필요한 경우 학교가 관련 발급 서류를 지원합니다.</p>
+            </div>
+            <div>
+              <span className="kicker">College Admissions</span>
+              <h3 className="h3" style={{marginTop: 12}}>특례 자격은 별도로 확인</h3>
+              <p className="small" style={{marginTop: 10}}>QDIS 입학 자체가 한국 대학 특례 자격을 만들어 주는 것은 아닙니다. 3년 특례·12년 특례·해외고 전형은 학생의 실제 해외 이수 이력과 각 전형 요건을 따로 확인해야 합니다.</p>
+              <div style={{marginTop: 16}}><TLink href="/college-counseling">진학지도·특례 보기</TLink></div>
+            </div>
+          </div>
+          <Source>청도대원학교 공식 FAQ · 2025–26 학교생활안내</Source>
         </div>
       </section>
 
