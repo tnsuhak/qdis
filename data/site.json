@@ -3,13 +3,13 @@
   "name": "청도대원학교 QDIS 한국어 입학안내",
   "short_name": "청도대원학교",
   "domain": "https://qdis-korea.netlify.app",
-  "preview": true,
+  "preview": false,
   "data_reviewed_on": "2026-09-23",
   "fx": {
-    "cny_krw": 205,
-    "as_of": "2026-09-21",
-    "status": "estimated",
-    "note": "원화 환산은 참고용입니다. 2026-09-21 기준 복수 환율 조회 서비스(Xe·Wise·Pluang 등)의 최근 시세(약 200~209원, 30일 평균 약 204원)를 반올림한 추정치이며, 은행 고시 환율로 재확인 후 공개하는 것을 권장합니다. 이 값만 바꾸면 사이트 전체에 반영됩니다."
+    "cny_krw": 202,
+    "as_of": "2026-09-23",
+    "status": "reference",
+    "note": "원화 환산은 참고용입니다. 2026-09-23 CNY/KRW 기준환율 약 202.145원을 202원으로 반올림해 적용했습니다. 실제 결제·송금 시 은행/카드사 환율과 수수료가 다를 수 있습니다."
   },
   "tns": {
     "name": "TNS Worldwide",
