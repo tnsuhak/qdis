@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite --config vite.netlify.config.ts",
-    "build": "node scripts/sync/facilities.mjs && npm run build:client && npm run build:ssr && node scripts/prerender.mjs",
+    "build": "npm run build:client && npm run build:ssr && node scripts/prerender.mjs",
     "build:client": "vite build --config vite.netlify.config.ts",
     "build:ssr": "vite build --config vite.netlify.config.ts --ssr entry-server.tsx --outDir ../dist-ssr",
     "typecheck": "tsc --noEmit",
