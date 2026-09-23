@@ -16,7 +16,7 @@ export default function Home() {
   const latestYear = ANNUAL[0];
   return (
     <>
-      {/* 01 HERO — 고해상도 사진 확보 전까지 타이포 중심, 사진은 원본 크기에 가깝게 */}
+      {/* 01 HERO — 실제 QDIS 고해상도 학생 활동 사진 */}
       <section className="hero2" aria-labelledby="hero-title">
         <div className="wrap hero2-grid">
           <div>
