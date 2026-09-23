@@ -11,7 +11,7 @@ export type RouteMeta = {
 
 export const ROUTES: RouteMeta[] = [
   {path: '/', key: 'home', title: '청도대원학교 QDIS | 칭다오 국제학교 대학진학·기숙·학비 안내', description: '칭다오 청도대원학교(QDIS) 한국어 안내. 연도별 대학 합격 결과, SAT·AP 교육과정, 기숙생활과 일과, 이번 주 급식, 2026–27 학비와 장학금, 입학 절차를 한곳에서 확인하세요.'},
-  {path: '/about', key: 'about', section: 'about', crumb: '학교소개', title: '학교소개 | 청도대원학교 QDIS', description: '중국 칭다오 청양구의 12년제 국제학교 청도대원학교(QDIS). 영·중·한 3개 언어 교육, 학교 연혁과 대원 교육의 뿌리, 학생 구성과 위치를 소개합니다.'},
+  {path: '/about', key: 'about', section: 'about', crumb: '학교소개', title: '학교소개 | 청도대원학교 QDIS', description: '중국 칭다오 청양구의 12년제 국제학교 청도대원학교(QDIS). 영·중·한 3개 언어 교육, 학교 인가·학제, 대원 교육의 뿌리, 지원 가능한 학생과 위치를 소개합니다.'},
   {path: '/academics', key: 'academics', section: 'academics', crumb: '교육과정', title: '교육과정 GLP·CLP | 청도대원학교 초등·중등·고등', description: '청도대원학교 GLP(국제반)와 CLP(중국유학반) 비교, 초등 G1–G5·중등 G6–G8·고등 G9–G12 교과 편성과 수준별 수업, 영어 몰입 수업 방식을 정리했습니다.'},
   {path: '/sat-ap', key: 'satap', section: 'academics', crumb: 'SAT·AP·시험센터', title: 'SAT·AP 국제학교 | 청도대원학교 시험센터와 AP 과정', description: '청도대원학교는 College Board 공식 SAT·AP 시험센터입니다. 정규 수업과 방과후 AP 강좌로 준비하고, 익숙한 교실에서 SAT·AP·AMC·TOEFL Junior를 응시합니다.'},
   {path: '/university-results', key: 'results', section: 'college', crumb: '대학 합격 결과', title: '대학 합격 결과 | 청도대원학교 연도별 University Offers', description: '청도대원학교 공식 진학정보 게시판 기준 연도별 대학 합격 건수와 최신 개별 합격 소식. 국가·연도·대학명으로 검색하고, 졸업생 대학원 결과는 따로 확인하세요.'},
