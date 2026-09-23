@@ -1,0 +1,43 @@
+name: QDIS OG photo refresh (temporary)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  og:
+    if: github.event_name != 'pull_request' || github.head_ref == 'preview/qdis-initial-site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview/qdis-initial-site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Create 1200x630 OG image from real QDIS photo
+        run: |
+          set -euo pipefail
+          npm install --no-save --package-lock=false sharp
+          node --input-type=module <<'NODE'
+          import sharp from 'sharp';
+          await sharp('public/images/qdis/gallery/pi-day-2026.jpg')
+            .resize(1200, 630, {fit:'cover', position:'centre'})
+            .jpeg({quality:88, mozjpeg:true})
+            .toFile('public/og/qdis-og.next.jpg');
+          NODE
+          mv public/og/qdis-og.next.jpg public/og/qdis-og.jpg
+          file public/og/qdis-og.jpg
+      - name: Commit OG asset and remove workflow
+        run: |
+          rm -f .github/workflows/qdis-og-refresh.yml
+          git config user.name "qdis-og[bot]"
+          git config user.email "qdis-og@users.noreply.github.com"
+          git add public/og/qdis-og.jpg .github/workflows/qdis-og-refresh.yml
+          git commit -m "Use real QDIS photo for social sharing image"
+          git pull --rebase origin preview/qdis-initial-site
+          git push origin HEAD:preview/qdis-initial-site
