@@ -15,6 +15,10 @@ export function BoardingPage() {
         <div className="wrap">
           <SecHead eyebrow="Key Facts" title="먼저 확인할 다섯 가지" />
           <KeyBoarding />
+          <div className="cols-2 boarding-photo-pair" style={{marginTop: 'clamp(38px,4vw,58px)'}}>
+            <div><Img id="dormRoom" ratio="3x2" /><p className="cap">기숙사 4인실 · 개인 수납장과 2층 침대</p></div>
+            <div><Img id="studyHall" ratio="3x2" /><p className="cap">기숙생 전용 Study Hall</p></div>
+          </div>
           <div className="split" style={{marginTop: 'clamp(56px,6vw,96px)'}}>
             <div>
               <span className="eyebrow">Why Boarding</span>
