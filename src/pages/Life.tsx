@@ -9,7 +9,7 @@ export function BoardingPage() {
       <PageHead crumb="기숙사" eyebrow="Boarding"
         title={<>혼자 보내는 부모의 질문에,<br />규정으로 답합니다</>}
         lede="청도대원 기숙사(대원학사)는 G6–G8 선택기숙, G9–G12 의무기숙입니다. 4인 1실, 남·여 층 분리, 남녀 사감이 생활을 관리하고 공부는 기숙사와 분리된 자습실에서 합니다." />
-      <Toc items={[['who', '핵심 5가지'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '외출·외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
+      <Toc items={[['who', '핵심 5가지'], ['management', '학생관리 시스템'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '외출·외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
 
       <section className="section white" id="who">
         <div className="wrap">
@@ -29,9 +29,22 @@ export function BoardingPage() {
         </div>
       </section>
 
+      <section className="section sand" id="management">
+        <div className="wrap">
+          <SecHead eyebrow="Student Management" title="담임·사감·교사가 나눠 보는 게 아니라, 한 학생의 하루를 연결해서 봅니다" lede="QDIS의 학생관리는 기숙사 통제만을 뜻하지 않습니다. 학업·생활·건강·학부모 소통을 서로 연결해 학생이 학교 안에서 어떻게 지내는지 확인하는 구조입니다." />
+          <div className="pillars">
+            <div className="pillar"><span className="kicker">Homeroom</span><h3>담임</h3><p>학교생활과 학업 상황을 확인하고 학부모와 소통합니다. 필요한 경우 사감·교과 교사와 학생 상황을 공유합니다.</p></div>
+            <div className="pillar"><span className="kicker">Dormitory</span><h3>남녀 사감</h3><p>기숙사 생활규칙과 귀소, 야간 건강상태를 관리하고 응급상황에는 병원 동행과 보호자 연락을 맡습니다.</p></div>
+            <div className="pillar"><span className="kicker">Study Hall</span><h3>감독 교사</h3><p>야간 자율학습을 별도 자습실에서 운영하며 학생별 학습 상황과 참여를 확인합니다.</p></div>
+            <div className="pillar"><span className="kicker">Parent View</span><h3>Thinkwave · WeChat</h3><p>학부모는 Thinkwave에서 과제·출결·성적을 확인하고, 담임과 기숙사 WeChat을 통해 생활 상황을 공유받습니다.</p></div>
+          </div>
+          <Source>2025–26 학교생활안내 ‘기숙사 생활 안내’·‘생활 지도’·학부모 소통 안내</Source>
+        </div>
+      </section>
+
       <section className="section" id="care">
         <div className="wrap">
-          <SecHead eyebrow="Daily Rules" title="그 밖의 생활 규정" lede="학교생활안내와 공식 FAQ 기준입니다." />
+          <SecHead eyebrow="Daily Rules" title="생활관리 세부 규정" lede="하루 일과와 급식은 각각 전용 페이지로 분리하고, 여기에는 기숙생활 관리에 필요한 규정만 남겼습니다." />
           <div className="other-care">
             {OTHER_CARE.map(([k, d]) => <div key={k}><b>{k}</b><p>{d}</p></div>)}
           </div>
