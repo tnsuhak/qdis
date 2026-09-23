@@ -9,7 +9,7 @@ export function ResultsPage() {
   const overseas = cum.total - kr;
   return (
     <>
-      <PageHead crumb="대학 합격 결과" eyebrow="University Outcomes"
+      <PageHead crumb="대학 합격 결과" eyebrow="University Outcomes" photoId="seminar"
         title={<>서울대·의대에서 HKU·NUS·UC까지,<br />학교가 공개한 합격 기록</>}
         lede="학교 공식 진학정보 게시판 기준. 숫자는 학생 수가 아니라 합격 건수(Offers)입니다." />
       <Toc items={[['summary', '한눈에 보기'], ['by-year', '연도별 결과'], ['latest', '최신 합격 소식'], ['search', '대학 검색'], ['alumni', '졸업생 대학원'], ['method', '집계 기준']]} />
