@@ -79,6 +79,7 @@ export function Footer() {
               <h4>학교</h4>
               <ul>
                 <li><a href="/about">학교소개</a></li>
+                <li><a href="/about#facilities">학교시설·캠퍼스 사진</a></li>
                 <li><a href="/academics">교육과정</a></li>
                 <li><a href="/sat-ap">SAT·AP 시험센터</a></li>
               </ul>
