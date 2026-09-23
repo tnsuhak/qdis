@@ -30,7 +30,7 @@ export default function Home() {
           </div>
           <figure className="hero2-photo">
             <span className="frame"><img src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} fetchPriority="high" /></span>
-            <figcaption>수업 중인 청도대원 학생들</figcaption>
+            <figcaption>Pi Day 2026 · 청도대원 학생 활동</figcaption>
           </figure>
         </div>
         <div className="wrap">
