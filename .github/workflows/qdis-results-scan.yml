@@ -16,13 +16,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Scan official QDIS university results board
+      - name: Scan official QDIS university results board and latest details
         run: |
           node --input-type=module <<'NODE'
-          import {fetchText, parseBoardList, QDIS} from './lib/monitoring/qdis-parse.mjs';
+          import {fetchText, parseBoardList, QDIS, text} from './lib/monitoring/qdis-parse.mjs';
           const html = await fetchText(`${QDIS}/board/index.html?id=board3`, {timeoutMs: 30000});
-          const posts = parseBoardList(html, 'board3').slice(0, 100);
+          const posts = parseBoardList(html, 'board3').slice(0, 30);
           console.log('BOARD3_JSON_START');
           console.log(JSON.stringify(posts, null, 2));
           console.log('BOARD3_JSON_END');
+          for (const p of posts.filter(p => p.no >= 239)) {
+            const detailHtml = await fetchText(p.url, {timeoutMs: 30000});
+            const plain = text(detailHtml).replace(/\n{3,}/g, '\n\n');
+            console.log(`DETAIL_START_${p.no}`);
+            console.log(plain.slice(0, 6000));
+            console.log(`DETAIL_END_${p.no}`);
+          }
           NODE
