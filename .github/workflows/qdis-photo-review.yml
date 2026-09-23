@@ -41,8 +41,10 @@ jobs:
             name="$(basename "$src")"
             if command -v magick >/dev/null 2>&1; then
               magick "$src" -auto-orient -resize '1600x1600>' -strip -quality 84 "public/images/qdis/review-opt/$name"
-            else
+            elif command -v convert >/dev/null 2>&1; then
               convert "$src" -auto-orient -resize '1600x1600>' -strip -quality 84 "public/images/qdis/review-opt/$name"
+            else
+              ffmpeg -loglevel error -y -i "$src" -vf "scale='if(gt(iw,ih),min(1600,iw),-2)':'if(gt(iw,ih),-2,min(1600,ih))'" -q:v 3 "public/images/qdis/review-opt/$name"
             fi
           done
           file public/images/qdis/review-opt/*
