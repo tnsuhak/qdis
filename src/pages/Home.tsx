@@ -57,21 +57,21 @@ export default function Home() {
           <p className="source trio-note">공식 연도별 종합자료 공개 학년도 합계 · 중복 합격 포함 · <a href="/university-results#method">자료 기준</a></p>
 
           <div className="latest-block">
-            <span className="eyebrow">Latest Offers</span>
-            <ul className="headline-offers" aria-label="최근 합격 대학">
+            <span className="eyebrow">Selected Outcomes</span>
+            <ul className="headline-offers" aria-label="주요 대학 합격 실적">
               {HEADLINE.map(h => <li key={h}>{h}<span aria-hidden="true">/</span></li>)}
             </ul>
-            <LatestOffers limit={8} />
+            <div style={{marginTop: 34}}><span className="eyebrow">Latest Offers</span><LatestOffers limit={8} /></div>
             <p className="source">학교 진학정보 게시판 개별 합격 소식 · 연도별 합계와 별도</p>
           </div>
         </div>
       </section>
 
-      {/* 03 DAEWON HERITAGE */}
+      {/* 03 DAEWON HERITAGE · WHY QDIS */}
       <section className="section heritage-home-section" aria-labelledby="heritage-home-title">
         <div className="wrap">
-          <SecHead no="02" eyebrow="Daewon Heritage" id="heritage-home-title"
-            title={<>대원에서 시작된 교육 DNA,<br />지금은 QDIS의 시스템으로</>}
+          <SecHead no="02" eyebrow="Daewon Heritage · Why QDIS" id="heritage-home-title"
+            title={<>대원에서 시작된 교육 DNA,<br />학생관리와 진학 시스템으로 이어집니다</>}
             action={<TLink href="/about#heritage">설립 배경 자세히</TLink>} />
 
           <div className="heritage-bridge">
@@ -88,21 +88,30 @@ export default function Home() {
             <blockquote>“스승을 부모처럼,<br />제자를 자식처럼,<br />동문을 형제처럼.”</blockquote>
           </div>
 
-          <div className="heritage-system">
-            <div>
+          <div className="pillars" style={{marginTop: 'clamp(46px,5vw,76px)'}}>
+            <div className="pillar">
               <span className="kicker">Student Care</span>
               <h3>생활까지 보는 학생관리</h3>
               <p>G6–G8 선택기숙, G9–G12 의무기숙. 사감·야간 Study Hall·휴대전화·외출 관리까지 학교생활을 하나의 흐름으로 운영합니다.</p>
+              <TLink href="/boarding">기숙사·학생관리</TLink>
             </div>
-            <div>
-              <span className="kicker">Academic Management</span>
-              <h3>학생 수준에 맞춘 학업관리</h3>
-              <p>영어·중국어·수학 수준별 수업과 방과후 심화학습을 운영하고, 학부모는 Thinkwave를 통해 과제·출결·성적을 확인할 수 있습니다.</p>
+            <div className="pillar">
+              <span className="kicker">Academics</span>
+              <h3>SAT·AP가 정규 수업 안에</h3>
+              <p>주요 과목을 영어로 배우고, 수준별 수업과 방과후 심화학습으로 보강하며 교내 시험센터에서 SAT·AP를 응시합니다.</p>
+              <TLink href="/sat-ap">SAT·AP 시험센터</TLink>
             </div>
-            <div>
+            <div className="pillar">
+              <span className="kicker">University Outcomes</span>
+              <h3>결과로 확인되는 진학</h3>
+              <p>한국 대학과 미국·홍콩·싱가포르 등 해외 대학까지, 학교가 공개한 연도별 합격 결과와 최신 개별 합격 소식을 확인할 수 있습니다.</p>
+              <TLink href="/university-results">대학 합격 결과</TLink>
+            </div>
+            <div className="pillar">
               <span className="kicker">College Counseling</span>
-              <h3>진학까지 이어지는 관리</h3>
-              <p>한국대·해외대 진학지도를 구분해 운영하고, SAT·AP 준비와 교내 Test Center, 대학별 지원전략까지 연결합니다.</p>
+              <h3>한국대와 해외대를 함께</h3>
+              <p>한국대·해외대 진학지도를 구분해 운영하고, SAT·AP·TOEFL과 대학별 지원전략을 학년별로 연결합니다.</p>
+              <TLink href="/college-counseling">진학지도·특례</TLink>
             </div>
           </div>
 
@@ -110,45 +119,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 04 WHY QDIS */}
-      <section className="section" aria-labelledby="why-title">
-        <div className="wrap">
-          <SecHead no="03" eyebrow="Why QDIS" id="why-title" title={<>대학진학을 중심에 두고<br />학교 전체가 움직입니다</>} />
-          <div className="pillars">
-            <div className="pillar">
-              <span className="kicker">University Outcomes</span>
-              <h3>결과로 확인되는 진학</h3>
-              <p>2018년 첫 졸업생 이후 서울대·연세대·고려대와 의과대학, HKU·HKUST·NUS, UC 계열과 NYU까지.</p>
-              <TLink href="/university-results">합격 결과</TLink>
-            </div>
-            <div className="pillar">
-              <span className="kicker">Academics</span>
-              <h3>SAT·AP가 정규 수업 안에</h3>
-              <p>주요 과목을 영어로 배우고, 방과후 AP 강좌로 보강하고, 교내 College Board 시험센터에서 응시합니다.</p>
-              <TLink href="/sat-ap">SAT·AP</TLink>
-            </div>
-            <div className="pillar">
-              <span className="kicker">Boarding &amp; Care</span>
-              <h3>생활과 공부가 한 동선에</h3>
-              <p>4인 1실 기숙사, 남녀 사감, 휴대전화 시간 관리, 감독 교사가 있는 야간 Study Hall.</p>
-              <TLink href="/boarding">기숙사</TLink>
-            </div>
-            <div className="pillar">
-              <span className="kicker">College Counseling</span>
-              <h3>한국대와 해외대를 함께</h3>
-              <p>한국대·해외대 담당 교사의 1:1 지도. SAT·AP·TOEFL 성적은 재외국민 특례와 해외고 전형에도 쓰입니다.</p>
-              <TLink href="/college-counseling">진학지도</TLink>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 05 ACADEMICS */}
+      {/* 04 ACADEMICS */}
       <section className="section white" aria-labelledby="acad-title">
         <div className="wrap">
           <div className="split">
             <div>
-              <span className="sec-no">04</span>
+              <span className="sec-no">03</span>
               <span className="eyebrow">Academics</span>
               <h2 className="h2" id="acad-title">준비도 학교에서,<br />시험도 학교에서</h2>
               <p className="lede" style={{marginTop: 18}}>SAT·AP 준비가 정규 수업과 방과후 수업 안에 들어 있습니다. 2018년부터 SAT, 2019년부터 AP 공식 시험센터입니다.</p>
@@ -175,12 +151,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 06 A DAY AT QDIS */}
+      {/* 05 A DAY AT QDIS */}
       <section className="section dark" aria-labelledby="day-title">
         <div className="wrap">
           <div className="split">
             <div className="sticky-col">
-              <span className="sec-no">05</span>
+              <span className="sec-no">04</span>
               <span className="eyebrow">A Day at QDIS</span>
               <h2 className="h2" id="day-title">수업 → 방과후 → 저녁<br />→ 자율학습 → 기숙사</h2>
               <p className="lede" style={{marginTop: 18}}>아침 7시 기상부터 밤 11시 Study Hall까지, 고등학생의 평일입니다.</p>
@@ -194,10 +170,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 07 BOARDING & LIFE */}
+      {/* 06 BOARDING & LIFE */}
       <section className="section" aria-labelledby="board-title">
         <div className="wrap">
-          <SecHead no="06" eyebrow="Boarding &amp; Student Life" id="board-title"
+          <SecHead no="05" eyebrow="Boarding &amp; Student Life" id="board-title"
             title={<>아이 혼자 보내도 괜찮을까</>}
             lede="G6–G8 선택기숙 · G9–G12 의무기숙. 가장 많이 묻는 다섯 가지입니다."
             action={<TLink href="/boarding">기숙사 규정 전체</TLink>} />
@@ -228,10 +204,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 08 TUITION */}
+      {/* 07 TUITION */}
       <section className="section white" aria-labelledby="fee-title">
         <div className="wrap">
-          <SecHead no="07" eyebrow="Tuition &amp; Scholarships" id="fee-title"
+          <SecHead no="06" eyebrow="Tuition &amp; Scholarships" id="fee-title"
             title={<>1년 비용, 총액부터</>}
             lede="2026–27 모집요강 기준 신입생 첫해 기본 비용. 장학금은 수업료의 최대 50%."
             action={<TLink href="/tuition">우리 아이 학비 계산</TLink>} />
@@ -240,10 +216,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 09 ADMISSIONS */}
+      {/* 08 ADMISSIONS */}
       <section className="section" aria-labelledby="adm-title">
         <div className="wrap">
-          <SecHead no="08" eyebrow="Admissions" id="adm-title" title="입학은 수시 모집, 학년별 선착순" action={<TLink href="/admissions">입학 절차</TLink>} />
+          <SecHead no="07" eyebrow="Admissions" id="adm-title" title="입학은 수시 모집, 학년별 선착순" action={<TLink href="/admissions">입학 절차</TLink>} />
           <div className="stat-row">
             <div><b>수시 모집</b><span>학년별 정원이 차면 마감</span></div>
             <div><b>서류심사</b><span>초등 G1–G5 전형</span></div>
@@ -253,10 +229,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10 LATEST FROM QDIS */}
+      {/* 09 LATEST FROM QDIS */}
       <section className="section white" aria-labelledby="news-title">
         <div className="wrap">
-          <SecHead no="09" eyebrow="Latest from QDIS" id="news-title" title="학교 소식" action={<TLink href="/news">소식 전체</TLink>} />
+          <SecHead no="08" eyebrow="Latest from QDIS" id="news-title" title="학교 소식" action={<TLink href="/news">소식 전체</TLink>} />
           <NewsList limit={3} />
         </div>
       </section>
