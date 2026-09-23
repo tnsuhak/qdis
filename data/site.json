@@ -17,12 +17,14 @@
     "role": "청도대원학교 한국 입학상담 지원",
     "phone": "02-3288-1733",
     "phone_href": "tel:0232881733",
-    "kakao_channel": "http://pf.kakao.com/_xfXsxjE",
-    "kakao_openchat": "https://open.kakao.com/o/slehLvKi",
+    "kakao_channel": "https://open.kakao.com/o/slehLvKi",
+    "kakao_openchat": "https://open.kakao.com/o/gjEoJxwf",
     "website": "https://www.tnsuhak.com",
     "cafe": "https://cafe.naver.com/tnsuhak.cafe",
     "address": "서울시 강남구 테헤란로 5길 7 KG타워 B1",
-    "privacy_url": "https://www.tnsuhak.com/privacy-policy"
+    "privacy_url": "https://www.tnsuhak.com/privacy-policy",
+    "kakao_openchat_members": "약 400여 명 참가중",
+    "cafe_members": "회원 44,000명"
   },
   "school": {
     "name_ko": "청도대원학교 국제부",
