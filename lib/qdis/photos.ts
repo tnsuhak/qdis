@@ -37,7 +37,7 @@ export const PHOTOS: Record<string, Photo> = {
 /** 역할별 배정 (공식 갤러리 사진 확보 시 여기만 바꾸면 전체 반영) */
 export const SLOTS: Record<string, string> = {
   hero: 'piDay2026',
-  lifeMain: 'sportsDayGroup2026',
+  lifeMain: 'sportsDayBasketball2026',
   lifeA: 'seminar',
   lifeB: 'englishPlay2026',
   lifeC: 'wscAward2026',
