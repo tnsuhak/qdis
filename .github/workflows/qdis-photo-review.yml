@@ -1,4 +1,4 @@
-name: QDIS photo candidate download (temporary)
+name: QDIS photo review finalize (temporary)
 
 on:
   pull_request:
@@ -9,61 +9,29 @@ permissions:
   contents: write
 
 jobs:
-  download:
+  finalize:
     if: github.event_name != 'pull_request' || github.head_ref == 'preview/qdis-initial-site'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: preview/qdis-initial-site
-      - name: Download selected official QDIS gallery candidates
+      - name: Keep selected official photos and remove review files
         run: |
           set -euo pipefail
-          mkdir -p public/images/qdis/review
-          base="https://qdis.org/rankup_module/rankup_board/attach/news"
-          curl -fsSL "$base/17836476759183.jpg" -o public/images/qdis/review/299-1.jpg
-          curl -fsSL "$base/17836476911187.jpg" -o public/images/qdis/review/299-2.jpg
-          curl -fsSL "$base/17804486990121.jpg" -o public/images/qdis/review/297-1.jpg
-          curl -fsSL "$base/17804519171000.jpg" -o public/images/qdis/review/297-2.jpg
-          curl -fsSL "$base/17796858144338.jpg" -o public/images/qdis/review/295-1.jpg
-          curl -fsSL "$base/17796858207912.jpg" -o public/images/qdis/review/295-2.jpg
-          curl -fsSL "$base/17748554617346.jpg" -o public/images/qdis/review/292-1.jpg
-          curl -fsSL "$base/17748554738422.jpg" -o public/images/qdis/review/292-2.jpg
-          curl -fsSL "$base/17748544144839.jpg" -o public/images/qdis/review/291-1.jpg
-          curl -fsSL "$base/17748544275640.jpg" -o public/images/qdis/review/291-2.jpg
-          curl -fsSL "$base/17805474659546.jpg" -o public/images/qdis/review/298-1.jpg
-          curl -fsSL "$base/16533067164148.jpg" -o public/images/qdis/review/173-1.jpg
-          curl -fsSL "$base/16529620396956.jpg" -o public/images/qdis/review/174-1.jpg
-          curl -fsSL "$base/16529622919181.jpg" -o public/images/qdis/review/175-1.jpg
-          file public/images/qdis/review/*
-      - name: Create smaller review copies
+          mkdir -p public/images/qdis/gallery
+          cp public/images/qdis/review-opt/291-1.jpg public/images/qdis/gallery/pi-day-2026.jpg
+          cp public/images/qdis/review-opt/297-1.jpg public/images/qdis/gallery/sports-day-2026-group.jpg
+          cp public/images/qdis/review-opt/297-2.jpg public/images/qdis/gallery/sports-day-2026-basketball.jpg
+          cp public/images/qdis/review-opt/295-1.jpg public/images/qdis/gallery/wsc-award-2026.jpg
+          cp public/images/qdis/review-opt/298-1.jpg public/images/qdis/gallery/english-play-2026.jpg
+          rm -rf public/images/qdis/review public/images/qdis/review-opt
+          rm -f .github/workflows/qdis-photo-review.yml
+      - name: Commit selected photo assets
         run: |
-          set -euo pipefail
-          npm install --no-save --package-lock=false sharp
-          node --input-type=module <<'NODE'
-          import fs from 'node:fs';
-          import path from 'node:path';
-          import sharp from 'sharp';
-          const srcDir='public/images/qdis/review';
-          const outDir='public/images/qdis/review-opt';
-          fs.mkdirSync(outDir,{recursive:true});
-          for (const name of fs.readdirSync(srcDir).filter(n=>n.endsWith('.jpg'))) {
-            await sharp(path.join(srcDir,name))
-              .rotate()
-              .resize({width:1600,height:1600,fit:'inside',withoutEnlargement:true})
-              .jpeg({quality:84,mozjpeg:true})
-              .toFile(path.join(outDir,name));
-          }
-          NODE
-          file public/images/qdis/review-opt/*
-      - name: Commit review candidates
-        run: |
-          if git diff --quiet -- public/images/qdis/review public/images/qdis/review-opt && [ -z "$(git status --porcelain public/images/qdis/review public/images/qdis/review-opt)" ]; then
-            exit 0
-          fi
           git config user.name "qdis-photo-qa[bot]"
           git config user.email "qdis-photo-qa@users.noreply.github.com"
-          git add public/images/qdis/review public/images/qdis/review-opt
-          git commit -m "chore: add temporary QDIS photo review candidates"
+          git add -A
+          git commit -m "Add selected high-resolution QDIS gallery photos"
           git pull --rebase origin preview/qdis-initial-site
           git push origin HEAD:preview/qdis-initial-site
