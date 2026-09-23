@@ -83,6 +83,8 @@ function head(r) {
 }
 
 const pages = [...ssr.ROUTES, ssr.NOT_FOUND];
+const renderedPages = new Map();
+const pageIds = new Map();
 const tempPhotos = Object.values(ssr.PHOTOS).filter(p => p.temporary);
 const tempUse = new Map();
 for (const r of pages) {
@@ -96,7 +98,34 @@ for (const r of pages) {
   const h1 = (html.match(/<h1[\s>]/g) || []).length;
   console.log(`prerendered ${r.path.padEnd(22)} h1=${h1} ${Math.round(html.length / 1024)}KB`);
   if (h1 !== 1) throw new Error(`${r.path}: expected exactly one <h1>, found ${h1}`);
+
+  const effectivePath = r.key === '404' ? '/404' : r.path;
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]);
+  const duplicateIds = ids.filter((id, i) => ids.indexOf(id) !== i);
+  if (duplicateIds.length) throw new Error(`${effectivePath}: duplicate id(s): ${[...new Set(duplicateIds)].join(', ')}`);
+  renderedPages.set(effectivePath, html);
+  pageIds.set(effectivePath, new Set(ids));
+
   for (const p of tempPhotos) if (html.includes(`src="${p.src}"`)) tempUse.set(p.id, [...(tempUse.get(p.id) ?? []), r.path]);
+}
+
+// Build-time internal-link QA. Fail Preview before a broken menu/CTA ships.
+const knownRoutes = new Set([...ssr.ROUTES.map(r => r.path), '/404']);
+const assetPrefixes = ['/documents/', '/images/', '/og/', '/assets/'];
+for (const [fromPath, html] of renderedPages) {
+  const hrefs = [...html.matchAll(/href="(\/[^"]*)"/g)].map(m => m[1].replace(/&amp;/g, '&'));
+  for (const href of hrefs) {
+    if (href.startsWith('//')) continue;
+    const u = new URL(href, 'https://qdis.local');
+    const targetPath = u.pathname.replace(/\/+$/, '') || '/';
+    if (assetPrefixes.some(prefix => targetPath.startsWith(prefix)) || /\.[a-z0-9]{2,5}$/i.test(targetPath)) continue;
+    if (!knownRoutes.has(targetPath)) throw new Error(`${fromPath}: broken internal route ${href}`);
+    if (u.hash) {
+      const id = decodeURIComponent(u.hash.slice(1));
+      const ids = pageIds.get(targetPath);
+      if (ids && !ids.has(id)) throw new Error(`${fromPath}: broken internal anchor ${href}`);
+    }
+  }
 }
 
 const today = new Date().toISOString().slice(0, 10);
