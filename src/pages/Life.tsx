@@ -9,7 +9,7 @@ export function BoardingPage() {
       <PageHead crumb="기숙사" eyebrow="Boarding"
         title={<>혼자 보내는 부모의 질문에,<br />규정으로 답합니다</>}
         lede="청도대원 기숙사(대원학사)는 G6–G8 선택기숙, G9–G12 의무기숙입니다. 4인 1실, 남·여 층 분리, 남녀 사감이 생활을 관리하고 공부는 기숙사와 분리된 자습실에서 합니다." />
-      <Toc items={[['who', '핵심 5가지'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '주말·외출외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
+      <Toc items={[['who', '핵심 5가지'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '외출·외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
 
       <section className="section white" id="who">
         <div className="wrap">
@@ -61,9 +61,9 @@ export function BoardingPage() {
 
       <section className="section white" id="weekend">
         <div className="wrap">
-          <SecHead eyebrow="Weekends &amp; Leave" title="주말과 외출·외박" lede="중·고등은 주 6일제입니다. 토요일 오전까지 학교 프로그램이 있고, 이후 보호자 동의가 있으면 외출·외박할 수 있습니다." />
-          <Weekend />
-          <ul className="ruled" style={{marginTop: 56}}>
+          <SecHead eyebrow="Leave Rules" title="외출·외박은 보호자 동의와 귀소 시간까지 관리합니다" lede="주말 시간표 자체는 하루 일과 페이지에서, 여기서는 기숙생 외출·외박 규정과 귀소 기준만 정리합니다." />
+          <div style={{marginBottom: 34}}><TLink href="/daily-life#weekend">토·일 실제 일과 보기</TLink></div>
+          <ul className="ruled">
             <li><b>신청</b><p>보호자(또는 법정대리인)가 서명한 외출·외박 동의서를 매주 금요일 17:00까지(공휴일은 2일 전) 기숙사 학부모 WeChat 방에 제출</p></li>
             <li><b>귀소</b><p>외출은 당일 17:00, 외박은 지정된 방문처에서 머문 뒤 귀소일 17:00까지. 공휴일도 같습니다.</p></li>
             <li><b>방학</b><p>여름·겨울방학과 노동절·국경절 단기방학 입·퇴사일에 학교–공항 셔틀버스 운행. 학기 중 입·출국은 학교장 사전 허가 필요</p></li>
