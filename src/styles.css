@@ -559,13 +559,38 @@ em.mark { font-style: normal; color: var(--brass); }
 .consult-form .agree input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--ink); }
 .consult-form .btn { width: 100%; margin-top: 8px; }
 .consult-form .ok { background: #eef5f0; border-left: 3px solid var(--ok); padding: 16px 18px; }
-.channels { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.2); }
-.channels li { border-bottom: 1px solid rgba(255,255,255,.12); }
-.channels a { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; text-decoration: none; }
-.channels b { font-size: 17px; }
-.channels small { display: block; color: #a9b3c2; font-size: 13.5px; }
-.section:not(.dark):not(.navy) .channels, .section:not(.dark):not(.navy) .channels li { border-color: var(--line); }
-.section:not(.dark):not(.navy) .channels small { color: var(--muted); }
+.contact-cards { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 34px; }
+.contact-card { min-height: 132px; display: grid; grid-template-columns: 46px minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 22px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.055); text-decoration: none; transition: transform .18s ease, border-color .18s ease, background .18s ease; }
+.contact-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.34); background: rgba(255,255,255,.09); }
+.contact-card.primary { grid-column: 1 / -1; min-height: 150px; }
+.contact-card.kakao { background: #fee500; border-color: #fee500; color: #191919; }
+.contact-card.kakao:hover { background: #f8df00; border-color: #f8df00; }
+.contact-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.11); }
+.contact-icon svg { width: 24px; height: 24px; fill: currentColor; }
+.contact-card.kakao .contact-icon { background: rgba(25,25,25,.09); }
+.contact-icon.text-icon { font-weight: 900; font-size: 22px; font-family: Arial, sans-serif; }
+.contact-copy { min-width: 0; }
+.contact-copy small { display: block; margin-bottom: 5px; color: #9ca7b6; font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.contact-copy b { display: block; color: #fff; font-family: var(--serif); font-size: clamp(20px,1.9vw,27px); line-height: 1.22; letter-spacing: -.02em; }
+.contact-copy span { display: block; margin-top: 7px; color: #aeb8c6; font-size: 13.5px; line-height: 1.55; }
+.contact-card.kakao .contact-copy small, .contact-card.kakao .contact-copy span { color: rgba(25,25,25,.68); }
+.contact-card.kakao .contact-copy b { color: #191919; }
+.contact-arrow { align-self: start; font-size: 22px; line-height: 1; opacity: .75; }
+.contact-card.cafe .contact-icon { background: #03c75a; color: #fff; }
+.section:not(.dark):not(.navy) .contact-card { border-color: var(--line); background: var(--white); color: var(--ink); }
+.section:not(.dark):not(.navy) .contact-card:hover { border-color: #aeb5be; background: #f7f8f9; }
+.section:not(.dark):not(.navy) .contact-card.kakao { background: #fee500; border-color: #fee500; }
+.section:not(.dark):not(.navy) .contact-copy b { color: var(--ink); }
+.section:not(.dark):not(.navy) .contact-copy small, .section:not(.dark):not(.navy) .contact-copy span { color: var(--muted); }
+.section:not(.dark):not(.navy) .contact-card.kakao .contact-copy small, .section:not(.dark):not(.navy) .contact-card.kakao .contact-copy span { color: rgba(25,25,25,.68); }
+@media (max-width: 720px) {
+  .contact-cards { grid-template-columns: 1fr; gap: 10px; }
+  .contact-card.primary { grid-column: auto; }
+  .contact-card { min-height: 112px; padding: 18px; grid-template-columns: 42px minmax(0,1fr) auto; }
+  .contact-card.primary { min-height: 124px; }
+  .contact-icon { width: 42px; height: 42px; }
+  .contact-copy b { font-size: 21px; }
+}
 
 /* ---------- Footer ---------- */
 .site-footer { background: #0a1422; color: #a9b3c2; padding: 72px 0 40px; font-size: 14.5px; }
@@ -933,6 +958,5 @@ em.mark { font-style: normal; color: var(--brass); }
   .hero2-grid { gap: 30px; }
   .big-trio > div { padding-top: 20px; padding-bottom: 20px; }
   .heritage-bridge { gap: 24px; }
-  .channels a { padding: 16px 0; }
   .consult-form { padding: 22px 18px; }
 }
