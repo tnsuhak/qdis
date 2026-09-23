@@ -87,7 +87,7 @@ export function ConsultForm() {
           </select>
         </div>
         <div className="field full"><label htmlFor="c-msg">궁금한 점</label><textarea id="c-msg" name="message" placeholder="예: 3년 특례 자격 여부, 영어 준비 수준, 기숙사 생활, 학교 방문 투어 등" /></div>
-        <label className="agree full"><input type="checkbox" name="privacy" value="동의" required /> <span>상담을 위한 개인정보(성함·연락처·이메일·상담 내용) 수집·이용에 동의합니다. 수집한 정보는 입학상담 외의 목적으로 사용하지 않습니다.</span></label>
+        <label className="agree full"><input type="checkbox" name="privacy" value="동의" required /> <span>상담을 위한 개인정보(성함·연락처·이메일·상담 내용) 수집·이용에 동의합니다. 수집한 정보는 입학상담 외의 목적으로 사용하지 않습니다. <a href={site.tns.privacy_url} target="_blank" rel="noopener noreferrer">개인정보처리방침</a></span></label>
         <div className="full">
           <button className="btn arrow" type="submit" disabled={status === 'sending'}>{status === 'sending' ? '보내는 중…' : '상담 신청하기'}</button>
           {status === 'error' && <p className="small" style={{color: 'var(--red)', marginTop: 10}}>전송에 실패했습니다. 잠시 후 다시 시도하시거나 카카오톡 채널로 문의해 주세요.</p>}
