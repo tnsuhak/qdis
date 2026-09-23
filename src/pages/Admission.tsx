@@ -7,6 +7,27 @@ import {FEES} from '@/lib/qdis/fees';
 import {fxLabel} from '@/lib/qdis/format';
 import faq from '@/data/faq/faq.json';
 
+const FAQ_GUIDES: Record<string, {href: string; label: string}> = {
+  admissions: {href: '/admissions', label: '입학조건·절차 자세히'},
+  academics: {href: '/academics', label: '교육과정 자세히'},
+  boarding: {href: '/boarding', label: '기숙사·학생관리 자세히'},
+  college: {href: '/college-counseling', label: '진학지도·특례 자세히'},
+  tuition: {href: '/tuition', label: '학비·비용 자세히'},
+  life: {href: '/daily-life', label: '하루 일과·학교생활 자세히'},
+  transfer: {href: '/admissions#transfer', label: '편입·학년배정 자세히'},
+};
+
+const FAQ_ITEM_GUIDES: Record<string, {href: string; label: string}> = {
+  meals: {href: '/meals', label: '이번 주 실제 급식 보기'},
+  scholarships: {href: '/scholarships', label: '장학금 기준 자세히'},
+  siblings: {href: '/scholarships', label: '형제·다자녀 장학금 보기'},
+  'study-hall': {href: '/boarding', label: '야간 자율학습·기숙사 관리 보기'},
+  phone: {href: '/boarding#phone', label: '휴대전화 생활규정 보기'},
+  tukrye: {href: '/college-counseling', label: '특례·해외고 진학지도 보기'},
+  'g7-entry': {href: '/admissions#transfer', label: '편입·학년배정 안내 보기'},
+  homeschool: {href: '/admissions#transfer', label: '편입·학년배정 안내 보기'},
+};
+
 export function TuitionPage() {
   return (
     <>
@@ -261,12 +282,18 @@ export function FaqPage() {
             {items.map(i => (
               <details className="faq-item" key={i.id} id={i.id}>
                 <summary><span className="cat">{catLabel[i.cat]}</span><span className="q">{i.q}</span><span className="pm" aria-hidden="true">+</span></summary>
-                <div className="a">{i.a.map((p, k) => <p key={k}>{p}</p>)}</div>
+                <div className="a">
+                  {i.a.map((p, k) => <p key={k}>{p}</p>)}
+                  {(() => {
+                    const guide = FAQ_ITEM_GUIDES[i.id] ?? FAQ_GUIDES[i.cat];
+                    return guide ? <div className="faq-guide"><TLink href={guide.href}>{guide.label}</TLink></div> : null;
+                  })()}
+                </div>
               </details>
             ))}
             {items.length === 0 && <div className="empty"><p>검색 결과가 없습니다. 다른 단어로 찾아보거나 상담으로 문의해 주세요.</p></div>}
           </div>
-          <Source href={faq.source.url}>{faq.source.title} · 검토일 2026.09.21</Source>
+          <Source href={faq.source.url}>{faq.source.title} · 검토일 2026.09.23</Source>
         </div>
       </section>
       <CtaBand title="여기에 없는 질문이 있다면" text="카카오톡 채널이나 상담 신청으로 편하게 물어보세요." />
