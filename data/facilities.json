@@ -1,6 +1,167 @@
 {
   "schema": "qdis.facilities/v1",
   "source_page": "https://qdis.org/gallery/index.html?no=7",
-  "synced_at": null,
-  "photos": []
+  "synced_at": "2026-09-23T03:52:08.080Z",
+  "photos": [
+    {
+      "id": "facility-01",
+      "src": "/images/qdis/facilities/facility-01.jpg",
+      "width": 1200,
+      "height": 800,
+      "alt": "청도대원학교 학교 시설 사진 1",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.15897621487249.jpg"
+    },
+    {
+      "id": "facility-02",
+      "src": "/images/qdis/facilities/facility-02.jpg",
+      "width": 1180,
+      "height": 732,
+      "alt": "청도대원학교 학교 시설 사진 2",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275922393489.jpg"
+    },
+    {
+      "id": "facility-03",
+      "src": "/images/qdis/facilities/facility-03.jpg",
+      "width": 759,
+      "height": 534,
+      "alt": "청도대원학교 학교 시설 사진 3",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275922393490.jpg"
+    },
+    {
+      "id": "facility-04",
+      "src": "/images/qdis/facilities/facility-04.jpg",
+      "width": 3150,
+      "height": 1653,
+      "alt": "청도대원학교 학교 시설 사진 4",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374298.jpg"
+    },
+    {
+      "id": "facility-05",
+      "src": "/images/qdis/facilities/facility-05.jpg",
+      "width": 2480,
+      "height": 1470,
+      "alt": "청도대원학교 학교 시설 사진 5",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374299.jpg"
+    },
+    {
+      "id": "facility-06",
+      "src": "/images/qdis/facilities/facility-06.jpg",
+      "width": 2918,
+      "height": 1692,
+      "alt": "청도대원학교 학교 시설 사진 6",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275926349040.jpg"
+    },
+    {
+      "id": "facility-07",
+      "src": "/images/qdis/facilities/facility-07.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 7",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296439439216.jpg"
+    },
+    {
+      "id": "facility-08",
+      "src": "/images/qdis/facilities/facility-08.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 8",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679425.jpg"
+    },
+    {
+      "id": "facility-09",
+      "src": "/images/qdis/facilities/facility-09.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 9",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679426.jpg"
+    },
+    {
+      "id": "facility-10",
+      "src": "/images/qdis/facilities/facility-10.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 10",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679427.jpg"
+    },
+    {
+      "id": "facility-11",
+      "src": "/images/qdis/facilities/facility-11.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 11",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679428.jpg"
+    },
+    {
+      "id": "facility-12",
+      "src": "/images/qdis/facilities/facility-12.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 12",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679429.jpg"
+    },
+    {
+      "id": "facility-13",
+      "src": "/images/qdis/facilities/facility-13.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 13",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679430.jpg"
+    },
+    {
+      "id": "facility-14",
+      "src": "/images/qdis/facilities/facility-14.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 14",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679431.jpg"
+    },
+    {
+      "id": "facility-15",
+      "src": "/images/qdis/facilities/facility-15.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 15",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679432.jpg"
+    },
+    {
+      "id": "facility-16",
+      "src": "/images/qdis/facilities/facility-16.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 16",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679433.jpg"
+    },
+    {
+      "id": "facility-17",
+      "src": "/images/qdis/facilities/facility-17.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 17",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679434.jpg"
+    },
+    {
+      "id": "facility-18",
+      "src": "/images/qdis/facilities/facility-18.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 18",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637594.jpg"
+    },
+    {
+      "id": "facility-19",
+      "src": "/images/qdis/facilities/facility-19.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 19",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637595.jpg"
+    },
+    {
+      "id": "facility-20",
+      "src": "/images/qdis/facilities/facility-20.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학교 시설 사진 20",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637596.jpg"
+    }
+  ]
 }
