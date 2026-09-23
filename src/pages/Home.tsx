@@ -3,7 +3,7 @@ import {LatestOffers} from '@/components/results/Results';
 import {DayTimeline, MealsWeek, KeyBoarding} from '@/components/life/Life';
 import {FeeExamples} from '@/components/tuition/Tuition';
 import {NewsList} from '@/components/news/News';
-import {ConsultForm, Channels} from '@/components/common/Consult';
+import {Channels} from '@/components/common/Consult';
 import {photo} from '@/lib/qdis/photos';
 import {cumulative, ANNUAL} from '@/lib/qdis/results';
 
@@ -239,14 +239,13 @@ export default function Home() {
 
       {/* 10 CONSULTATION */}
       <section className="section navy" aria-labelledby="consult-title" id="consult">
-        <div className="wrap consult">
-          <div>
+        <div className="wrap">
+          <div style={{maxWidth: 820}}>
             <span className="eyebrow">Consultation · TNS Worldwide</span>
             <h2 className="h2" id="consult-title">우리 아이에게<br />맞는 학교인지</h2>
             <p className="lede" style={{color: '#c7cfdb', marginTop: 18}}>지원 학년과 과정, 특례·전형, 기숙생활, 실제 비용을 한국어로 안내합니다. 학교 방문 투어도 연결해 드립니다.</p>
             <Channels />
           </div>
-          <ConsultForm />
         </div>
       </section>
     </>
