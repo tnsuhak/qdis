@@ -35,7 +35,7 @@ export function ConsultForm() {
       <div className="consult-form">
         <div className="ok">
           <b>상담 신청이 접수되었습니다.</b>
-          <p style={{marginTop: 6}}>TNS 상담팀이 남겨 주신 연락처로 연락드리겠습니다. 급한 문의는 카카오톡 채널이나 {site.tns.phone}로 연락해 주세요.</p>
+          <p style={{marginTop: 6}}>TNS 상담팀이 남겨 주신 연락처로 연락드리겠습니다. 급한 문의는 카카오톡 1:1 상담이나 {site.tns.phone}로 연락해 주세요.</p>
         </div>
       </div>
     );
@@ -90,7 +90,7 @@ export function ConsultForm() {
         <label className="agree full"><input type="checkbox" name="privacy" value="동의" required /> <span>상담을 위한 개인정보(성함·연락처·이메일·상담 내용) 수집·이용에 동의합니다. 수집한 정보는 입학상담 외의 목적으로 사용하지 않습니다. <a href={site.tns.privacy_url} target="_blank" rel="noopener noreferrer">개인정보처리방침</a></span></label>
         <div className="full">
           <button className="btn arrow" type="submit" disabled={status === 'sending'}>{status === 'sending' ? '보내는 중…' : '상담 신청하기'}</button>
-          {status === 'error' && <p className="small" style={{color: 'var(--red)', marginTop: 10}}>전송에 실패했습니다. 잠시 후 다시 시도하시거나 카카오톡 채널로 문의해 주세요.</p>}
+          {status === 'error' && <p className="small" style={{color: 'var(--red)', marginTop: 10}}>전송에 실패했습니다. 잠시 후 다시 시도하시거나 카카오톡 1:1 상담로 문의해 주세요.</p>}
         </div>
       </div>
     </form>
