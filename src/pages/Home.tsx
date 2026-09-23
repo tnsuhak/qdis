@@ -61,7 +61,7 @@ export default function Home() {
             <ul className="headline-offers" aria-label="최근 합격 대학">
               {HEADLINE.map(h => <li key={h}>{h}<span aria-hidden="true">/</span></li>)}
             </ul>
-            <LatestOffers limit={6} />
+            <LatestOffers limit={8} />
             <p className="source">학교 진학정보 게시판 개별 합격 소식 · 연도별 합계와 별도</p>
           </div>
         </div>
