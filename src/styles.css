@@ -584,8 +584,9 @@ em.mark { font-style: normal; color: var(--brass); }
   background: rgba(255,255,255,.075);
 }
 .contact-card.featured {
-  border-color: rgba(217,184,92,.45);
-  background: linear-gradient(135deg, rgba(217,184,92,.09), rgba(255,255,255,.04));
+  border-color: #e3c800;
+  background: #fee500;
+  color: #191919;
 }
 .contact-icon {
   width: 48px;
@@ -597,9 +598,14 @@ em.mark { font-style: normal; color: var(--brass); }
   color: #fff;
 }
 .contact-icon svg { width: 24px; height: 24px; fill: currentColor; }
-.contact-card.kakao .contact-icon { background: #fee500; color: #191919; }
-.contact-card.phone .contact-icon { background: rgba(201,162,92,.18); color: #e2c47f; }
-.contact-card.openchat .contact-icon { background: rgba(125,170,214,.16); color: #b8d8f4; }
+.contact-card.kakao { background: #fee500; border-color: #e3c800; color: #191919; }
+.contact-card.phone { background: #f0e5cf; border-color: #d8c7a7; color: #18253a; }
+.contact-card.openchat { background: #dcebf6; border-color: #bfd7e8; color: #18253a; }
+.contact-card.cafe { background: #dff3e8; border-color: #bfe3ce; color: #18253a; }
+
+.contact-card.kakao .contact-icon { background: rgba(25,25,25,.09); color: #191919; }
+.contact-card.phone .contact-icon { background: #d9c29b; color: #18253a; }
+.contact-card.openchat .contact-icon { background: #b9d7eb; color: #18253a; }
 .contact-card.cafe .contact-icon { background: #03c75a; color: #fff; }
 .contact-icon.text-icon {
   font-weight: 900;
@@ -610,15 +616,15 @@ em.mark { font-style: normal; color: var(--brass); }
 .contact-copy small {
   display: block;
   margin-bottom: 6px;
-  color: #9faabc;
+  color: #526172;
   font-size: 11.5px;
   font-weight: 800;
   letter-spacing: .07em;
 }
-.contact-card.featured .contact-copy small { color: #d8bd77; }
+.contact-card.featured .contact-copy small { color: #665900; }
 .contact-copy b {
   display: block;
-  color: #fff;
+  color: #18253a;
   font-family: var(--serif);
   font-size: clamp(20px,1.7vw,25px);
   line-height: 1.2;
@@ -627,31 +633,19 @@ em.mark { font-style: normal; color: var(--brass); }
 .contact-copy span {
   display: block;
   margin-top: 7px;
-  color: #aeb8c6;
+  color: #526172;
   font-size: 13.5px;
   line-height: 1.5;
 }
+.contact-card.kakao .contact-copy span { color: rgba(25,25,25,.65); }
 .contact-arrow {
   align-self: center;
-  color: #d7dde7;
+  color: #24364f;
   font-size: 20px;
   line-height: 1;
   opacity: .72;
 }
 .contact-card:hover .contact-arrow { opacity: 1; transform: translateX(2px); }
-.section:not(.dark):not(.navy) .contact-card {
-  border-color: var(--line);
-  background: var(--white);
-  color: var(--ink);
-}
-.section:not(.dark):not(.navy) .contact-card.featured {
-  border-color: rgba(166,122,51,.35);
-  background: #fbf8f1;
-}
-.section:not(.dark):not(.navy) .contact-copy b { color: var(--ink); }
-.section:not(.dark):not(.navy) .contact-copy small,
-.section:not(.dark):not(.navy) .contact-copy span { color: var(--muted); }
-.section:not(.dark):not(.navy) .contact-card.featured .contact-copy small { color: var(--brass); }
 
 @media (max-width: 720px) {
   .contact-cards { grid-template-columns: 1fr; gap: 10px; }
