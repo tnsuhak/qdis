@@ -12,7 +12,7 @@ npm install
 npm run dev          # 로컬 개발
 npm run build        # client + ssr 빌드 후 16개 경로 프리렌더, sitemap/robots 생성
 npm run typecheck
-npm run sync:meals   # 공식 급식 → data/meals/latest.json (스냅샷 수동 갱신)
+npm run sync:meals   # 공식 급식 → data/meals/latest.json (주 1회 자동화와 동일 로직)
 npm run monitor:boards  # 공식 게시판 새 글 감지 → data/news/drafts
 ```
 
@@ -25,7 +25,7 @@ lib/qdis/       routes(SEO 메타) · fees(학비 계산) · results(집계) · 
 lib/monitoring/ qdis-parse.mjs — 공식 사이트 급식·게시판 파서 (함수·스크립트 공용)
 data/           university-results/{annual,latest-offers,alumni}.json · admissions/fees-2026-27.json
                 life/schedule.json · meals/latest.json · faq/faq.json · news/news.json · site.json(환율·연락처)
-netlify/functions/meals.mts   GET /api/meals (CDN 6시간 캐시)
+.github/workflows/qdis-meals.yml     매주 월요일 09:10 KST 공식 급식 확인 → 변경 시에만 갱신
 .github/workflows/qdis-monitor.yml   매일 공식 게시판 감시 → 검토용 draft PR
 ```
 
@@ -36,4 +36,5 @@ netlify/functions/meals.mts   GET /api/meals (CDN 6시간 캐시)
 - 대학 결과: `annual`(연도별 공식 합계)·`individual_offer`(개별 게시물)·`alumni`(대학원)를 **절대 합산하지 않음**. 숫자는 학생 수가 아니라 합격 건수.
 - 환율은 `data/site.json`의 `fx.cny_krw` 한 곳에서 관리.
 - 학비·장학금은 `data/admissions/fees-2026-27.json`(2026–27 모집요강) 기준. 새 모집요강이 나오면 이 파일만 교체.
+- 상담폼: Netlify Forms `qdis-consultation` 사용. 정적 감지 fallback은 `public/netlify-form.html`.
 - Production 공개 시: `data/site.json`의 `preview`를 `false`로, `netlify.toml`의 전역 `X-Robots-Tag` 헤더 제거, `domain` 확정.
