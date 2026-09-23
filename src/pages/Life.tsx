@@ -130,8 +130,8 @@ export function DailyLifePage() {
   const acts: Array<[string, string, string]> = [
     ['lifeMain', '체육대회', '제9회 청도대원 체육대회 (2026년 6월)'],
     ['lifeA', '대학 입학설명회', '국내외 대학 관계자가 학교를 찾아와 여는 설명회'],
-    ['lifeB', 'Spoarts · 스포츠', '수요일 오후 교외 시설에서 전문 강사와 함께'],
-    ['lifeC', '졸업', '2018년 첫 졸업생 이후 매년 이어지는 졸업식'],
+    ['lifeB', 'English Play', '교내 영어 공연과 학생 무대 활동'],
+    ['lifeC', 'WSC Award 2026', 'World Scholar’s Cup에서 이어지는 국제 학술 활동과 수상'],
   ];
   return (
     <>
