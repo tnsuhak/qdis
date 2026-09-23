@@ -146,7 +146,7 @@ export function About() {
               <div className="campus-gallery-grid">
                 <div><Img id="studyHall" ratio="4x3" /><p className="cap">기숙생 자습실</p></div>
                 <div><Img id="cafeteria" ratio="4x3" /><p className="cap">학교 직영 식당</p></div>
-                <div><Img id="studentsStudy" ratio="4x3" /><p className="cap">수업 중인 학생들</p></div>
+                <div><Img id="piDay2026" ratio="4x3" /><p className="cap">Pi Day 2026 · 수학 활동</p></div>
               </div>
             </div>
           </div>
