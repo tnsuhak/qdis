@@ -139,7 +139,7 @@ export function DailyLifePage() {
   ];
   return (
     <>
-      <PageHead crumb="하루 일과·학교생활" eyebrow="A Day at QDIS" title={<>시간표로 보는<br />청도대원의 하루</>}
+      <PageHead crumb="하루 일과·학교생활" eyebrow="A Day at QDIS" photoId="sportsDayBasketball2026" title={<>시간표로 보는<br />청도대원의 하루</>}
         lede="기상 07:00, 수업 08:20, 질문교실 12:15, 방과후 18:00, Study Hall 20:30. 과정별 실제 일과를 확인하고, 주말과 학생 활동까지 살펴보세요." />
       <Toc items={[['day', '평일 일과'], ['weekend', '주말'], ['programs', '특색 프로그램'], ['clubs', '동아리'], ['activities', '학생 활동']]} />
       <section className="section dark" id="day">
