@@ -9,6 +9,26 @@ const PREVIOUS_FACILITY_SNAPSHOT = 'https://6ab1e95783f5fb0008bb00de--qdis-korea
 
 const UA = 'Mozilla/5.0 (compatible; TNS-QDIS-FacilitySync/1.0; +https://qdis-korea.netlify.app)';
 
+const ALT_BY_INDEX = {
+  1:'눈 내린 날의 청도대원학교 교정과 야외 테라스',
+  2:'야간의 청도대원학교 교정과 학교 건물',
+  3:'청도대원학교 학교 직영 구내식당 내부',
+  7:'전자칠판과 학생 책상이 있는 청도대원학교 교실',
+  8:'청도대원학교 학생 라운지와 공용 학습 공간',
+  9:'청도대원학교 컴퓨터·정보 수업 교실',
+  10:'개인 칸막이 좌석이 있는 청도대원학교 기숙생 자습실',
+  11:'청도대원학교 일반 교실',
+  12:'청도대원학교 교실동 복도',
+  13:'청도대원학교 회의·상담 공간',
+  14:'청도대원학교 대형 구내식당과 배식 공간',
+  15:'청도대원학교 초등 교실',
+  16:'청도대원학교 오케스트라·음악실',
+  17:'청도대원학교 실내 탁구 활동 공간',
+  18:'청도대원학교 기숙사 세면 공간',
+  19:'청도대원학교 기숙사 샤워실',
+  20:'2층 침대와 개인 수납장이 있는 청도대원학교 기숙사 4인실'
+};
+
 function jpegSize(buf) {
   if (buf.length < 4 || buf[0] !== 0xff || buf[1] !== 0xd8) return null;
   let i = 2;
@@ -124,7 +144,7 @@ async function main() {
         src:`/images/qdis/facilities/${name}`,
         width:c.width,
         height:c.height,
-        alt:`청도대원학교 학교 시설 사진 ${n}`,
+        alt:ALT_BY_INDEX[n] || `청도대원학교 학교 시설 사진 ${n}`,
         source_url:c.url
       });
     }
