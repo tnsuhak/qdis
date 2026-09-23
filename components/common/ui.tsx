@@ -53,7 +53,7 @@ export function PageHead({eyebrow, title, lede, crumb, photoId, children}: {eyeb
   const p = photoId ? getPhoto(photoId) : null;
   return (
     <header className={`page-head${p ? ' has-photo' : ''}`}>
-      {p && <div className="bg" aria-hidden="true"><img src={p.src} alt="" /></div>}
+      {p && <div className="bg" aria-hidden="true"><img src={p.src} alt="" style={p.position ? {objectPosition: p.position} : undefined} /></div>}
       <div className="wrap">
         <nav className="crumbs" aria-label="현재 위치"><a href="/">홈</a><span aria-hidden="true">/</span><span>{crumb}</span></nav>
         <span className="eyebrow">{eyebrow}</span>
