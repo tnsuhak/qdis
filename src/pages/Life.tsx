@@ -6,7 +6,7 @@ import {photo} from '@/lib/qdis/photos';
 export function BoardingPage() {
   return (
     <>
-      <PageHead crumb="기숙사" eyebrow="Boarding"
+      <PageHead crumb="기숙사·학생관리" eyebrow="Boarding & Student Management"
         title={<>혼자 보내는 부모의 질문에,<br />규정으로 답합니다</>}
         lede="청도대원 기숙사(대원학사)는 G6–G8 선택기숙, G9–G12 의무기숙입니다. 4인 1실, 남·여 층 분리, 남녀 사감이 생활을 관리하고 공부는 기숙사와 분리된 자습실에서 합니다." />
       <Toc items={[['who', '핵심 5가지'], ['management', '학생관리 시스템'], ['care', '생활 규정'], ['phone', '휴대전화'], ['weekend', '외출·외박'], ['health', '건강·응급'], ['prepare', '입사 준비']]} />
