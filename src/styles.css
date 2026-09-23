@@ -644,7 +644,7 @@ em.mark { font-style: normal; color: var(--brass); }
 .hero2 .display { font-size: clamp(40px, 6vw, 92px); }
 .hero2 .hero-actions { gap: 16px 28px; }
 .hero2-photo { margin: 0; justify-self: end; width: 100%; max-width: 520px; position: relative; }
-.hero2-photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; filter: saturate(.94); }
+.hero2-photo img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: center; filter: saturate(.98); }
 .hero2-photo .frame { position: relative; display: block; }
 .hero2-photo .frame::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid rgba(201,162,92,.55); z-index: 0; }
 .hero2-photo img { position: relative; z-index: 1; }
