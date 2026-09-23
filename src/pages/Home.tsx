@@ -16,7 +16,7 @@ export default function Home() {
   const latestYear = ANNUAL[0];
   return (
     <>
-      {/* 01 HERO — 실제 QDIS 고해상도 학생 활동 사진 */}
+      {/* 01 HERO — 실제 QDIS 캠퍼스 전경 */}
       <section className="hero2" aria-labelledby="hero-title">
         <div className="wrap hero2-grid">
           <div>
@@ -30,7 +30,7 @@ export default function Home() {
           </div>
           <figure className="hero2-photo">
             <span className="frame"><img src={hero.src} alt={hero.alt} width={hero.width} height={hero.height} fetchPriority="high" /></span>
-            <figcaption>Pi Day 2026 · 청도대원 학생 활동</figcaption>
+            <figcaption>QDIS Campus · 청도대원학교 교정과 교사동</figcaption>
           </figure>
         </div>
         <div className="wrap">
