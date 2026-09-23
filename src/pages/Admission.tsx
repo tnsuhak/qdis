@@ -245,7 +245,7 @@ export function FaqPage() {
 export function NewsPage() {
   return (
     <>
-      <PageHead crumb="소식" eyebrow="Latest from QDIS" title={<>학교 소식 가운데,<br />학부모에게 필요한 것만</>}
+      <PageHead crumb="학교소식" eyebrow="Latest from QDIS" title={<>학교 소식 가운데,<br />학부모에게 필요한 것만</>}
         lede="청도대원학교 공지사항·가정통신문·진학정보·갤러리에서 입학, 학사, 대학 합격, 학교생활 소식을 골라 쉽게 정리합니다. 각 소식은 학교 원문으로 연결됩니다." />
       <section className="section white">
         <div className="wrap"><NewsList filterable /></div>
