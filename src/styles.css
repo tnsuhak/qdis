@@ -108,6 +108,14 @@ em.mark { font-style: normal; color: var(--brass); }
 .menu-btn[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
 .menu-btn[aria-expanded='true'] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 .mobile-panel { display: none; }
+@media (max-width: 560px) {
+  .site-header .wrap { gap: 12px; }
+  .brand { flex-shrink: 1; min-width: 0; gap: 10px; }
+  .brand-mark { width: 36px; height: 36px; font-size: 14px; flex: none; }
+  .brand-text small { font-size: 8.5px; letter-spacing: .1em; line-height: 1.35; }
+  .brand-text small span { display: block; }
+  .menu-btn { flex: none; }
+}
 
 @media (max-width: 1180px) {
   .main-nav, .header-cta.desk { display: none; }
@@ -228,6 +236,13 @@ em.mark { font-style: normal; color: var(--brass); }
 .pillar h3 { font-family: var(--serif); font-weight: 600; font-size: 25px; margin: 14px 0 14px; line-height: 1.3; }
 .pillar p { color: var(--muted); font-size: 15.5px; }
 .pillar .tlink { margin-top: 18px; font-size: 15px; }
+.mgmt-layout { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(28px, 4vw, 64px); align-items: start; }
+.mgmt-photo { margin: 0; }
+.pillars.stack { grid-template-columns: minmax(0, 1fr); }
+.pillars.stack .pillar, .pillars.stack .pillar + .pillar { padding: 20px 0 22px; border-left: 0; }
+.pillars.stack .pillar + .pillar { border-top: 1px solid var(--line); }
+.pillars.stack .pillar h3 { font-size: 21px; margin: 8px 0 8px; }
+@media (max-width: 900px) { .mgmt-layout { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 1080px) { .pillars { grid-template-columns: 1fr 1fr; } .pillar:nth-child(3) { padding-left: 0; border-left: 0; } .pillar:nth-child(n+3) { border-top: 1px solid var(--line); } }
 @media (max-width: 620px) { .pillars { grid-template-columns: 1fr; } .pillar, .pillar + .pillar { padding: 26px 0; border-left: 0; } .pillar + .pillar { border-top: 1px solid var(--line); } }
 
@@ -679,7 +694,7 @@ em.mark { font-style: normal; color: var(--brass); }
 .photo-pair { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 16px; align-self: start; max-width: 600px; }
 .life-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: clamp(56px, 6vw, 88px); }
 .life-tile { text-decoration: none; display: block; }
-.life-tile .photo { display: block; max-width: 340px; }
+.life-tile .photo { display: block; }
 .life-tile b { display: block; margin-top: 12px; font-size: 16px; }
 .life-tile small { display: block; color: var(--soft); font-size: 13px; }
 @media (max-width: 860px) { .life-tiles { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
@@ -716,7 +731,6 @@ em.mark { font-style: normal; color: var(--brass); }
   .day-switch { display: flex; width: 100%; }
   .day-switch button { flex: 1; padding: 11px 6px; font-size: 14px; }
 }
-.life-tiles { max-width: 1040px; }
 
 
 /* ---------- QDIS official facilities gallery ---------- */

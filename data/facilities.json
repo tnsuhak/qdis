@@ -4,6 +4,14 @@
   "synced_at": "2026-09-23T05:27:54.918Z",
   "photos": [
     {
+      "id": "facility-04",
+      "src": "/images/qdis/facilities/facility-04.jpg",
+      "width": 1800,
+      "height": 945,
+      "alt": "청도대원학교 정문과 교사동 전경",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374298.jpg"
+    },
+    {
       "id": "facility-01",
       "src": "/images/qdis/facilities/facility-01.jpg",
       "width": 1200,
@@ -22,25 +30,17 @@
     {
       "id": "facility-03",
       "src": "/images/qdis/facilities/facility-03.jpg",
-      "width": 759,
-      "height": 534,
+      "width": 733,
+      "height": 508,
       "alt": "청도대원학교 학교 직영 구내식당 내부",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275922393490.jpg"
-    },
-    {
-      "id": "facility-04",
-      "src": "/images/qdis/facilities/facility-04.jpg",
-      "width": 1800,
-      "height": 945,
-      "alt": "청도대원학교 학교 시설 사진 4",
-      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374298.jpg"
     },
     {
       "id": "facility-05",
       "src": "/images/qdis/facilities/facility-05.jpg",
       "width": 1800,
       "height": 1067,
-      "alt": "청도대원학교 학교 시설 사진 5",
+      "alt": "운동장 트랙 너머로 보이는 청도대원학교 교사동",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374299.jpg"
     },
     {
@@ -48,7 +48,7 @@
       "src": "/images/qdis/facilities/facility-06.jpg",
       "width": 1800,
       "height": 1044,
-      "alt": "청도대원학교 학교 시설 사진 6",
+      "alt": "벚꽃이 핀 청도대원학교 교정과 교사동",
       "source_url": "https://qdis.org/PEG/gallery/gallery.17275926349040.jpg"
     },
     {

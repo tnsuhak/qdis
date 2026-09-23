@@ -8,7 +8,7 @@ function Brand() {
       <span className="brand-mark" aria-hidden="true">QD</span>
       <span className="brand-text">
         <b>청도대원학교</b>
-        <small>QINGDAO DAEWON INTERNATIONAL SCHOOL</small>
+        <small>QINGDAO DAEWON <span>INTERNATIONAL SCHOOL</span></small>
       </span>
     </a>
   );
@@ -67,7 +67,7 @@ export function Footer() {
           <div>
             <a className="brand" href="/" aria-label="홈">
               <span className="brand-mark" aria-hidden="true">QD</span>
-              <span className="brand-text"><b>청도대원학교</b><small>QINGDAO DAEWON INTERNATIONAL SCHOOL</small></span>
+              <span className="brand-text"><b>청도대원학교</b><small>QINGDAO DAEWON <span>INTERNATIONAL SCHOOL</span></small></span>
             </a>
             <p className="tns">
               이 사이트는 <b>{t.name}</b>({t.legal})가 청도대원학교 한국 입학상담 지원을 위해 운영하는 한국어 안내 사이트입니다. 학교 공식 자료를 바탕으로 작성하며, 학교 공식 홈페이지와 별도로 운영됩니다.

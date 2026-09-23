@@ -36,11 +36,17 @@ export function BoardingPage() {
       <section className="section sand" id="management">
         <div className="wrap">
           <SecHead eyebrow="Student Management" title="담임·사감·교사가 나눠 보는 게 아니라, 한 학생의 하루를 연결해서 봅니다" lede="QDIS의 학생관리는 기숙사 통제만을 뜻하지 않습니다. 학업·생활·건강·학부모 소통을 서로 연결해 학생이 학교 안에서 어떻게 지내는지 확인하는 구조입니다." />
-          <div className="pillars">
-            <div className="pillar"><span className="kicker">Homeroom</span><h3>담임</h3><p>학교생활과 학업 상황을 확인하고 학부모와 소통합니다. 필요한 경우 사감·교과 교사와 학생 상황을 공유합니다.</p></div>
-            <div className="pillar"><span className="kicker">Dormitory</span><h3>남녀 사감</h3><p>기숙사 생활규칙과 귀소, 야간 건강상태를 관리하고 응급상황에는 병원 동행과 보호자 연락을 맡습니다.</p></div>
-            <div className="pillar"><span className="kicker">Study Hall</span><h3>감독 교사</h3><p>야간 자율학습을 별도 자습실에서 운영하며 학생별 학습 상황과 참여를 확인합니다.</p></div>
-            <div className="pillar"><span className="kicker">Parent View</span><h3>Thinkwave · WeChat</h3><p>학부모는 Thinkwave에서 과제·출결·성적을 확인하고, 담임과 기숙사 WeChat을 통해 생활 상황을 공유받습니다.</p></div>
+          <div className="mgmt-layout">
+            <figure className="mgmt-photo">
+              <Img id="studentMeeting2026" />
+              <p className="cap">2025–26학년도 2학기 학생 간담회 · 학생들과 교사가 학교생활을 두고 이야기를 나누는 자리</p>
+            </figure>
+            <div className="pillars stack">
+              <div className="pillar"><span className="kicker">Homeroom</span><h3>담임</h3><p>학교생활과 학업 상황을 확인하고 학부모와 소통합니다. 필요한 경우 사감·교과 교사와 학생 상황을 공유합니다.</p></div>
+              <div className="pillar"><span className="kicker">Dormitory</span><h3>남녀 사감</h3><p>기숙사 생활규칙과 귀소, 야간 건강상태를 관리하고 응급상황에는 병원 동행과 보호자 연락을 맡습니다.</p></div>
+              <div className="pillar"><span className="kicker">Study Hall</span><h3>감독 교사</h3><p>야간 자율학습을 별도 자습실에서 운영하며 학생별 학습 상황과 참여를 확인합니다.</p></div>
+              <div className="pillar"><span className="kicker">Parent View</span><h3>Thinkwave · WeChat</h3><p>학부모는 Thinkwave에서 과제·출결·성적을 확인하고, 담임과 기숙사 WeChat을 통해 생활 상황을 공유받습니다.</p></div>
+            </div>
           </div>
           <Source>2025–26 학교생활안내 ‘기숙사 생활 안내’·‘생활 지도’·학부모 소통 안내</Source>
         </div>
@@ -116,7 +122,6 @@ export function BoardingPage() {
               <span className="eyebrow">Move-in Checklist</span>
               <h2 className="h2">입사할 때<br />챙길 것</h2>
               <p className="lede" style={{marginTop: 18}}>이불·베개·침대 시트·패드는 학교가 1인 1개씩 지급합니다. 개인 물품에는 영문 이름을 써 주세요.</p>
-              <div style={{marginTop: 26}}><Img id="studyHall" ratio="4x3" /><p className="cap">기숙생 자습실</p></div>
             </div>
             <div className="cols-2">
               <div className="prose"><h3>생활</h3><ul><li>간편복·잠옷, 주말 외출복, 교복·생활복</li><li>운동화·실내화·욕실화</li><li>양말·속옷 1주일 분량, 수건 5장, 옷걸이 10개</li><li>세면도구, 개인 상비약(기본 상비약은 학교에 있음)</li><li>(선택) 영문 이름을 쓴 세탁망</li></ul></div>
