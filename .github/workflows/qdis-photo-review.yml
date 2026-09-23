@@ -36,17 +36,22 @@ jobs:
       - name: Create smaller review copies
         run: |
           set -euo pipefail
-          mkdir -p public/images/qdis/review-opt
-          for src in public/images/qdis/review/*.jpg; do
-            name="$(basename "$src")"
-            if command -v magick >/dev/null 2>&1; then
-              magick "$src" -auto-orient -resize '1600x1600>' -strip -quality 84 "public/images/qdis/review-opt/$name"
-            elif command -v convert >/dev/null 2>&1; then
-              convert "$src" -auto-orient -resize '1600x1600>' -strip -quality 84 "public/images/qdis/review-opt/$name"
-            else
-              ffmpeg -loglevel error -y -i "$src" -vf "scale='if(gt(iw,ih),min(1600,iw),-2)':'if(gt(iw,ih),-2,min(1600,ih))'" -q:v 3 "public/images/qdis/review-opt/$name"
-            fi
-          done
+          npm install --no-save --package-lock=false sharp
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import sharp from 'sharp';
+          const srcDir='public/images/qdis/review';
+          const outDir='public/images/qdis/review-opt';
+          fs.mkdirSync(outDir,{recursive:true});
+          for (const name of fs.readdirSync(srcDir).filter(n=>n.endsWith('.jpg'))) {
+            await sharp(path.join(srcDir,name))
+              .rotate()
+              .resize({width:1600,height:1600,fit:'inside',withoutEnlargement:true})
+              .jpeg({quality:84,mozjpeg:true})
+              .toFile(path.join(outDir,name));
+          }
+          NODE
           file public/images/qdis/review-opt/*
       - name: Commit review candidates
         run: |
