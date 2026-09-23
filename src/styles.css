@@ -623,20 +623,20 @@ em.mark { font-style: normal; color: var(--brass); }
 /* ---------- v2: hero (typography-first) ---------- */
 .hero2 { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
 .hero2::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 30%, rgba(201,162,92,.10), transparent 55%); pointer-events: none; }
-.hero2-grid { position: relative; display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding-top: clamp(64px, 8vw, 128px); padding-bottom: clamp(40px, 5vw, 72px); }
+.hero2-grid { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(340px, 5fr); gap: clamp(32px, 5vw, 82px); align-items: center; padding-top: clamp(64px, 8vw, 128px); padding-bottom: clamp(40px, 5vw, 72px); }
 .hero2 .eyebrow { color: var(--brass-2); }
 .hero2 .display { font-size: clamp(40px, 6vw, 92px); }
 .hero2 .hero-actions { gap: 16px 28px; }
-.hero2-photo { margin: 0; justify-self: end; width: 100%; max-width: 330px; position: relative; }
-.hero2-photo img { width: 100%; height: auto; aspect-ratio: 323 / 367; object-fit: cover; filter: saturate(.92); }
+.hero2-photo { margin: 0; justify-self: end; width: 100%; max-width: 520px; position: relative; }
+.hero2-photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; filter: saturate(.94); }
 .hero2-photo .frame { position: relative; display: block; }
 .hero2-photo .frame::before { content: ''; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid rgba(201,162,92,.55); z-index: 0; }
 .hero2-photo img { position: relative; z-index: 1; }
 .hero2-photo figcaption { position: relative; z-index: 1; font-size: 12.5px; color: #8d97a6; margin-top: 22px; }
 .hero2 .hero-facts { margin-top: 0; }
 @media (max-width: 860px) {
-  .hero2-grid { grid-template-columns: minmax(0, 1fr); }
-  .hero2-photo { display: none; }
+  .hero2-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .hero2-photo { display: block; justify-self: stretch; max-width: 620px; }
 }
 
 /* ---------- v2: results trio ---------- */
