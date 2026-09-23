@@ -1,0 +1,9 @@
+{
+ "schema": "qdis.monitor-state/v1",
+ "boards": {
+  "board3": {
+   "last_no": 245,
+   "checked_at": "2026-09-23T01:32:08Z"
+  }
+ }
+}

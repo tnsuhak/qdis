@@ -1,0 +1,167 @@
+{
+  "schema": "qdis.facilities/v1",
+  "source_page": "https://qdis.org/gallery/index.html?no=7",
+  "synced_at": "2026-09-23T05:27:54.918Z",
+  "photos": [
+    {
+      "id": "facility-04",
+      "src": "/images/qdis/facilities/facility-04.jpg",
+      "width": 1800,
+      "height": 945,
+      "alt": "청도대원학교 정문과 교사동 전경",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374298.jpg"
+    },
+    {
+      "id": "facility-01",
+      "src": "/images/qdis/facilities/facility-01.jpg",
+      "width": 1200,
+      "height": 800,
+      "alt": "눈 내린 날의 청도대원학교 교정과 야외 테라스",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.15897621487249.jpg"
+    },
+    {
+      "id": "facility-02",
+      "src": "/images/qdis/facilities/facility-02.jpg",
+      "width": 1180,
+      "height": 732,
+      "alt": "야간의 청도대원학교 교정과 학교 건물",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275922393489.jpg"
+    },
+    {
+      "id": "facility-03",
+      "src": "/images/qdis/facilities/facility-03.jpg",
+      "width": 733,
+      "height": 508,
+      "alt": "청도대원학교 학교 직영 구내식당 내부",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275922393490.jpg"
+    },
+    {
+      "id": "facility-05",
+      "src": "/images/qdis/facilities/facility-05.jpg",
+      "width": 1800,
+      "height": 1067,
+      "alt": "운동장 트랙 너머로 보이는 청도대원학교 교사동",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275925374299.jpg"
+    },
+    {
+      "id": "facility-06",
+      "src": "/images/qdis/facilities/facility-06.jpg",
+      "width": 1800,
+      "height": 1044,
+      "alt": "벚꽃이 핀 청도대원학교 교정과 교사동",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17275926349040.jpg"
+    },
+    {
+      "id": "facility-07",
+      "src": "/images/qdis/facilities/facility-07.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "전자칠판과 학생 책상이 있는 청도대원학교 교실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296439439216.jpg"
+    },
+    {
+      "id": "facility-08",
+      "src": "/images/qdis/facilities/facility-08.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 학생 라운지와 공용 학습 공간",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679425.jpg"
+    },
+    {
+      "id": "facility-09",
+      "src": "/images/qdis/facilities/facility-09.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 컴퓨터·정보 수업 교실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679426.jpg"
+    },
+    {
+      "id": "facility-10",
+      "src": "/images/qdis/facilities/facility-10.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "개인 칸막이 좌석이 있는 청도대원학교 기숙생 자습실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679427.jpg"
+    },
+    {
+      "id": "facility-11",
+      "src": "/images/qdis/facilities/facility-11.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 일반 교실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679428.jpg"
+    },
+    {
+      "id": "facility-12",
+      "src": "/images/qdis/facilities/facility-12.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 교실동 복도",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679429.jpg"
+    },
+    {
+      "id": "facility-13",
+      "src": "/images/qdis/facilities/facility-13.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 회의·상담 공간",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679430.jpg"
+    },
+    {
+      "id": "facility-14",
+      "src": "/images/qdis/facilities/facility-14.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 대형 구내식당과 배식 공간",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679431.jpg"
+    },
+    {
+      "id": "facility-15",
+      "src": "/images/qdis/facilities/facility-15.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 초등 교실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679432.jpg"
+    },
+    {
+      "id": "facility-16",
+      "src": "/images/qdis/facilities/facility-16.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 오케스트라·음악실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679433.jpg"
+    },
+    {
+      "id": "facility-17",
+      "src": "/images/qdis/facilities/facility-17.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 실내 탁구 활동 공간",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17296440679434.jpg"
+    },
+    {
+      "id": "facility-18",
+      "src": "/images/qdis/facilities/facility-18.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 기숙사 세면 공간",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637594.jpg"
+    },
+    {
+      "id": "facility-19",
+      "src": "/images/qdis/facilities/facility-19.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "청도대원학교 기숙사 샤워실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637595.jpg"
+    },
+    {
+      "id": "facility-20",
+      "src": "/images/qdis/facilities/facility-20.jpg",
+      "width": 690,
+      "height": 460,
+      "alt": "2층 침대와 개인 수납장이 있는 청도대원학교 기숙사 4인실",
+      "source_url": "https://qdis.org/PEG/gallery/gallery.17313071637596.jpg"
+    }
+  ]
+}

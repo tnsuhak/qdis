@@ -1,0 +1,82 @@
+{
+  "schema": "qdis.daily-schedule/v1",
+  "source": {
+    "title": "2025–26학년도 학교생활안내 V1.2 (중·고 일과표, 초등 일과표, 기숙사 하루 일과)",
+    "date": "2025-09-18",
+    "official_page": "https://qdis.org/main/page.html?pid=17"
+  },
+  "note": "일과표는 학사 운영 과정에서 일부 변경될 수 있습니다. 학기별 변경 공지가 나오면 이 파일을 갱신합니다.",
+  "tracks": {
+    "high": {
+      "label": "고등 G9–G12 · 기숙",
+      "summary": "월~금 기준. 고등과정은 의무기숙이며 야간 자율학습 2부까지 참여합니다.",
+      "items": [
+        {"start": "07:00", "end": "07:10", "title": "기상 · 아침 운동", "detail": "06:50 방송부 기상송, 기상 체크 후 간단한 운동", "kind": "life"},
+        {"start": "07:10", "end": "08:00", "title": "아침 식사", "detail": "조식 후 등교 준비", "kind": "meal"},
+        {"start": "08:00", "end": "08:15", "title": "Homeroom", "detail": "출석 확인, 교실 정리", "kind": "school"},
+        {"start": "08:20", "end": "11:35", "title": "오전 수업 1–4교시", "detail": "45분 수업. 영어·수학·사회·과학은 영어로 진행", "kind": "class"},
+        {"start": "11:35", "end": "12:15", "title": "점심 식사", "detail": "수·금 Support Group 활동", "kind": "meal"},
+        {"start": "12:15", "end": "12:55", "title": "Q&A Session · 질문교실", "detail": "과목 선생님에게 질문하거나 자습, 교내 산책", "kind": "school"},
+        {"start": "13:00", "end": "16:15", "title": "오후 수업 5–8교시", "detail": "수요일 오후는 Spoarts, 금요일 5교시는 동아리", "kind": "class"},
+        {"start": "16:15", "end": "16:40", "title": "청소 · 종례", "detail": "종례 때 휴대전화 배부", "kind": "school"},
+        {"start": "16:40", "end": "18:00", "title": "저녁 식사 · 휴식", "detail": "휴대전화 사용 가능 시간", "kind": "meal"},
+        {"start": "18:00", "end": "19:50", "title": "방과후 수업", "detail": "SAT·AP·TOEFL·HSK 등 수준별 심화학습 (선택, 수강료 별도)", "kind": "study"},
+        {"start": "20:00", "end": "20:30", "title": "간식", "detail": "월~금 매일 저녁 1회 야식", "kind": "meal"},
+        {"start": "20:30", "end": "21:40", "title": "Study Hall 1부", "detail": "기숙생 자습실에서 자기주도학습, 감독교사 지도", "kind": "study"},
+        {"start": "21:50", "end": "23:00", "title": "Study Hall 2부", "detail": "G9–G12 전원. 22:55 자습실 점검 후 기숙사 입실", "kind": "study"}
+      ]
+    },
+    "middle": {
+      "label": "중등 G6–G8",
+      "summary": "월~금 기준. 중등은 기숙·통학 선택. 기숙생은 Study Hall 1부 후 21:40 기숙사 입실, 통학생은 20:00 하교.",
+      "items": [
+        {"start": "07:00", "end": "07:10", "title": "기상 · 아침 운동", "detail": "기숙생 기준", "kind": "life"},
+        {"start": "07:10", "end": "08:00", "title": "아침 식사", "detail": "기숙생 조식. 통학버스는 07:00부터 운행", "kind": "meal"},
+        {"start": "08:00", "end": "08:15", "title": "Homeroom", "detail": "통학생 휴대전화 제출", "kind": "school"},
+        {"start": "08:20", "end": "11:35", "title": "오전 수업 1–4교시", "detail": "영어·중국어·수학은 수준별 수업", "kind": "class"},
+        {"start": "11:35", "end": "12:15", "title": "점심 식사", "detail": "", "kind": "meal"},
+        {"start": "12:15", "end": "12:55", "title": "Q&A Session · 질문교실", "detail": "", "kind": "school"},
+        {"start": "13:00", "end": "16:15", "title": "오후 수업 5–8교시", "detail": "수요일 오후 Spoarts", "kind": "class"},
+        {"start": "16:15", "end": "16:40", "title": "청소 · 종례", "detail": "", "kind": "school"},
+        {"start": "16:40", "end": "18:00", "title": "저녁 식사 · 휴식", "detail": "", "kind": "meal"},
+        {"start": "18:00", "end": "19:50", "title": "방과후 · 독서 · 1인 1악기", "detail": "요일별 도서관 독서 활동, G6–G8 1인 1악기", "kind": "study"},
+        {"start": "20:00", "end": "20:30", "title": "간식 · 통학생 하교", "detail": "통학생은 20:00 하교 (토요일 12:00)", "kind": "meal"},
+        {"start": "20:30", "end": "21:40", "title": "Study Hall 1부 (기숙생)", "detail": "21:40 기숙사 입실. 2부는 희망자", "kind": "study"}
+      ]
+    },
+    "elementary": {
+      "label": "초등 G1–G5 · 통학",
+      "summary": "초등은 주 5일제 통학 과정입니다. 40분 수업, 하루 8교시.",
+      "items": [
+        {"start": "08:00", "end": "08:15", "title": "Homeroom", "detail": "", "kind": "school"},
+        {"start": "08:20", "end": "11:40", "title": "오전 수업 1–4교시", "detail": "40분 수업", "kind": "class"},
+        {"start": "11:40", "end": "12:40", "title": "점심 식사", "detail": "", "kind": "meal"},
+        {"start": "12:40", "end": "16:00", "title": "오후 수업 5–8교시", "detail": "음악·미술·서예·태권도·코딩 등 포함", "kind": "class"},
+        {"start": "16:00", "end": "16:05", "title": "Homeroom · 하교", "detail": "통학버스 하교 노선 운행", "kind": "school"}
+      ]
+    }
+  },
+  "weekend": {
+    "saturday": [
+      {"time": "07:00", "title": "기상 · 아침 식사"},
+      {"time": "08:30–10:10", "title": "Project Creativity", "detail": "한 학기 개인·그룹 연구 프로젝트"},
+      {"time": "10:20–12:00", "title": "동아리 활동"},
+      {"time": "12:00", "title": "점심 · 휴대전화 배부", "detail": "외출·외박 가능(보호자 동의서 제출 시)"},
+      {"time": "13:00–17:00", "title": "선택 비교과 활동 · 자유시간"},
+      {"time": "18:00", "title": "저녁 · 자유시간"}
+    ],
+    "sunday": [
+      {"time": "07:20–08:00", "title": "아침 식사", "detail": "휴대전화는 07:30 사감에게서 수령"},
+      {"time": "08:00–12:00", "title": "자유시간"},
+      {"time": "12:00–13:00", "title": "점심 식사"},
+      {"time": "17:00", "title": "외출·외박 귀소 마감"},
+      {"time": "17:00–18:00", "title": "저녁 식사"},
+      {"time": "18:00–21:00", "title": "Study Hall", "detail": "휴대전화 제출 후 감독교사 지도 자기주도학습"}
+    ]
+  },
+  "phone_policy": [
+    {"when": "평일", "rule": "16:40 종례 때 배부 → 17:50 저녁 자습실 집합 시 수거"},
+    {"when": "토요일", "rule": "12:00 배부 → 22:30 기숙사에서 사감 수거"},
+    {"when": "일요일", "rule": "07:30 사감에게서 수령 → 17:50 수거"}
+  ]
+}

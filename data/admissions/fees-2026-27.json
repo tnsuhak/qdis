@@ -1,0 +1,77 @@
+{
+  "schema": "qdis.fees/v1",
+  "academic_year": "2026-2027",
+  "source": {
+    "title": "2026–27학년도 모집요강 Ver1.0",
+    "date": "2026-03-15",
+    "url": "https://qdis.org/board/index.html?id=board1",
+    "pdf": "/documents/qdis-admissions-2026-27.pdf"
+  },
+  "currency": "CNY",
+  "grade_bands": [
+    {"id": "g1-3", "label": "G1–G3", "division": "elementary", "grades": [1, 2, 3]},
+    {"id": "g4-5", "label": "G4–G5", "division": "elementary", "grades": [4, 5]},
+    {"id": "g6-8", "label": "G6–G8", "division": "middle", "grades": [6, 7, 8]},
+    {"id": "g9-12", "label": "G9–G12", "division": "high", "grades": [9, 10, 11, 12]}
+  ],
+  "tuition_per_semester": {
+    "GLP": {"g1-3": 21000, "g4-5": 31000, "g6-8": 56000, "g9-12": 69000},
+    "CLP": {"g1-3": null, "g4-5": null, "g6-8": 33600, "g9-12": 41400}
+  },
+  "other_fees": {
+    "books": {"label": "교재비", "billing": "annual", "amounts": {"g1-3": 1500, "g4-5": 1500, "g6-8": 1500, "g9-12": 1800}},
+    "residence": {"label": "생활관비(기숙)", "billing": "semester", "amounts": {"g1-3": null, "g4-5": null, "g6-8": 21500, "g9-12": 21500}},
+    "meals_day": {"label": "급식비(통학)", "billing": "semester", "amounts": {"g1-3": 2700, "g4-5": 2700, "g6-8": 5950, "g9-12": null}},
+    "bus": {"label": "통학차량비(통학)", "billing": "semester", "amounts": {"g1-3": 2970, "g4-5": 2970, "g6-8": 3750, "g9-12": null}},
+    "registration": {"label": "입학등록비", "billing": "once", "amounts": {"g1-3": 5000, "g4-5": 5000, "g6-8": 10000, "g9-12": 10000}, "note": "초·중·고 재학 기간 중 최초 입학 시 1회. 두 자녀 이상 동시 입학 시 50%. 본교 초등·중등 과정을 마치고 상급 과정으로 진급할 때는 다시 내지 않습니다."}
+  },
+  "notes": [
+    "수업료·생활관비·급식비·통학차량비는 학기납(연 2회), 교재비는 연 1회 납부합니다.",
+    "방과후수업·스포아츠 수강료 등 수익자 부담 경비는 별도입니다.",
+    "통학차량은 성양구 거주 통학생(G1~G8) 대상이며, 그 외 지역은 별도 확인이 필요합니다."
+  ],
+  "extras_reference": [
+    {"label": "학생상해보험(단체, 의무)", "amount": 300, "unit": "연", "source": "2025–26 학교생활안내"},
+    {"label": "생활예치금(G6~G12, 잔액 이월·졸업 시 환불)", "amount": 500, "unit": "학기 예치", "source": "2025–26 학교생활안내"},
+    {"label": "거류증 발급(학생비자 해당자)", "amount": 1500, "unit": "1회", "source": "2025–26 학교생활안내"},
+    {"label": "방과후 수준별 심화학습", "amount_range": [1040, 5200], "unit": "강좌·학기", "source": "2025–26 학교생활안내 개설 예시"},
+    {"label": "생활복(G6~G12 신입생, 기본 수량)", "amount": 1330, "unit": "1회", "source": "2025–26 학교생활안내 단가×기본수량"},
+    {"label": "AP 응시료", "amount_range": [1470, 1740], "unit": "과목", "source": "2025–26 학교생활안내 (신청 시기별)"}
+  ],
+  "scholarships": {
+    "cap_percent_of_tuition": 50,
+    "rules": [
+      "장학금은 중복 수혜가 가능하지만 총액은 원수업료의 50%를 넘을 수 없습니다.",
+      "장학금은 수업료에만 적용되며 생활관비·교재비 등에는 적용되지 않습니다.",
+      "신청 시 TOEFL 성적표 등 증빙서류와 장학생 추천서를 제출합니다."
+    ],
+    "items": [
+      {"id": "alumni", "name": "동문 장학금", "target": "초·중·고", "percent": 20, "criteria": "청도대원학교 동문의 직계가족(형제자매 포함)"},
+      {"id": "two-children", "name": "두자녀 장학금", "target": "초·중·고", "percent": 20, "criteria": "재학생이 2명 이상일 때 2명의 재학생"},
+      {"id": "multi-children", "name": "다자녀 장학금", "target": "초·중·고", "percent": 50, "criteria": "재학생이 3명 이상일 때 2명을 초과한 재학생(셋째부터)"},
+      {"id": "promo-g6-a", "name": "진급 장학금 · 중학교", "target": "G6 진급", "percent": 20, "criteria": "본교 G5를 이수하고 G6로 진급", "continuing_only": true, "grades": [6]},
+      {"id": "promo-g6-b", "name": "진급 장학금 · 중학교(초등 전 과정)", "target": "G6 진급", "percent": 30, "criteria": "본교 G1~G5 전 과정을 이수하고 G6로 진급", "continuing_only": true, "grades": [6]},
+      {"id": "promo-g9-a", "name": "진급 장학금 · 고등학교", "target": "G9 진급", "percent": 10, "criteria": "본교 G8을 이수하고 G9로 진급", "continuing_only": true, "grades": [9]},
+      {"id": "promo-g9-b", "name": "진급 장학금 · 고등학교(G5~G8)", "target": "G9 진급", "percent": 20, "criteria": "본교 G5~G8을 이수하고 G9로 진급", "continuing_only": true, "grades": [9]},
+      {"id": "promo-g9-c", "name": "진급 장학금 · 고등학교(G1~G8 전 과정)", "target": "G9 진급", "percent": 30, "criteria": "본교 G1~G8 전 과정을 이수하고 G9로 진급", "continuing_only": true, "grades": [9]},
+      {"id": "english-25", "name": "영어우수 장학금 25%", "target": "중·고", "percent": 25, "criteria": "특례 구분·학년별 TOEFL iBT 기준 충족", "grades": [6, 7, 8, 9, 10, 11, 12]},
+      {"id": "english-50", "name": "영어우수 장학금 50%", "target": "중·고", "percent": 50, "criteria": "특례 구분·학년별 TOEFL iBT 기준 충족", "grades": [6, 7, 8, 9, 10, 11, 12]}
+    ],
+    "english_thresholds": {
+      "columns": ["G6–G7", "G8–G9", "G10–G12"],
+      "rows": [
+        {"group": "12년 특례(전 교육과정)", "level": "25%", "scores": [80, 90, 100]},
+        {"group": "12년 특례(전 교육과정)", "level": "50%", "scores": [90, 100, 110]},
+        {"group": "12특 외(3특·무특)", "level": "25%", "scores": [90, 100, 110]},
+        {"group": "12특 외(3특·무특)", "level": "50%", "scores": [100, 110, 115]}
+      ],
+      "conversion": [
+        {"toefl": 80, "toeic": 705, "ielts": "6.5", "teps": 266},
+        {"toefl": 90, "toeic": 790, "ielts": "7.0", "teps": 305},
+        {"toefl": 100, "toeic": 860, "ielts": "7.5", "teps": 344},
+        {"toefl": 110, "toeic": 940, "ielts": "8.0", "teps": 415},
+        {"toefl": 115, "toeic": 970, "ielts": "8.5", "teps": 480}
+      ]
+    }
+  }
+}

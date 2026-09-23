@@ -1,0 +1,37 @@
+[build]
+  command = "npm run build"
+  publish = "dist-netlify"
+
+[functions]
+  directory = "netlify/functions"
+
+# 기존 SPA 주소 호환
+[[redirects]]
+  from = "/results"
+  to = "/university-results"
+  status = 301
+[[redirects]]
+  from = "/fees"
+  to = "/tuition"
+  status = 301
+[[redirects]]
+  from = "/contact"
+  to = "/consultation"
+  status = 301
+[[redirects]]
+  from = "/resources"
+  to = "/news"
+  status = 301
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Deploy Preview는 Netlify 자체 noindex와 프리렌더 meta/robots.txt로 검색 노출을 차단합니다.
+    # Production 공개 여부는 data/site.json preview 값과 프리렌더 결과로 제어합니다.
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
