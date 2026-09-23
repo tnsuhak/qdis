@@ -93,7 +93,7 @@ export function Footer() {
             <div>
               <h4>학교생활</h4>
               <ul>
-                <li><a href="/boarding">기숙사</a></li>
+                <li><a href="/boarding">기숙사·학생관리</a></li>
                 <li><a href="/daily-life">하루 일과</a></li>
                 <li><a href="/meals">이번 주 급식</a></li>
               </ul>
@@ -105,7 +105,7 @@ export function Footer() {
                 <li><a href="/scholarships">장학금</a></li>
                 <li><a href="/admissions">입학 절차</a></li>
                 <li><a href="/faq">자주 묻는 질문</a></li>
-                <li><a href="/news">소식</a></li>
+                <li><a href="/news">학교소식</a></li>
               </ul>
             </div>
           </div>
