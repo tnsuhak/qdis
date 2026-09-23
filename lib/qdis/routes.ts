@@ -23,7 +23,7 @@ export const ROUTES: RouteMeta[] = [
   {path: '/scholarships', key: 'scholarships', section: 'tuition', crumb: '장학금', title: '장학금 | 청도대원학교 동문·형제·진급·영어우수 장학', description: '2026–27 청도대원학교 장학금: 동문 20%, 두자녀 20%, 다자녀 50%, 진급 10–30%, 영어우수 25–50%. TOEFL 기준표와 50% 상한 규정을 정리했습니다.'},
   {path: '/admissions', key: 'admissions', section: 'admissions', crumb: '입학 절차', title: '입학안내 | 청도대원학교 2026–27 모집·전형·비자', description: '2026–27 청도대원학교 모집학급, 지원 자격, 영어 지필·인터뷰 전형, 제출서류, 학생비자(X1)와 거류증, 기숙사 입사 준비까지 입학 절차를 단계별로 안내합니다.'},
   {path: '/faq', key: 'faq', section: 'admissions', crumb: '자주 묻는 질문', title: '자주 묻는 질문 | 청도대원학교 입학·기숙·진학 FAQ', description: '청도대원학교 공식 FAQ 30문항을 입학·교육과정·기숙사·대학진학·비용·학교생활·편입특례로 나누고 최신 모집요강 기준으로 정리했습니다.'},
-  {path: '/news', key: 'news', section: 'news', crumb: '소식', title: 'QDIS 소식 | 청도대원학교 최신 공지·합격·학교생활', description: '청도대원학교 공식 게시판의 최신 소식 가운데 한국 학부모에게 필요한 입학·학사·대학 합격·학교생활 소식을 골라 쉽게 정리합니다.'},
+  {path: '/news', key: 'news', section: 'news', crumb: '학교소식', title: 'QDIS 학교소식 | 청도대원학교 최신 공지·합격·학교생활', description: '청도대원학교 공식 게시판의 최신 소식 가운데 한국 학부모에게 필요한 입학·학사·대학 합격·학교생활 소식을 골라 쉽게 정리합니다.'},
   {path: '/consultation', key: 'consultation', section: 'consult', crumb: '입학상담', title: '입학상담 | 청도대원학교 한국 상담 TNS Worldwide', description: '청도대원학교 입학 가능 학년, 전형, 학비, 기숙사, 특례·진학 경로를 TNS Worldwide 상담팀이 한국어로 안내합니다. 학교 방문 투어도 연결해 드립니다.'},
 ];
 
@@ -32,16 +32,16 @@ export const NOT_FOUND: RouteMeta = {path: '/404', key: '404', title: '페이지
 export const NAV: Array<{label: string; href: string; section: string; children?: Array<{label: string; href: string; desc?: string}>}> = [
   {label: '학교소개', href: '/about', section: 'about'},
   {label: '교육과정', href: '/academics', section: 'academics', children: [
-    {label: 'GLP·CLP와 학년별 교육과정', href: '/academics'},
-    {label: 'SAT·AP와 교내 시험센터', href: '/sat-ap'},
+    {label: 'GLP·CLP 교육과정', href: '/academics'},
+    {label: 'SAT·AP 시험센터', href: '/sat-ap'},
   ]},
   {label: '대학진학', href: '/university-results', section: 'college', children: [
     {label: '대학 합격 결과', href: '/university-results'},
-    {label: '진학지도와 특례·전형', href: '/college-counseling'},
+    {label: '진학지도·특례', href: '/college-counseling'},
   ]},
-  {label: '기숙·학교생활', href: '/boarding', section: 'life', children: [
-    {label: '기숙사 생활과 관리', href: '/boarding'},
-    {label: '하루 일과·학생 활동', href: '/daily-life'},
+  {label: '학교생활', href: '/boarding', section: 'life', children: [
+    {label: '기숙사·학생관리', href: '/boarding'},
+    {label: '하루 일과·학생활동', href: '/daily-life'},
     {label: '이번 주 급식', href: '/meals'},
   ]},
   {label: '학비·장학금', href: '/tuition', section: 'tuition', children: [
@@ -49,10 +49,10 @@ export const NAV: Array<{label: string; href: string; section: string; children?
     {label: '장학금', href: '/scholarships'},
   ]},
   {label: '입학안내', href: '/admissions', section: 'admissions', children: [
-    {label: '입학 절차·모집요강', href: '/admissions'},
+    {label: '입학조건·절차', href: '/admissions'},
     {label: '자주 묻는 질문', href: '/faq'},
   ]},
-  {label: '소식', href: '/news', section: 'news'},
+  {label: '학교소식', href: '/news', section: 'news'},
 ];
 
 export function routeFor(path: string): RouteMeta {
