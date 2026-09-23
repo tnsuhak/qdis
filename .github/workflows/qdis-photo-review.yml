@@ -1,0 +1,46 @@
+name: QDIS photo candidate download (temporary)
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  download:
+    if: github.event_name != 'pull_request' || github.head_ref == 'preview/qdis-initial-site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: preview/qdis-initial-site
+      - name: Download selected official QDIS gallery candidates
+        run: |
+          set -euo pipefail
+          mkdir -p public/images/qdis/review
+          base="https://qdis.org/rankup_module/rankup_board/attach/news"
+          curl -fsSL "$base/17836476759183.jpg" -o public/images/qdis/review/299-1.jpg
+          curl -fsSL "$base/17836476911187.jpg" -o public/images/qdis/review/299-2.jpg
+          curl -fsSL "$base/17804486990121.jpg" -o public/images/qdis/review/297-1.jpg
+          curl -fsSL "$base/17804519171000.jpg" -o public/images/qdis/review/297-2.jpg
+          curl -fsSL "$base/17796858144338.jpg" -o public/images/qdis/review/295-1.jpg
+          curl -fsSL "$base/17796858207912.jpg" -o public/images/qdis/review/295-2.jpg
+          curl -fsSL "$base/17748554617346.jpg" -o public/images/qdis/review/292-1.jpg
+          curl -fsSL "$base/17748554738422.jpg" -o public/images/qdis/review/292-2.jpg
+          curl -fsSL "$base/17748544144839.jpg" -o public/images/qdis/review/291-1.jpg
+          curl -fsSL "$base/17748544275640.jpg" -o public/images/qdis/review/291-2.jpg
+          curl -fsSL "$base/17805474659546.jpg" -o public/images/qdis/review/298-1.jpg
+          file public/images/qdis/review/*
+      - name: Commit review candidates
+        run: |
+          if git diff --quiet -- public/images/qdis/review && [ -z "$(git status --porcelain public/images/qdis/review)" ]; then
+            exit 0
+          fi
+          git config user.name "qdis-photo-qa[bot]"
+          git config user.email "qdis-photo-qa@users.noreply.github.com"
+          git add public/images/qdis/review
+          git commit -m "chore: add temporary QDIS photo review candidates"
+          git pull --rebase origin preview/qdis-initial-site
+          git push origin HEAD:preview/qdis-initial-site
