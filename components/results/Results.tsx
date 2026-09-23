@@ -10,7 +10,11 @@ const LATEST_OFFER_LABELS: Record<string, string> = {
   'Liverpool John Moores University': '영국 LJMU 약대 합격',
   'National University of Singapore (NUS)': '싱가포르 국립대학교(NUS) 합격',
   '성균관대학교': '성균관대학교 합격',
+  '연세대학교': '연세대학교 합격',
+  '건국대학교': '건국대학교 합격',
   '한양대학교': '한양대학교 합격',
+  '경희대학교': '경희대학교 합격',
+  '고려대학교': '고려대학교 합격',
 };
 
 /** 홈·결과 페이지 공용: 최근 개별 합격 소식 */
