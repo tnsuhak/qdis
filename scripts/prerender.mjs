@@ -6,6 +6,7 @@ import {fileURLToPath, pathToFileURL} from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = resolve(root, 'dist-netlify');
 const site = JSON.parse(readFileSync(resolve(root, 'data/site.json'), 'utf8'));
+const faq = JSON.parse(readFileSync(resolve(root, 'data/faq/faq.json'), 'utf8'));
 const ssr = await import(pathToFileURL(resolve(root, 'dist-ssr/entry-server.js')).href);
 
 // Netlify: CONTEXT=production|deploy-preview|branch-deploy.
@@ -40,6 +41,20 @@ function head(r) {
       {'@type': 'ListItem', position: 1, name: '홈', item: base + '/'},
       {'@type': 'ListItem', position: 2, name: r.crumb ?? r.title, item: url},
     ]});
+  }
+  if (r.path === '/faq') {
+    ld.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.items.map(item => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a.join(' '),
+        },
+      })),
+    });
   }
   return [
     `<title>${esc(r.title)}</title>`,
