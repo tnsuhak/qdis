@@ -501,6 +501,7 @@ em.mark { font-style: normal; color: var(--brass); }
 .faq-item[open] summary .pm { transform: rotate(45deg); }
 .faq-item .a { padding: 0 44px 26px 112px; color: #333a46; }
 .faq-item .a p { margin-bottom: .8em; }
+.faq-guide { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-2); }
 @media (max-width: 620px) {
   .faq-item summary { grid-template-columns: minmax(0,1fr) 24px; }
   .faq-item summary .cat { grid-column: 1 / -1; margin-bottom: -10px; }
@@ -902,4 +903,21 @@ em.mark { font-style: normal; color: var(--brass); }
   .heritage-proof > div + div {
     border-top: 1px solid rgba(255,255,255,.14);
   }
+}
+
+
+/* ---------- Mobile density polish ---------- */
+@media (max-width: 620px) {
+  .section { padding: 58px 0; }
+  .section.tight { padding: 46px 0; }
+  .sec-head { margin-bottom: 30px; gap: 18px; }
+  .page-head .wrap { padding-top: 44px; padding-bottom: 42px; }
+  .page-head h1 { font-size: clamp(32px, 10vw, 44px); }
+  .page-head .lede { margin-top: 16px; }
+  .page-toc a { padding: 13px 10px; font-size: 13.5px; }
+  .hero2-grid { gap: 30px; }
+  .big-trio > div { padding-top: 20px; padding-bottom: 20px; }
+  .heritage-bridge { gap: 24px; }
+  .channels a { padding: 16px 0; }
+  .consult-form { padding: 22px 18px; }
 }
