@@ -11,7 +11,7 @@ export function About() {
     <>
       <PageHead crumb="학교소개" eyebrow="About QDIS" title={<>칭다오의 12년제 국제학교,<br />청도대원학교</>}
         lede="중국 산동성 교육국 인가 학교인 청도대원학교(靑島大元學校)의 국제부입니다. G1부터 G12까지 영어·중국어·한국어 3개 언어로 가르치고, 학생 대부분은 한국 학생입니다." />
-      <Toc items={[['overview', '학교 개요'], ['recognition', '인가·학제'], ['heritage', '대원 교육의 뿌리'], ['students', '학생 구성'], ['campus', '캠퍼스와 위치'], ...(FACILITY_PHOTOS.length ? [['facilities', '학교 시설'] as [string, string]] : [])]} />
+      <Toc items={[['overview', '학교 개요'], ['recognition', '인가·학제'], ['heritage', '대원 교육의 뿌리'], ['students', '지원 가능한 학생'], ['campus', '캠퍼스와 위치'], ...(FACILITY_PHOTOS.length ? [['facilities', '학교 시설'] as [string, string]] : [])]} />
 
       <section className="section" id="overview">
         <div className="wrap">
