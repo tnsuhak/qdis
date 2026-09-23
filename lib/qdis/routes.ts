@@ -30,7 +30,10 @@ export const ROUTES: RouteMeta[] = [
 export const NOT_FOUND: RouteMeta = {path: '/404', key: '404', title: '페이지를 찾을 수 없습니다 | 청도대원학교 QDIS', description: '요청하신 페이지를 찾을 수 없습니다.'};
 
 export const NAV: Array<{label: string; href: string; section: string; children?: Array<{label: string; href: string; desc?: string}>}> = [
-  {label: '학교소개', href: '/about', section: 'about'},
+  {label: '학교소개', href: '/about', section: 'about', children: [
+    {label: '학교개요·대원 교육의 뿌리', href: '/about'},
+    {label: '학교시설·캠퍼스 사진', href: '/about#facilities'},
+  ]},
   {label: '교육과정', href: '/academics', section: 'academics', children: [
     {label: 'GLP·CLP 교육과정', href: '/academics'},
     {label: 'SAT·AP 시험센터', href: '/sat-ap'},
