@@ -139,7 +139,7 @@ export function AdmissionsPage() {
   const plan = [['GLP', [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2]], ['CLP', [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0]]] as const;
   return (
     <>
-      <PageHead crumb="입학 절차" eyebrow="Admissions 2026–27" title={<>수시 모집, 학년별 선착순.<br />지원부터 입학까지</>}
+      <PageHead crumb="입학조건·절차" eyebrow="Admissions 2026–27" title={<>수시 모집, 학년별 선착순.<br />지원부터 입학까지</>}
         lede="원서는 연중 수시로 받고, 학년별 정원이 차면 마감합니다. 학생비자가 필요하면 발급에 2–3개월이 걸리므로 입학 희망 학기보다 넉넉히 먼저 지원하세요." />
       <Toc items={[['plan', '모집 학급'], ['steps', '입학 절차'], ['eligibility', '지원 자격'], ['transfer', '편입·학년배정'], ['documents', '제출 서류'], ['visa', '비자·거류증'], ['timing', '지원 시기']]} />
       <section className="section white" id="plan">
