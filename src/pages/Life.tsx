@@ -186,6 +186,10 @@ export function DailyLifePage() {
       <section className="section" id="activities">
         <div className="wrap">
           <SecHead eyebrow="Student Activities" title="대회와 무대, 학교 밖 경험" lede="World Scholar’s Cup 칭다오 대회, TIANMUN·MUNTAI 등 외부 모의유엔, 영어 스피치·에세이 대회, 동아리 발표대회, 체육대회와 졸업여행까지." action={<TLink href="/news">최근 소식</TLink>} />
+          <div style={{marginBottom: 'clamp(32px,4vw,52px)'}}>
+            <Img id="sportsDayGroup2026" />
+            <p className="cap">제9회 청도대원 체육대회 · QDIS 공식 사진 갤러리</p>
+          </div>
           <div className="cols-4">
             {acts.map(([id, t, d]) => (
               <div key={id}>
