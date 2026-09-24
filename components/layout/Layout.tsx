@@ -52,7 +52,7 @@ export function Header({section}: {section?: string}) {
             )}
           </div>
         ))}
-        <a className="btn arrow" href="/consultation" tabIndex={open ? 0 : -1}>입학상담 신청</a>
+        <a className="btn arrow" href="/consultation" tabIndex={open ? 0 : -1}>입학상담</a>
       </div>
     </>
   );
@@ -72,13 +72,14 @@ export function Footer() {
             <p className="tns">
               이 사이트는 <b>{t.name}</b>({t.legal})가 청도대원학교 한국 입학상담 지원을 위해 운영하는 한국어 안내 사이트입니다. 학교 공식 자료를 바탕으로 작성하며, 학교 공식 홈페이지와 별도로 운영됩니다.
             </p>
-            <p className="tns">입학상담 {t.phone} · <a href={t.kakao_channel} target="_blank" rel="noopener noreferrer">카카오톡 채널</a><br />{t.address}</p>
+            <p className="tns">입학상담 {t.phone} · <a href={t.kakao_channel} target="_blank" rel="noopener noreferrer">카카오톡 1:1 상담</a><br />{t.address}</p>
           </div>
           <div className="cols">
             <div>
               <h4>학교</h4>
               <ul>
                 <li><a href="/about">학교소개</a></li>
+                <li><a href="/about#facilities">학교시설·캠퍼스 사진</a></li>
                 <li><a href="/academics">교육과정</a></li>
                 <li><a href="/sat-ap">SAT·AP 시험센터</a></li>
               </ul>

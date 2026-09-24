@@ -1,24 +1,30 @@
-name: QDIS weekly meal sync
+name: QDIS meal sync (manual maintenance)
 
-# QDIS 공식 급식표를 주 1회 확인합니다.
-# 매주 월요일 오전 09:10(KST)에 확인하고, 실제 식단이 바뀐 경우에만
-# data/meals/latest.json을 갱신합니다. 예약 실행은 main, 수동 실행은 선택한 branch에만 커밋합니다.
+# 예약 실행은 qdis-monitor.yml의 주간 통합 감시가 담당합니다.
+# 이 workflow는 필요할 때 preview/feature branch에서 수동 점검할 때만 사용합니다.
+# main 직접 커밋은 차단합니다.
 on:
-  schedule:
-    - cron: '10 0 * * 1'   # 매주 월요일 09:10 KST
   workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: qdis-meals-sync
+  group: qdis-meals-manual
   cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Refuse direct main update
+        shell: bash
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "Manual meal sync must run on a preview/feature branch, not main."
+            exit 1
+          fi
+
       - name: Checkout triggering branch
         uses: actions/checkout@v4
         with:
@@ -40,7 +46,6 @@ jobs:
             exit 0
           fi
 
-          # Safety: this automation is allowed to change only the meal snapshot.
           OTHER="$(git status --porcelain | grep -v 'data/meals/latest.json' || true)"
           if [ -n "$OTHER" ]; then
             echo "Unexpected changed files detected:"

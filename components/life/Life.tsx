@@ -123,7 +123,7 @@ export function MealsWeek({showWeekTable = false}: {showWeekTable?: boolean}) {
           </table>
         </div>
       )}
-      <p className="source">식단은 식자재 수급 등 사정에 따라 바뀔 수 있습니다. 출처: <a href={week.source.url} target="_blank" rel="noopener noreferrer">청도대원학교 학교생활 &gt; 급식 메뉴</a></p>
+      <p className="source">식단은 식자재 수급 등 사정에 따라 바뀔 수 있습니다. 출처: 청도대원학교 학교생활 &gt; 급식 메뉴</p>
     </div>
   );
 }

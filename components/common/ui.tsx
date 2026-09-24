@@ -37,10 +37,11 @@ export function SecHead({no, eyebrow, title, lede, action, id}: {no?: string; ey
 }
 
 export function Source({children, href, label = '자료 출처'}: {children: ReactNode; href?: string; label?: string}) {
+  const visibleHref = href && !/^https?:\/\/(?:www\.)?qdis\.org\//i.test(href) ? href : undefined;
   return (
     <p className="source">
       {label}: {children}
-      {href && <> · <a href={href} target="_blank" rel="noopener noreferrer">원문</a></>}
+      {visibleHref && <> · <a href={visibleHref} target="_blank" rel="noopener noreferrer">원문</a></>}
     </p>
   );
 }
@@ -73,7 +74,7 @@ export function Toc({items}: {items: Array<[string, string]>}) {
   );
 }
 
-export function CtaBand({title, text, primary = {href: '/consultation', label: '입학상담 신청'}, secondary}: {title: ReactNode; text?: ReactNode; primary?: {href: string; label: string}; secondary?: {href: string; label: string}}) {
+export function CtaBand({title, text, primary = {href: '/consultation', label: '입학상담'}, secondary}: {title: ReactNode; text?: ReactNode; primary?: {href: string; label: string}; secondary?: {href: string; label: string}}) {
   return (
     <section className="cta-band" aria-label="상담 안내">
       <div className="wrap">

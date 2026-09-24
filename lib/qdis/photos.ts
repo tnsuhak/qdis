@@ -23,6 +23,7 @@ export type Photo = {
 };
 
 export const PHOTOS: Record<string, Photo> = {
+  campusHero: {id: 'campusHero', src: '/images/qdis/facilities/facility-06.jpg', alt: '벚꽃이 핀 청도대원학교 교정과 교사동 전경', credit: 'QDIS 공식 학교 시설 갤러리', sourceUrl: 'https://qdis.org/gallery/index.html?no=7', width: 1800, height: 1044, position: 'center center'},
   cafeteria: {id: 'cafeteria', src: '/images/qdis/facilities/facility-03.jpg', alt: '청도대원학교 학교 직영 구내식당 내부', credit: 'QDIS 공식 학교 시설 갤러리', sourceUrl: 'https://qdis.org/gallery/index.html?no=7', width: 733, height: 508},
   studyHall: {id: 'studyHall', src: '/images/qdis/facilities/facility-10.jpg', alt: '개인 칸막이 좌석이 놓인 청도대원학교 기숙생 자습실', credit: 'QDIS 공식 학교 시설 갤러리', sourceUrl: 'https://qdis.org/gallery/index.html?no=7', width: 690, height: 460},
   dormRoom: {id: 'dormRoom', src: '/images/qdis/facilities/facility-20.jpg', alt: '2층 침대와 개인 수납장이 있는 청도대원학교 기숙사 4인실', credit: 'QDIS 공식 학교 시설 갤러리', sourceUrl: 'https://qdis.org/gallery/index.html?no=7', width: 690, height: 460, label: '기숙사 4인실', sub: 'Dormitory'},
@@ -38,7 +39,7 @@ export const PHOTOS: Record<string, Photo> = {
 
 /** 역할별 배정 (공식 갤러리 사진 확보 시 여기만 바꾸면 전체 반영) */
 export const SLOTS: Record<string, string> = {
-  hero: 'piDay2026',
+  hero: 'campusHero',
   lifeMain: 'sportsDayBasketball2026',
   lifeA: 'seminar',
   lifeB: 'englishPlay2026',

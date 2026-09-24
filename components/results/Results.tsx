@@ -2,12 +2,15 @@ import {useMemo, useState} from 'react';
 import {ANNUAL, LATEST, ALUMNI, LATEST_COVERS, COUNTRY_KO, COUNTRY_ORDER, countryTotals, topUniversities, canonical, splitName, type ResultEntry} from '@/lib/qdis/results';
 import {koDate, academicYearLabel} from '@/lib/qdis/format';
 
-const BOARD = 'https://qdis.org/board/index.html?id=board3';
-
 const LATEST_OFFER_LABELS: Record<string, string> = {
   '서강대학교': '서강대학교 합격',
   '중앙대학교': '중앙대학교 합격',
   'Liverpool John Moores University': '영국 LJMU 약대 합격',
+  'University of Sunderland': '영국 선더랜드 약대 합격',
+  'Monash University': '호주 모나쉬 약대 합격',
+  '성균관대학교 의과대학': '성균관대 의대 합격',
+  '연세대학교 의과대학': '연세대 의대 합격',
+  '이화여자대학교 의과대학': '이화여대 의대 합격',
   'National University of Singapore (NUS)': '싱가포르 국립대학교(NUS) 합격',
   '성균관대학교': '성균관대학교 합격',
   '연세대학교': '연세대학교 합격',
@@ -68,7 +71,7 @@ export function YearExplorer({compact = false}: {compact?: boolean}) {
             <p className="kicker" style={{marginBottom: 10}}>{academicYearLabel(y.academic_year)} 대입결과</p>
             <div className="big-count">{y.total_offers}<small>건</small></div>
             <p className="count-note">{y.cohort ? `${y.cohort} 공식 종합표 · ${koDate(y.as_of!)} 기준` : `공식 종합표 · ${koDate(y.source_date)} 게시`}</p>
-            <a className="source" href={y.source_url} target="_blank" rel="noopener noreferrer" style={{display: 'inline-block'}}>학교 공지 원문 ↗</a>
+            <p className="source">자료 출처 · 청도대원학교 공식 진학정보 게시판</p>
           </div>
           <div>
             <ul className="bars" aria-label="국가·지역별 합격 건수">
@@ -90,7 +93,7 @@ export function YearExplorer({compact = false}: {compact?: boolean}) {
         <div className="image-only" role="tabpanel">
           <div>
             <p className="lede" style={{marginTop: 0}}>{academicYearLabel(y.academic_year)} 결과는 학교가 표 이미지로 게시했습니다. 이미지에 없는 정보를 임의로 옮겨 적지 않고 원본을 그대로 보여 드립니다.</p>
-            <a className="tlink" href={y.source_url} target="_blank" rel="noopener noreferrer">학교 게시판 원문 보기</a>
+            <p className="source">자료 출처 · 청도대원학교 공식 진학정보 게시판</p>
           </div>
           <img src={y.source_image} alt={`${academicYearLabel(y.academic_year)} 청도대원학교 대학진학 현황 원본 이미지`} loading="lazy" />
         </div>
@@ -203,7 +206,7 @@ export function ResultsTable() {
           </div>
         )}
       </div>
-      <p className="source">출처: 청도대원학교 공식 진학정보 게시판 · <a href={BOARD} target="_blank" rel="noopener noreferrer">게시판 원문</a></p>
+      <p className="source">출처: 청도대원학교 공식 진학정보 게시판</p>
     </div>
   );
 }

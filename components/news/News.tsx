@@ -39,7 +39,9 @@ export function NewsList({limit, filterable = false}: {limit?: number; filterabl
                 <p>{i.summary}</p>
                 <div className="news-actions">
                   {internal && <a className="tlink" href={internal.href}>{internal.label}</a>}
-                  <a className="source-link" href={i.source_url} target="_blank" rel="noopener noreferrer">{i.source_board} 원문 ↗</a>
+                  {i.category !== 'university' && (
+                    <a className="source-link" href={i.source_url} target="_blank" rel="noopener noreferrer">{i.source_board} 원문 ↗</a>
+                  )}
                 </div>
               </div>
             </article>

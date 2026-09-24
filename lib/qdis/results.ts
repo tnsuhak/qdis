@@ -5,7 +5,7 @@ import alumni from '@/data/university-results/alumni.json';
 export type ResultEntry = {
   academic_year: string; country: string; country_ko: string; university: string; program: string | null;
   level: 'undergraduate' | 'graduate'; result_type: string; offer_count: number;
-  source_url: string; source_post_id: number | null; source_date: string; verified: boolean; note?: string | null;
+  source_url: string; source_post_id: number | null; source_date: string; verified: boolean; note?: string | null; program_basis?: string;
 };
 export type AnnualYear = {
   academic_year: string; label: string; cohort: string | null; as_of: string | null; total_offers: number | null;
