@@ -52,7 +52,7 @@ export function Header({section}: {section?: string}) {
             )}
           </div>
         ))}
-        <a className="btn arrow" href="/consultation" tabIndex={open ? 0 : -1}>입학상담 신청</a>
+        <a className="btn arrow" href="/consultation" tabIndex={open ? 0 : -1}>입학상담</a>
       </div>
     </>
   );
