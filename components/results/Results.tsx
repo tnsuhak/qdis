@@ -2,8 +2,6 @@ import {useMemo, useState} from 'react';
 import {ANNUAL, LATEST, ALUMNI, LATEST_COVERS, COUNTRY_KO, COUNTRY_ORDER, countryTotals, topUniversities, canonical, splitName, type ResultEntry} from '@/lib/qdis/results';
 import {koDate, academicYearLabel} from '@/lib/qdis/format';
 
-const BOARD = 'https://qdis.org/board/index.html?id=board3';
-
 const LATEST_OFFER_LABELS: Record<string, string> = {
   '서강대학교': '서강대학교 합격',
   '중앙대학교': '중앙대학교 합격',
@@ -203,7 +201,7 @@ export function ResultsTable() {
           </div>
         )}
       </div>
-      <p className="source">출처: 청도대원학교 공식 진학정보 게시판 · <a href={BOARD} target="_blank" rel="noopener noreferrer">게시판 원문</a></p>
+      <p className="source">출처: 청도대원학교 공식 진학정보 게시판</p>
     </div>
   );
 }
