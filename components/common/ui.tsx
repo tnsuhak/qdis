@@ -73,7 +73,7 @@ export function Toc({items}: {items: Array<[string, string]>}) {
   );
 }
 
-export function CtaBand({title, text, primary = {href: '/consultation', label: '입학상담 신청'}, secondary}: {title: ReactNode; text?: ReactNode; primary?: {href: string; label: string}; secondary?: {href: string; label: string}}) {
+export function CtaBand({title, text, primary = {href: '/consultation', label: '입학상담'}, secondary}: {title: ReactNode; text?: ReactNode; primary?: {href: string; label: string}; secondary?: {href: string; label: string}}) {
   return (
     <section className="cta-band" aria-label="상담 안내">
       <div className="wrap">
