@@ -38,7 +38,7 @@ export function ResultsPage() {
           <div className="table-wrap" style={{marginTop: 64}}>
             <table className="data-table">
               <caption className="sr-only">학년도별 공식 공지 목록</caption>
-              <thead><tr><th>학년도</th><th>게시일</th><th className="n">합격 건수</th><th>자료 형태</th><th>원문</th></tr></thead>
+              <thead><tr><th>학년도</th><th>게시일</th><th className="n">합격 건수</th><th>자료 형태</th></tr></thead>
               <tbody>
                 {ANNUAL.map(y => (
                   <tr key={y.academic_year}>
@@ -46,7 +46,6 @@ export function ResultsPage() {
                     <td className="num">{koDate(y.source_date)}</td>
                     <td className="n">{y.total_offers ? `${y.total_offers}건` : '원본 이미지'}</td>
                     <td>{y.detail === 'table' ? '대학별 상세표' : '학교 게시 이미지'}</td>
-                    <td><a href={y.source_url} target="_blank" rel="noopener noreferrer">no.{y.source_post_id} ↗</a></td>
                   </tr>
                 ))}
               </tbody>
