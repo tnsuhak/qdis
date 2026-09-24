@@ -1,10 +1,13 @@
-name: QDIS official board monitor
+name: QDIS weekly content monitor
 
-# 공식 QDIS 게시판(공지·가정통신문·진학정보·입학안내·갤러리)을 매일 확인해
-# 새 글이 있으면 초안을 만들어 검토용 PR을 엽니다. main 자동 반영·Production 자동 배포는 하지 않습니다.
+# QDIS 공식 홈페이지를 주 1회 확인합니다.
+# - 공지/가정통신문/진학정보/입학안내/사진갤러리 → News/Offer 검토 후보
+# - 공식 급식표 → 최신 주간 식단 후보
+# 변화가 없으면 commit/PR/Netlify Preview를 만들지 않습니다.
+# 변화가 있으면 QDIS 전용 Draft PR 1개만 만들며, main/Production에는 자동 반영하지 않습니다.
 on:
   schedule:
-    - cron: '30 0 * * *'   # 매일 09:30 KST
+    - cron: '43 0 * * 3'   # 매주 수요일 09:43 KST
   workflow_dispatch:
 
 permissions:
@@ -12,49 +15,98 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: qdis-monitor
+  group: qdis-weekly-content-monitor
   cancel-in-progress: false
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    env:
+      BASE: ${{ vars.QDIS_MONITOR_BASE || 'main' }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout review base
+        uses: actions/checkout@v4
         with:
-          ref: ${{ vars.QDIS_MONITOR_BASE || 'main' }}
-      - uses: actions/setup-node@v4
+          ref: ${{ env.BASE }}
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      # 감시 기준선(마지막 글 번호)은 저장소 커밋 대신 Actions 캐시에 보관 → 새 글이 없을 때 배포가 생기지 않음
+
+      # 이전 검토 PR이 열려 있으면 새 PR을 만들지 않습니다.
+      # 기존 PR이 처리된 뒤 다음 실행에서 그 사이 새 글을 모두 다시 감지합니다.
+      - name: Guard against overlapping QDIS review PRs
+        id: guard
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          OPEN_PR="$(gh pr list             --repo "$GITHUB_REPOSITORY"             --state open             --search 'head:monitor/qdis-'             --json number             --jq '.[0].number // empty')"
+
+          if [ -n "$OPEN_PR" ]; then
+            echo "QDIS monitor PR #$OPEN_PR is still open. Skip this run to avoid overlapping review work."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 마지막으로 확인한 글 번호는 Actions cache에 저장합니다.
+      # 저장소 main을 건드리지 않으므로 새 글이 없을 때 Netlify build가 발생하지 않습니다.
       - name: Restore monitor state
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/cache/restore@v4
         with:
           path: data/monitor/state.json
-          key: qdis-monitor-state-${{ github.run_id }}
-          restore-keys: qdis-monitor-state-
-      - name: Check official boards
+          key: qdis-weekly-monitor-state-${{ github.run_id }}
+          restore-keys: qdis-weekly-monitor-state-
+
+      - name: Check official boards for News and Offers
+        if: steps.guard.outputs.skip != 'true'
         run: node scripts/sync/boards.mjs
+
+      - name: Check official weekly meals
+        if: steps.guard.outputs.skip != 'true'
+        shell: bash
+        run: |
+          BEFORE="$(git hash-object data/meals/latest.json 2>/dev/null || true)"
+          node scripts/sync/meals.mjs
+          AFTER="$(git hash-object data/meals/latest.json 2>/dev/null || true)"
+
+          if [ "$BEFORE" != "$AFTER" ]; then
+            printf '\n- 🍽️ 급식: 공식 주간 식단 변경 감지 → Preview 반영 후보\n' >> data/monitor/last-report.md
+          fi
+
       - name: Save monitor state
+        if: steps.guard.outputs.skip != 'true'
         uses: actions/cache/save@v4
         with:
           path: data/monitor/state.json
-          key: qdis-monitor-state-${{ github.run_id }}
-      - name: Open review PR when new drafts exist
+          key: qdis-weekly-monitor-state-${{ github.run_id }}
+
+      - name: Open one Draft PR only when content changed
+        if: steps.guard.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BASE: ${{ vars.QDIS_MONITOR_BASE || 'main' }}
+        shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- data/news/drafts data/university-results/candidates.json)" ]; then
-            # 새 초안이 없으면 기준선(state)만 기록하고 PR은 만들지 않습니다 (불필요한 배포 방지)
-            echo "No new drafts."; exit 0
+          CHANGED="$(git status --porcelain --             data/news/drafts             data/university-results/candidates.json             data/meals/latest.json)"
+
+          if [ -z "$CHANGED" ]; then
+            echo "No News/Offer/meal changes. No commit, no PR, no Netlify Preview."
+            exit 0
           fi
+
           BR="monitor/qdis-$(date -u +%Y%m%d-%H%M)"
           git config user.name "qdis-monitor[bot]"
           git config user.email "qdis-monitor@users.noreply.github.com"
           git checkout -b "$BR"
-          git add data/news/drafts data/monitor/last-report.md data/university-results/candidates.json 2>/dev/null || true
-          git commit -m "QDIS 공식 게시판 새 글 초안 ($(date -u +%Y-%m-%d))"
+
+          git add             data/news/drafts             data/university-results/candidates.json             data/meals/latest.json             data/monitor/last-report.md 2>/dev/null || true
+
+          git commit -m "QDIS 주간 콘텐츠 검토 후보 ($(date -u +%Y-%m-%d))"
           git push origin "$BR"
-          gh pr create --base "$BASE" --head "$BR" --draft \
-            --title "[검토] QDIS 공식 게시판 새 글 $(date -u +%Y-%m-%d)" \
-            --body-file data/monitor/last-report.md
+
+          gh pr create             --base "$BASE"             --head "$BR"             --draft             --title "[검토] QDIS 주간 News · Offers · Meals $(date -u +%Y-%m-%d)"             --body-file data/monitor/last-report.md
