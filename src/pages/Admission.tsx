@@ -2,7 +2,7 @@ import {useMemo, useState} from 'react';
 import {PageHead, SecHead, Source, TLink, Toc, CtaBand} from '@/components/common/ui';
 import {FeeCalculator, TuitionTable} from '@/components/tuition/Tuition';
 import {NewsList} from '@/components/news/News';
-import {ConsultForm, Channels} from '@/components/common/Consult';
+import {Channels} from '@/components/common/Consult';
 import {FEES} from '@/lib/qdis/fees';
 import {fxLabel} from '@/lib/qdis/format';
 import faq from '@/data/faq/faq.json';
@@ -309,7 +309,7 @@ export function NewsPage() {
       <section className="section white">
         <div className="wrap"><NewsList filterable /></div>
       </section>
-      <CtaBand title="새 모집 소식을 가장 먼저 받고 싶다면" text="상담을 신청하시면 설명회와 모집 일정을 안내해 드립니다." />
+      <CtaBand title="새 모집 소식을 가장 먼저 받고 싶다면" text="상담으로 문의하시면 설명회와 모집 일정을 안내해 드립니다." />
     </>
   );
 }
@@ -320,21 +320,18 @@ export function ConsultationPage() {
       <PageHead crumb="입학상담" eyebrow="Consultation" title={<>청도대원 입학,<br />한국에서 상담하세요</>}
         lede="청도대원학교 한국 입학상담은 TNS Worldwide가 지원합니다. 지원 학년·과정, 영어 준비, 특례 가능성, 비용과 비자, 학교 방문 투어까지 한국어로 안내합니다." />
       <section className="section white">
-        <div className="wrap consult">
-          <div>
-            <span className="eyebrow">What We Check</span>
-            <h2 className="h2">상담에서 확인하는 것</h2>
-            <ul className="ruled" style={{marginTop: 26}}>
-              <li><b>학년</b><p>한국·해외 이수 학기와 9월 학기제를 맞춰 지원 학년 결정</p></li>
-              <li><b>과정</b><p>GLP·CLP 중 목표 대학에 맞는 과정</p></li>
-              <li><b>영어</b><p>입학 평가 대비와 입학 전 준비 방법</p></li>
-              <li><b>특례·전형</b><p>12특·3특·해외고 전형 가능성</p></li>
-              <li><b>비용</b><p>장학금을 반영한 연간 예상 비용</p></li>
-              <li><b>입학 준비</b><p>원서·영어 인터뷰·비자·기숙사 입사</p></li>
-            </ul>
-            <Channels />
-          </div>
-          <ConsultForm />
+        <div className="wrap consultation-simple">
+          <span className="eyebrow">What We Check</span>
+          <h2 className="h2">상담에서 확인하는 것</h2>
+          <ul className="ruled" style={{marginTop: 26}}>
+            <li><b>학년</b><p>한국·해외 이수 학기와 9월 학기제를 맞춰 지원 학년 결정</p></li>
+            <li><b>과정</b><p>GLP·CLP 중 목표 대학에 맞는 과정</p></li>
+            <li><b>영어</b><p>입학 평가 대비와 입학 전 준비 방법</p></li>
+            <li><b>특례·전형</b><p>12특·3특·해외고 전형 가능성</p></li>
+            <li><b>비용</b><p>장학금을 반영한 연간 예상 비용</p></li>
+            <li><b>입학 준비</b><p>원서·영어 인터뷰·비자·기숙사 입사</p></li>
+          </ul>
+          <Channels />
         </div>
       </section>
     </>
